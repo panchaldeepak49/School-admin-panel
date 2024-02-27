@@ -6,6 +6,9 @@ import Home from '../pages/Home'
 import Admisssion from '../pages/Admisssion';
 import AllStandardStu from '../pages/AllStandardStu';
 import XStandardStu from '../pages/XStandardStu';
+import PrivateRoute from '../components/PrivateRoutes';
+import PublicRoute from '../components/PublicRoutes';
+
 
 const Path = () => {
 
@@ -15,9 +18,10 @@ const Path = () => {
         // console.log("ffafa",match,currentLocation)
         if(match){
           return null;
+         
           }
           else{
-            return <Navbar />
+            return <PrivateRoute><Navbar /></PrivateRoute>
           }
        }
 
@@ -26,11 +30,11 @@ const Path = () => {
     <div className='flex'>
     <NavbarWrapper />
      <Routes>
-        <Route path='/' element={<Login />}></Route>
-        <Route path='/home' element={<Home />}></Route>
-        <Route path= '/admission' element={<Admisssion />}></Route>
-        <Route path= '/allStudents' element={<AllStandardStu />}></Route>
-        <Route path= '/XStudents' element={<XStandardStu />}></Route>
+        <Route path='/' element={<PublicRoute><Login /></PublicRoute>}></Route>
+        <Route path='/home' element={<PrivateRoute><Home /></PrivateRoute>}></Route>
+        <Route path= '/admission' element={<PrivateRoute><Admisssion /></PrivateRoute>}></Route>
+        <Route path= '/allStudents' element={<PrivateRoute><AllStandardStu /></PrivateRoute>}></Route>
+        <Route path= '/XStudents' element={<PrivateRoute><XStandardStu /></PrivateRoute>}></Route>
      </Routes>
      </div>
     </>

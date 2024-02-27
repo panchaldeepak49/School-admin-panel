@@ -1,6 +1,8 @@
 import React,{useState,useEffect} from 'react'
 import UserTest from '../components/Table/UserTest'
 import { userRequest } from '../components/RequestMethod'
+import Search from '../components/Search'
+import debounce from 'lodash.debounce';
 
 const AllStandardStu = () => {
 
@@ -8,10 +10,10 @@ const AllStandardStu = () => {
     var[page,setPage] = useState(1);
     const[totalPage,setTotalPage] = useState('');
     const[count,setCount] = useState('');
-    const limit = 8;
+    const limit = 7;
     //console.log(page);
 
-    const fetchAllAdmission = async (searchQuery) => {
+    const fetchAllAdmission = async(searchQuery) => {
         //await userRequest.get('/api/school/getAllAdmission')
        await userRequest.get(`/api/school/getAllAdmission/searchFilterN?search=${searchQuery ?? ''}&limit=${limit}&page=${page}`)
          .then((response) => {
@@ -35,19 +37,36 @@ const AllStandardStu = () => {
        fetchAllAdmission();
      },[page]);
 
+     ////////////////////////////////////////////////////////////////search filter and debounce 
+     const [searchText, setSearchText] = useState('');
+
+  const handleSearch = (e) => {
+  setSearchText(e.target.value);
+  // fetchData(e.target.value);        before debounce 
+  debouncedFetchData(searchText);  
+  
+  if(e.target.value === ''){
+    fetchAllAdmission();
+    window.location.reload();
+    // console.log('ho gya')
+   }
+  };
+  const debouncedFetchData = debounce(fetchAllAdmission, 2000);
+
   return (
     <>
     <div className='w-[82%] flex flex-col '>
-        
+    <Search searchText={searchText} handleSearch={handleSearch} />
         
         {/* <p className='flex justify-center text-xl mt-4 py-2 bg-green-400'>All Registered Students</p> */}
-        <div className='flex justify-evenly gap-10  mt-4 py-2 bg-green-400'>
+        <div className='flex justify-evenly   mt-4 py-2 bg-green-400'>
+        <p className='invisible'>All Students</p>  
         <p className='text-xl'>All Registered Students</p>
-        <p className=''>Total Students : {count}</p>
+        <p className='ml-60 '>Total Students : {count}</p>
         </div>    
         
         {/* <img src={erpImg} ></img> */}
-        <div className=' h-[75vh]'>
+        <div className=' h-[70vh] '>
         <UserTest  student={student} fetchAllAdmission={fetchAllAdmission} />
         </div> 
         
@@ -59,7 +78,7 @@ const AllStandardStu = () => {
       <button className={`bg-blue-400 px-4 py-2  rounded-xl text-white`} onClick={prePage}>Previous</button>
           
       <button className={`bg-blue-400 px-6 py-2 rounded-xl text-white`} onClick={nextPage} >Next</button>
-      <div className=' fixed right-7 bottom-10'>Page {page} of {totalPage}</div>
+      <div className=' fixed right-7 bottom-7'>Page {page} of {totalPage}</div>
     </div>
      ) : null
    } 

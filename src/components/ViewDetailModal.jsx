@@ -1,12 +1,14 @@
 import React from 'react'
 
 const ViewDetailModal = ({displayingData,setShowViewModal}) => {
-    //console.log(displayingData)
+    console.log(displayingData)
   return (
     <>
     <div className='fixed top-[4%] left-[40%] flex flex-col gap-4 py-4 px-4 items-center rounded-md w-[25%] bg-gray-200 shadow-xl'>
         <p className='font-sans  font-semibold text-xl text-blue-600 '>View User Data</p>
+        <img src={displayingData.imageUrl} className='w-[20%]' alt='oops'></img>
         <div className='flex flex-col items-start gap-5'>
+          
         <p><span className='font-semibold'>Name : </span>{displayingData.name} </p>
         <p><span className='font-semibold'>Father Name : </span> {displayingData.fatherName}</p>
         <p><span className='font-semibold'>Class : </span> {displayingData.class}</p>

@@ -34,8 +34,8 @@ const Login = () => {
     //style={{ backgroundImage: `url(/Images/1.jpeg)`}}
   return (
     <>
-    <div className='flex  justify-center items-center w-[100%] h-[100vh]' >
-    <div className=" flex flex-col items-center justify-center w-[400px] bg-[#fff] border-2 border-[#dddfe2] shadow-xl rounded-lg p-2">
+    <div className='flex  justify-center items-center w-[100%] ' >
+    <div className=" flex flex-col items-center justify-center mt-20 w-[400px] bg-[#fff] border-2 border-[#dddfe2] shadow-xl rounded-lg p-2">
             {/* {console.log(user)} */}
             <h1 className='text-2xl font-semibold'>Login</h1>
             <input className='border-2 border-[#dddfe2] rounded-lg w-[92%] text-base text-[#1d2129] outline-none mt-4 py-2 pl-2' type="text" name="email" value={email} onChange={(e)=>setEmail(e.target.value)} placeholder="Enter your e-mail"></input>
