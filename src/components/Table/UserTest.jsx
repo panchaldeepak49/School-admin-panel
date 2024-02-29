@@ -5,7 +5,7 @@ import ViewDetailModal from '../ViewDetailModal';
 import DeleteStudentModal from '../DeleteStudentModal';
 
 const UserTest = ({student,fetchAllAdmission}) => {
-
+    //console.log(student)
     const [showViewModal,setShowViewModal] = useState(false);
     const [displayingData, setDisplayingData] = useState('');
 

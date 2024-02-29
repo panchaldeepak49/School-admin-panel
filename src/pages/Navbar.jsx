@@ -20,11 +20,13 @@ const Navbar = () => {
   return (
     <>
     <div className='  border-2  bg-black  w-[18%] min-h-[100vh] cursor-pointer' >
-        <div className='flex justify-center mt-6'>
-            <img src={''} alt="Convent School" />
+        <div className='flex flex-col text-center gap-5 mt-6'>
+            {/* <img src={''} alt="Convent School" /> */}
+            {/* <p className='text-blue-400  font-semibold font-serif text- text-4xl'>Convent</p>
+            <p className='text-blue-400 font-semibold font-serif text- text-3xl'>International</p> */}
         </div>
 
-      <div className='w-[90%] h-10 mt-10 ml-2 bg-red-400 flex justify-center items-center rounded-lg'
+      <div className='w-[90%] h-10 mt-20 ml-2 bg-red-400 flex justify-center items-center rounded-lg'
       onClick={()=>navigate('/home')}>
         Dashboard
       </div>
@@ -32,6 +34,11 @@ const Navbar = () => {
       <div className='w-[90%] h-10 mt-10 ml-2 bg-[#77e38d] flex justify-center items-center rounded-lg'
       onClick={()=>navigate('/admission')}>
         Admission
+      </div>
+
+      <div className='w-[90%] h-10 mt-10 ml-2 bg-orange-400 flex justify-center items-center rounded-lg'
+      onClick={()=>navigate('/feeManagement')}>
+        Fee Management
       </div>
 
       <div className='w-[90%] h-10 mt-10 ml-2 bg-red-400 flex justify-center items-center rounded-lg' onClick={handleLogout}>

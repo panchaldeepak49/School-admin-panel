@@ -1,9 +1,26 @@
 import React,{ useState } from 'react'
 import { Table, Checkbox } from 'antd';
 import { Link } from 'react-router-dom';
+import CreateFeeModal from '../FeeModals/CreateFeeModal';
+import ViewDetailModal from '../ViewDetailModal';
 
 const UserXTest = ({studentX,fetchXAdmission}) => {
     //console.log(studentX)
+    const [showFeeModal,setShowFeeModal] = useState(false);
+    const [displayingData,setDisplayingData] = useState('');
+
+    const viewFee = (userData)=>{
+      setShowFeeModal(true);
+      setDisplayingData(userData);
+    }
+
+    const [showViewModal,setShowViewModal] = useState(false);
+    //const [displayingData, setDisplayingData] = useState('');
+
+    const viewUser = (userData)=>{
+      setShowViewModal(true);
+      setDisplayingData(userData);
+    }
 
     const columns = [
         
@@ -32,7 +49,9 @@ const UserXTest = ({studentX,fetchXAdmission}) => {
             <Link to='' style={{color:"#038225",borderBottom:"1px solid #038225"}}
             onClick={()=>editUser(userData)}>Edit data</Link>
             <p style={{color:"#D20815",borderBottom:"1px solid #D20815",cursor:"pointer" }}
-            onClick={()=>deleteStudent(userData)}>Delete</p>
+            onClick={()=>viewFee(userData)}>CreateFee</p>
+            {/* <p style={{color:"#D20815",borderBottom:"1px solid #D20815",cursor:"pointer" }}
+            onClick={()=>deleteStudent(userData)}>Delete</p> */}
           </div>
           )
            } 
@@ -48,6 +67,10 @@ const UserXTest = ({studentX,fetchXAdmission}) => {
     <div className='w-[100%] overflow-hidden '>
     <Table columns={columns} dataSource={data} pagination={false} />
     </div>
+
+    { showFeeModal && <CreateFeeModal displayingData={ displayingData } setShowFeeModal={setShowFeeModal} />}
+    
+    { showViewModal && <ViewDetailModal displayingData={ displayingData } setShowViewModal={setShowViewModal} />}
     </>
   )
 }

@@ -3,12 +3,15 @@ import studentImg from '/Images/avatar-4.jpg'
 import { userRequest } from '../components/RequestMethod';
 import { message } from 'antd';
 import UploadImgFile from '../components/UploadImgFile';
+import { Select } from 'antd'; 
 
+
+const { Option } = Select;
 const Admisssion = () => {
 
   const[name,setName] = useState('');
   const[fatherName,setFatherName] = useState('');
-  const[myClass,setMyClass] = useState('');
+  const [selectClass, setSelectClass] = useState('');
   const[rollNo,setRollNo] = useState('');
   const[address,setAddress] = useState('');
   const[admissionDate,setAdmissionDate] = useState('');
@@ -18,12 +21,12 @@ const Admisssion = () => {
   const[contact,setContact] = useState('');
   //console.log(contact);
   const[imgURL,setImgURL] = useState('');
-  //console.log(imgURL);
+  // console.log(selectClass);
 
   const emptyForm =()=>{
     setName(' ');
     setFatherName('');
-    setMyClass('');
+    setSelectClass('');
     setRollNo('');
     setAddress('');
     setAdmissionDate('');
@@ -37,7 +40,7 @@ const Admisssion = () => {
   let student = JSON.stringify({
     "name" : name,
     "fatherName" : fatherName,
-    "class" : myClass,
+    "class" : selectClass,
     "rollNo" : rollNo,
     "address" : address,
     "admissionDate" : admissionDate,
@@ -62,6 +65,12 @@ const Admisssion = () => {
     })
   }
 
+  const handleOptionChange = (value) => {
+    setSelectClass(value);
+    //setCurrentPage(1);
+    // window.location.reload();
+  };
+
   return (
     <>
     <div className='w-[82%] '>
@@ -77,7 +86,18 @@ const Admisssion = () => {
         <UploadImgFile imgURL={imgURL} setImgURL={setImgURL} />
         <input type='text' value={name} onChange={(e)=>setName(e.target.value)} className='w-[70%] py-1 pl-2  rounded-md  border-2' placeholder='Enter Name*'></input>
         <input type='text' value={fatherName} onChange={(e)=>setFatherName(e.target.value)} className='w-[70%] py-1 pl-2  rounded-md border-2' placeholder='Father Name*'></input>
-        <input type='text' value={myClass} onChange={(e)=>setMyClass(e.target.value)} className='w-[70%] py-1 pl-2  rounded-md border-2' placeholder='Class*'></input>
+        {/* <input type='text' value={myClass} onChange={(e)=>setMyClass(e.target.value)} className='w-[70%] py-1 pl-2  rounded-md border-2' placeholder='Class*'></input> */}
+        <Select
+                value={selectClass}
+                onChange={handleOptionChange}
+                className='w-[70%] h-10 py-0 pl-0  rounded-md border-2 text-4xl'
+                placeholder={'class'}>
+                <Option value={null} className='text-black' disabled>Choose a class</Option>
+                <Option value={'VI'}>VI</Option>
+                <Option value={'VII'}>VII</Option>
+                 <Option value={'VIII'}>VIII</Option>
+                 <Option value={'X'}>X</Option>
+                 </Select>
         <input type='text' value={rollNo} onChange={(e)=>setRollNo(e.target.value)} className='w-[70%] py-1 pl-2  rounded-md border-2' placeholder='Roll No*'></input>
         <input type='text' value={address} onChange={(e)=>setAddress(e.target.value)} className='w-[70%] py-1 pl-2  rounded-md border-2' placeholder='Address*'></input>
         </div>
