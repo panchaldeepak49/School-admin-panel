@@ -41,6 +41,11 @@ const Navbar = () => {
         Fee Management
       </div>
 
+      <div className='w-[90%] h-10 mt-10 ml-2 bg-[#77e38d] flex justify-center items-center rounded-lg'
+      onClick={()=>navigate('/staffManagement')}>
+        Staff Management
+      </div>
+
       <div className='w-[90%] h-10 mt-10 ml-2 bg-red-400 flex justify-center items-center rounded-lg' onClick={handleLogout}>
         Logout
       </div>
