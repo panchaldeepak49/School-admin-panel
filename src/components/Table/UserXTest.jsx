@@ -22,50 +22,45 @@ const UserXTest = ({studentX,fetchXAdmission}) => {
       setDisplayingData(userData);
     }
 
-    const columns = [
-        
-        { title: <div className=''>Name</div>, dataIndex: 'column1', key: 'column1',width:'15%' },
-        { title: 'Class', dataIndex: 'column2', key: 'column2',width:'12%' },
-        { title: 'Roll No', dataIndex: 'column3', key: 'column3',width:'12%' },
-        { title: 'Contact', dataIndex: 'column4', key: 'column4',width:'12%' },
-        { title: <div className=''>ClassTeacher</div>, dataIndex: 'column5', key: 'column5',width:'12%' },
-        { title: <div className=''>Action</div>, dataIndex: 'column6', key: 'column6',width: '20%' },
-        
-      ];
-
-      const data = studentX.length > 0 ? (
-          studentX.map((userData) => {
-          
-           return {
-            key: userData._id,
-            column1: <div className=''>{userData?.name}</div>,
-            column2: <div className=''>{userData?.class}</div>,
-            column3: <div className=''>{userData?.rollNo}</div>, 
-             column4: (<div className='w-[10rem]  overflow-hidden whitespace-nowrap text-ellipsis '>{userData?.contact}</div>), 
-            column5: (<div className='w-[10rem]  overflow-hidden whitespace-nowrap text-ellipsis '>{userData?.classTeacher}</div>), 
-            column6:   (<div style={{display:"flex",alignItems:"center",gap:"0.5rem",lineHeight:"0.8rem",
-            fontSize:"0.75rem",width:""}}>
-            <Link to='' style={{color:"blue",borderBottom:"1px solid blue"}} onClick={()=>viewUser(userData)}>View Detail</Link>
-            <Link to='' style={{color:"#038225",borderBottom:"1px solid #038225"}}
-            onClick={()=>editUser(userData)}>Edit data</Link>
-            <p style={{color:"#D20815",borderBottom:"1px solid #D20815",cursor:"pointer" }}
-            onClick={()=>viewFee(userData)}>CreateFee</p>
-            {/* <p style={{color:"#D20815",borderBottom:"1px solid #D20815",cursor:"pointer" }}
-            onClick={()=>deleteStudent(userData)}>Delete</p> */}
-          </div>
-          )
-           } 
-          
-            
-          })
-        ) : (           // If 'user' is empty, return an empty array to avoid errors
-          []
-        );  
-
   return (
     <>
-    <div className='w-[100%] overflow-hidden '>
-    <Table columns={columns} dataSource={data} pagination={false} />
+    
+    <div className="mt-3 ml-2 overflow-x-auto max-w-screen-xl mx-auto ">
+     <div class="inline-block whitespace-nowrap animation-slide">
+        <table>
+      <tr className='gap-4 bg-green-300'>
+        <th className='px-4 py-2 min-w-14 border border-gray-400'>Sr</th>
+        <th className='min-w-44 text-sm py-2 border border-gray-400  '>Name</th> 
+        <th className='px-4 py-2 border border-gray-400 min-w-24 text-sm '>Class</th>
+        <th className='px-4 py-2 border border-gray-400 min-w-44 text-sm'>Roll No</th>
+        <th className='px-4 py-2 border border-gray-400 min-w-44 text-sm'>Contact</th>
+        <th className='px-4 py-2 border border-gray-400 min-w-36 text-sm'>Class Teacher</th>
+        <th className='px-4 py-2 border border-gray-400 min-w-44 text-sm'>Actions</th> 
+      </tr>
+     
+      { studentX.length > 0 ? (
+      studentX.map((userData,index) =>(
+        
+      <tr className=' mt-10' key={index} >
+        <td className='py-2 border border-gray-400 text-sm text-center w-10'>{index+1}</td>
+        <td className='py-2 border border-gray-400 text-sm text-center'>{userData.name}</td>
+        <td className='py-2 border border-gray-400 text-sm text-center'>{userData.class}</td>
+        <td className='py-2 border border-gray-400 text-sm text-center'>{userData.rollNo}</td>
+        <td className='py-2 border border-gray-400 text-sm text-center'>{userData.contact}</td>
+        <td className='py-2 border border-gray-400 text-sm text-center'>{userData.classTeacher}</td>
+        <td className='py-2 border border-gray-400 text-sm text-center min-w-64 flex gap-4'>
+        <p className='ml-4 text-blue-800 text-sm border-b border-blue-800 cursor-pointer' onClick={()=>viewUser(userData)}>View Detail</p>
+          <p className='text-green-800 border-b border-green-800 cursor-pointer' 
+            onClick={()=>editUser(userData)}>Edit Data</p>
+          <p className='text-red-600 border-b border-red-600 cursor-pointer' 
+            onClick={()=>viewFee(userData)}>Create Fee</p>
+        </td>
+      </tr>
+       ))
+      ) : " " } 
+
+      </table>
+      </div>
     </div>
 
     { showFeeModal && <CreateFeeModal displayingData={ displayingData } setShowFeeModal={setShowFeeModal} />}

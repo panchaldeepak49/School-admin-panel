@@ -4,8 +4,11 @@ import sortImg from '/Images/sort.png'
 import questionImg from '/Images/question.svg'
 import pushNotifImg from '/Images/pushnotifig.svg'
 import profileImg from '/Images/profileIcon.svg'
+import profileImg1 from '../assets/Images/Icon.png'
 import dropDownImg from '/Images/ddgrey.png'
 import ProfileModal from './ProfileModal'
+import Tricolor from '../assets/Images/tricolor.png'
+import { FaChevronDown } from "react-icons/fa";
 
 const Search = ({searchText,handleSearch}) => {
 
@@ -27,13 +30,15 @@ const Search = ({searchText,handleSearch}) => {
 
     <div className='ml-10 flex gap-5 items-center'>
       <img src={questionImg} className='w-5' alt='question'/>
+      <img src={Tricolor} className=' w-5' alt='missing' />
       <img src={pushNotifImg} alt='push'/>
     </div>
 
     <div className=' ml-10 flex gap-5 items-center'>
-      <img src={profileImg} className='w-6' alt='missing'></img>
+      <img src={profileImg1} className='w-6' alt='missing'></img>
       <p className='text-sm'>John Doe</p>
-      <img src={dropDownImg} className='w-3 h-2 cursor-pointer' alt='missing' onClick={()=>droppDown()}></img>
+      {/* <img src={dropDownImg} className='w-3 h-2 cursor-pointer' alt='missing' onClick={()=>droppDown()}></img> */}
+      <FaChevronDown className='cursor-pointer' onClick={()=>droppDown()} />
     </div>
     { showProfile && <ProfileModal setShowProfile={setShowProfile}/>}  
     </div>

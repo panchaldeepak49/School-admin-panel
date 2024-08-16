@@ -8,18 +8,22 @@ import debounce from 'lodash.debounce';
 import TakeFeeModal from '../../components/FeeModals/TakeFeeModal';
 import ViewFeeDetailModal from '../../components/FeeModals/ViewFeeDetailModal';
 import DeleteFeeModal from '../../components/FeeModals/DeleteFeeModal';
+import { BallTriangle, Bars, TailSpin, ThreeCircles } from 'react-loader-spinner';
+import BluButton from '../../components/Global/BluButton';
 
 const FeeClassX = () => {
-
+    
+    const[loading,setLoading] = useState(false);
     const[studentX,setStudentX] = useState('');
     //console.log(studentX);
     var[page,setPage] = useState(1);
     const[totalPage,setTotalPage] = useState('');
     const[count,setCount] = useState('');
-    const limit = 6;
+    const limit = 8;
 
     const fetchXFee = async (searchQuery) => {
         //await userRequest.get('/api/school/getAllStudentFee')
+        setLoading(true);
        await userRequest.get(`api/school/getAllStudentFee?search=${searchQuery ?? ''}&limit=${limit}&page=${page}`)
          .then((response) => {
            //console.log(response)
@@ -29,11 +33,13 @@ const FeeClassX = () => {
            setTotalPage(result1);
            setCount(result2);
            setStudentX(result);
+           setLoading(false);
           //message.success("data fetched successfully");
          })
          .catch((err) => {
            const errorMessage = err.response?.data?.message || "An error occurred";
            message.error(errorMessage);
+           setLoading(true);
          });
      };
      
@@ -91,20 +97,22 @@ const FeeClassX = () => {
         
         
         <div className='flex justify-evenly gap-10  mt-4 py-2 bg-blue-400'>
-        <p className='text-xl'>Class X Students Fee Info(2023-2024)</p>
-        <p className=''>Total Students : {studentX.length}</p>
+        <p className='text-xl font-Rubik'>Class X Students Fee Info (2023-24)</p>
+        <p className='font-Rubik'>Total Students : {studentX.length}</p>
         </div> 
+
+        { loading ? <div className='relative top-[30%] left-[40%] '><Bars className=''  /></div>  :  
         
-      <div className="mt-3 ml-5 overflow-x-auto max-w-screen-xl mx-auto ">
-     <div class="inline-block whitespace-nowrap animation-slide">
+      <div className="mt-3  overflow-x-auto max-w-screen-xl mx-auto ">
+     <div class="inline-block whitespace-nowrap animation-slide bg-blue-50">
         <table>
       <tr className='gap-4 bg-green-300'>
-        <th className='px-4 py-2 min-w-20  border border-gray-400'>Sr</th>
-        <th className='min-w-44 text-sm py-2 border border-gray-400  '>Name</th> 
-        <th className='px-4 py-2 border border-gray-400 min-w-44 text-sm '>Total Amount Due</th>
-        <th className='px-4 py-2 border border-gray-400 min-w-44 text-sm'>Amount Rcvd</th>
-        <th className='px-4 py-2 border border-gray-400 min-w-44 text-sm'>Amount Pending</th>
-        <th className='px-4 py-2 border border-gray-400 min-w-44 text-sm'>Actions</th> 
+        <th className='px-4 py-2 min-w-20  border border-gray-400 font-medium'>Sr</th>
+        <th className='min-w-44 text-sm py-2 border border-gray-400 font-medium  '>Name</th> 
+        <th className='px-4 py-2 border border-gray-400 min-w-44 text-sm font-medium '>Total Amount Due</th>
+        <th className='px-4 py-2 border border-gray-400 min-w-44 text-sm font-medium'>Amount Rcvd</th>
+        <th className='px-4 py-2 border border-gray-400 min-w-44 text-sm font-medium'>Amount Pending</th>
+        <th className='px-4 py-2 border border-gray-400 min-w-44 text-sm font-medium'>Actions</th> 
       </tr>
      
       { studentX.length > 0 ? (
@@ -116,8 +124,8 @@ const FeeClassX = () => {
         <td className='py-2 border border-gray-400 text-sm text-center'>{userData.totalAmountDue}</td>
         <td className='py-2 border border-gray-400 text-sm text-center'>{userData.totalAmountAccepted}</td>
         <td className='py-2 border border-gray-400 text-sm text-center'>{userData.amountPending}</td>
-        <td className='py-2 border border-gray-400 text-sm text-center min-w-64 flex gap-4'>
-        <p className='ml-4 text-green-600 border-b border-green-600 cursor-pointer' onClick={()=>viewFeeDetail(userData)}>View Detail</p>
+        <td className='py-2 px-2 border border-gray-400 text-sm text-center min-w-56 flex gap-4'>
+        <p className=' text-green-600 border-b border-green-600 cursor-pointer' onClick={()=>viewFeeDetail(userData)}>View Detail</p>
           <p className='text-green-600 border-b border-green-600 cursor-pointer' 
             onClick={()=>takeFee(userData)}>TakeFee</p>
           <p className='text-red-600 border-b border-red-600 cursor-pointer' 
@@ -130,14 +138,16 @@ const FeeClassX = () => {
       </table>
       </div>
     </div>
+     }
 
     {totalPage > 1 ? ( 
-    <div className='flex justify-evenly mt-4'>
+    <div className='fixed bottom-7 w-full flex justify-evenly '>
       
-      <button className={`bg-blue-400 px-4 py-2  rounded-xl text-white`} onClick={prePage}>Previous</button>
-          
-      <button className={`bg-blue-400 px-6 py-2 rounded-xl text-white`} onClick={nextPage} >Next</button>
-      <div className=' fixed right-7 bottom-7'>Page {page} of {totalPage}</div>
+      <button className={`bg-blue-500 px-4 py-2  rounded-xl text-white`} onClick={prePage}>Previous</button>
+      {/* <BluButton buttonName='Previous'  onClick={prePage} /> */}
+      {/* <BluButton buttonName='Next' onClick={nextPage} />     */}
+      <button className={`bg-blue-500 px-6 py-2 rounded-xl text-white`} onClick={nextPage} >Next</button>
+      <div className='mt-2'>Page {page} of {totalPage}</div>
     </div>
      ) : null
    } 

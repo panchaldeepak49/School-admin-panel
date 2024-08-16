@@ -5,28 +5,40 @@ import { userRequest } from '../../components/RequestMethod';
 import debounce from 'lodash.debounce';
 import EditStaff from './EditStaff';
 import DeleteStaff from './DeleteStaff';
+import profileImg from '/Images/profileIcon.svg'
+import userImg from '/Images/user.png';
+import { message } from 'antd';
+import { BallTriangle, Bars, TailSpin, ThreeCircles } from 'react-loader-spinner';
+import SendMail from './SendMail';
+import SendMailBox from './SendMailBox';
+import { IoMailOutline } from "react-icons/io5";
 
 const StaffManagement = () => {
-
+   
+   const[loading,setLoading] = useState(false);
    const [user,setUser] = useState("");
    const [isAddStaff,setIsAddStaff] = useState(false);
    const [isEditStaff,setIsEditStaff] = useState(false);
-   const [editStaffData,setEditStaffData] = useState("");
    const [isDeleteStaff,setIsDeleteStaff] = useState(false);
-   const [deleteStaffData,setDeleteStaffData] = useState("");
-  // console.log(user)
+   const [isSendMail,setIsSendMail] = useState(false);
+   const [staffData,setStaffData] = useState("");
+   const [isSendMailBox,setIsSendMailBox] = useState(false);
+   //console.log(user)
 
    const fetchStaffData = async(searchQuery)=>{
       //await userRequest.get(`/api/school/getAllStaff`)  //get api with search in backend(how to pass searchQuery)
+      setLoading(true);
       await userRequest.get(`/api/school/getAllStaff?search=${searchQuery ?? ''}`)  // req.query.search is used in bacnkend
       .then((res)=>{
          const result = res.data.allStaff
-         setUser(result)
-         message.success("Data fetched suceess")
+         setUser(result);
+         //message.success("Data fetched suceess")
+         setLoading(false);
       })
       .catch((err)=>{
         const apiMessage = err.res.message || "An error occurred"
-        message.error(apiMessage)
+        message.error(apiMessage);
+        setLoading(true);
       })
    }
 
@@ -44,7 +56,7 @@ const StaffManagement = () => {
    
    if(e.target.value === ''){
      fetchStaffData();
-     window.location.reload();
+     //window.location.reload();
      // console.log('ho gya')
     }
    };
@@ -53,13 +65,32 @@ const StaffManagement = () => {
   ///////////////////////////////////////////////////////////////////
   const handleEdit =(value)=>{
     setIsEditStaff(!isEditStaff)
-    setEditStaffData(value)
+    setStaffData(value)
   } 
 
   const handleDelete =(value)=>{
     setIsDeleteStaff(!isDeleteStaff)
-    setDeleteStaffData(value)
+    setStaffData(value)
   } 
+
+  const handleMail =(value)=>{
+    setIsSendMail(!isSendMail)
+    setStaffData(value)
+   } 
+
+  const handleMailBox=()=>{
+    setIsSendMailBox(!isSendMailBox)
+
+  } 
+
+  ////////////////////////////////////////////////////////////applying pagination in frontend only
+  const [currentPage,setCurrentPage] = useState(1);
+
+  const recordsPerPage = 8;
+  const lastIndex = currentPage * recordsPerPage ;
+  const firstIndex = lastIndex - recordsPerPage;
+  const user1 = user.slice(firstIndex,lastIndex);
+  const nPage = user ? Math.ceil(user.length/recordsPerPage) : 0 ;
 
 
   return (
@@ -67,30 +98,39 @@ const StaffManagement = () => {
     <div className='w-[82%] '>
      <Search  value={searchText} handleSearch={handleSearch} />
 
-     <div className='flex justify-evenly gap-10  mt-4 py-2 bg-blue-400'>
-        <p className='text-xl'>Our School Staff Info(2023-2024)</p>
-        <p className=''>Total Staff : </p>
-        <p onClick={()=>setIsAddStaff(!isAddStaff)}>Add Staff+</p>
+     <div className='flex justify-between gap-14  mt-4 py-2 bg-blue-400'>
+        <p className='invisible'>pop</p>
+        <p className='text-xl font-Rubik '>Our School Staff Info (2023-24)</p>
+        <div className='mr-8 flex items-center gap-5'>
+        <p className='font-Rubik'>Total Staff : {user.length} </p>
+        
+        <p className='flex gap-2 font-rubik cursor-pointer' onClick={()=>setIsAddStaff(!isAddStaff)}>
+        <img src={userImg} className='w-6 rounded-full' alt='missing'></img>
+          +</p>
+        <p className='font-semibold cursor-pointer flex items-center text-2xl' onClick={handleMailBox}><IoMailOutline /></p>  
+        </div>
     </div> 
 
-    <div className="mt-3 overflow-x-auto max-w-screen-xl mx-auto ">
+    { loading ? <div className='relative top-[30%] left-[40%] '><Bars className=''  /></div>  :  
+
+    <div className="mt-3 overflow-x-auto max-w-screen-xl mx-auto bg-blue-50 ">
      <div class="inline-block whitespace-nowrap animation-slide">
         <table>
-      <tr className='gap-4 bg-blue-300'>
-        <th className='px-4 py-2 min-w-20  border border-gray-400'>Sr</th>
-        <th className='min-w-44 text-sm py-2 border border-gray-400  '>Name</th> 
-        <th className='px-4 py-2 border border-gray-400 min-w-44 text-sm '>DOJ</th>
-        <th className='px-4 py-2 border border-gray-400 min-w-44 text-sm'>E-mail</th>
-        <th className='px-4 py-2 border border-gray-400 min-w-44 text-sm'>Designation</th>
+      <tr className='gap-4 bg-green-300'>
+        <th className='px-4 py-2 min-w-14  border border-gray-400'>Sr</th>
+        <th className='min-w-48 text-sm py-2 border border-gray-400  '>Name</th> 
+        <th className='px-4 py-2 border border-gray-400 min-w-36 text-sm '>DOJ</th>
+        <th className='px-4 py-2 border border-gray-400 min-w-52 text-sm'>E-mail</th>
+        <th className='px-4 py-2 border border-gray-400 min-w-36 text-sm'>Designation</th>
         <th className='px-4 py-2 border border-gray-400 min-w-44 text-sm'>Mobile No.</th>
         <th className='px-4 py-2 border border-gray-400 min-w-44 text-sm '>Salary</th>
         <th className='px-4 py-2 border border-gray-400 min-w-44 text-sm'>Bank</th>
-        <th className='px-4 py-2 border border-gray-400 min-w-44 text-sm'>Image</th>
+        <th className='px-4 py-2 border border-gray-400 min-w-28 text-sm'>Image</th>
         <th className='px-4 py-2 border border-gray-400 min-w-44 text-sm'>Actions</th> 
       </tr>
      
-      { user.length > 0 ? (
-      user.map((value,index) =>(
+      { user1.length > 0 ? (
+      user1.map((value,index) =>(
         
       <tr className=' mt-10' key={index}>
         <td className='py-2 border border-gray-400 text-sm text-center'>{index+1}</td>
@@ -101,11 +141,15 @@ const StaffManagement = () => {
         <td className='py-2 border border-gray-400 text-sm text-center'>{value.contact}</td>
         <td className='py-2 border border-gray-400 text-sm text-center'>{value.salary}</td>
         <td className='py-2 border border-gray-400 text-sm text-center'>{value.bankName}</td>
-        <td className='py-2 border border-gray-400 text-sm text-center'></td>
-        <td className='py-2 border border-gray-400 text-sm text-center flex gap-4'>
-        <p className='ml-4 text-green-600 border-b border-green-600 cursor-pointer' onClick={()=>handleEdit(value)} >Edit</p>
+        <td className='py-2 border border-gray-400 text-sm text-center'>
+        <img src={value.imageUrl} className='ml-10 w-5 h-5 bg-green-600 rounded-full'></img>
+        </td>
+        <td className='py-2 px-4 border border-gray-400 text-sm text-center flex gap-4'>
+        <p className='ml-0 text-green-600 border-b border-green-600 cursor-pointer' onClick={()=>handleEdit(value)} >Edit</p>
           <p className='text-red-600 border-b border-red-600 cursor-pointer' onClick={()=>handleDelete(value)}
             >Delete</p>
+        <p className='text-red-600 border-b border-red-600 cursor-pointer' onClick={()=>handleMail(value)}
+            >send mail</p>    
         </td>
         
       </tr>
@@ -115,14 +159,39 @@ const StaffManagement = () => {
       </table>
       </div>
     </div>
+     }
+
+    {nPage > 1 ? ( 
+    <div className='fixed bottom-8 w-full flex justify-evenly mt-4'>
+      
+      <button className={`bg-blue-400 px-4 py-2  rounded-xl text-white`} onClick={prePage}>Previous</button>
+          
+      <button className={`bg-blue-400 px-6 py-2 rounded-xl text-white`} onClick={nextPage} >Next</button>
+      <div className='mt-2 '>Page {currentPage} of {nPage}</div>
+    </div>
+     ) : null
+   } 
 
     </div>
 
     { isAddStaff && <AddStaff setIsAddStaff={setIsAddStaff} fetchStaffData={fetchStaffData} /> }
-    { isEditStaff && <EditStaff setIsEditStaff={setIsEditStaff} editStaffData={editStaffData} fetchStaffData={fetchStaffData} />}
-    { isDeleteStaff && <DeleteStaff setIsDeleteStaff={setIsDeleteStaff} deleteStaffData={deleteStaffData} fetchStaffData={fetchStaffData} /> }
+    { isEditStaff && <EditStaff setIsEditStaff={setIsEditStaff} staffData={staffData} fetchStaffData={fetchStaffData} />}
+    { isDeleteStaff && <DeleteStaff setIsDeleteStaff={setIsDeleteStaff} staffData={staffData} fetchStaffData={fetchStaffData} /> }
+    { isSendMail && <SendMail setIsSendMail={setIsSendMail} staffData={staffData} />}
+    { isSendMailBox && <SendMailBox setIsSendMailBox={setIsSendMailBox} /> }
     </>
   )
+  function prePage(){
+    if(currentPage !== 1){
+      setCurrentPage(currentPage - 1);
+    }
+  }
+
+  function nextPage(){
+    if(currentPage !== nPage){
+      setCurrentPage(currentPage + 1);
+    }
+  }
 }
 
 export default StaffManagement

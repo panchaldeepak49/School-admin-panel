@@ -3,6 +3,7 @@ import InputField from '../../components/Global/InputField';
 import MyButton from '../../components/Global/MyButton';
 import { userRequest } from '../../components/RequestMethod';
 import { message } from 'antd';
+import UploadImgFile from '../../components/UploadImgFile';
 
 const AddStaff = ({setIsAddStaff,fetchStaffData}) => {
 
@@ -17,7 +18,8 @@ const AddStaff = ({setIsAddStaff,fetchStaffData}) => {
     const [salary,setSalary] = useState("");
     const [bankName,setBankName] = useState("");
     const [isSaving, setIsSaving] = useState(false);
-    //console.log(name)
+    const [imgURL,setImgURL] = useState("");
+    //console.log(imgURL)
 
     const staffData = JSON.stringify({
         "name" : name,
@@ -29,11 +31,11 @@ const AddStaff = ({setIsAddStaff,fetchStaffData}) => {
         "designation" : designation,
         "classAssigned" : classAssigned,
         "salary" : salary,
-        "bankName" : bankName
+        "bankName" : bankName,
+        "imageUrl" : imgURL,
     })
 
     const saveStaff = async()=>{
-
         await userRequest.post('/api/school/postStaff',staffData)
         .then((res)=>{
            const apiMessage = res.data.message
@@ -53,6 +55,8 @@ const AddStaff = ({setIsAddStaff,fetchStaffData}) => {
         <p className=' pl-4 py-1 bg-green-400 font-semibold'>
             Add Staff
         </p>
+        
+        <UploadImgFile imgURL={imgURL} setImgURL={setImgURL} />
         <div className='mt-4 px-4 grid grid-cols-2 gap-4'>
         <InputField type='text' placeholder='Name' value={name}  onChange={(e)=>setName(e.target.value)} />
         <InputField type='text' placeholder='DOJ' value={doj}  onChange={(e)=>setDoj(e.target.value)} />

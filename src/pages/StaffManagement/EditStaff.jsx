@@ -4,19 +4,19 @@ import MyButton from '../../components/Global/MyButton';
 import { userRequest } from '../../components/RequestMethod';
 import { message } from 'antd';
 
-const EditStaff = ({setIsEditStaff,fetchStaffData,editStaffData}) => {
+const EditStaff = ({setIsEditStaff,fetchStaffData,staffData}) => {
 
-    const [name,setName] = useState(editStaffData.name);
-    const [doj,setDoj] = useState(editStaffData.doj);
-    const [gender,setGender] = useState(editStaffData.gender);
-    const [email,setEmail] = useState(editStaffData.email);
-    const [contact,setContact] = useState(editStaffData.contact);
-    const [address,setAddress] = useState(editStaffData.address);
-    const [designation,setDesignation] = useState(editStaffData.designation);
-    const [classAssigned,setClassAssigned] = useState(editStaffData.classAssigned);
-    const [salary,setSalary] = useState(editStaffData.salary);
-    const [bankName,setBankName] = useState(editStaffData.bankName);
-    console.log(editStaffData)
+    const [name,setName] = useState(staffData.name);
+    const [doj,setDoj] = useState(staffData.doj);
+    const [gender,setGender] = useState(staffData.gender);
+    const [email,setEmail] = useState(staffData.email);
+    const [contact,setContact] = useState(staffData.contact);
+    const [address,setAddress] = useState(staffData.address);
+    const [designation,setDesignation] = useState(staffData.designation);
+    const [classAssigned,setClassAssigned] = useState(staffData.classAssigned);
+    const [salary,setSalary] = useState(staffData.salary);
+    const [bankName,setBankName] = useState(staffData.bankName);
+    //console.log(staffData)
 
     const updatedStaffData = JSON.stringify({
         "name" : name,
@@ -33,7 +33,7 @@ const EditStaff = ({setIsEditStaff,fetchStaffData,editStaffData}) => {
 
     const updateStaff =async()=>{
         //await userRequest.put(`/api/school/updateStaff/:id=${editStaffData._id}`,updatedStaffData)  //incorrect method
-        await userRequest.put(`/api/school/updateStaff/${editStaffData._id}`,updatedStaffData) //req.params.id is used in backend
+        await userRequest.put(`/api/school/updateStaff/${staffData._id}`,updatedStaffData) //req.params.id is used in backend
         .then((res)=>{
             const apiMessage = res.data.message
             message.success(apiMessage)
@@ -52,6 +52,9 @@ const EditStaff = ({setIsEditStaff,fetchStaffData,editStaffData}) => {
         <p className=' pl-4 py-1 bg-green-400 font-semibold'>
             Edit Staff
         </p>
+        <div className='mt-2 ml-2 w-32 h-24 bg-red-400 rounded-full flex justify-center items-center'>
+        <img src={staffData.imageUrl} className='w-24 h-24 bg-green-600 rounded-full' alt='No image'></img>
+        </div>
         <div className='mt-4 px-4 grid grid-cols-2 gap-4'>
         <InputField type='text' placeholder='Name' value={name}  onChange={(e)=>setName(e.target.value)} />
         <InputField type='text' placeholder='DOJ' value={doj}  onChange={(e)=>setDoj(e.target.value)} />

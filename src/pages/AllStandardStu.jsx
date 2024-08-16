@@ -1,20 +1,27 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect,useContext} from 'react'
 import UserTest from '../components/Table/UserTest'
 import { userRequest } from '../components/RequestMethod'
 import Search from '../components/Search'
 import debounce from 'lodash.debounce';
+import { MyContext } from '../myContext';
+import { BallTriangle, TailSpin, ThreeCircles } from 'react-loader-spinner';
+
 
 const AllStandardStu = () => {
+
+    const[loading,setLoading] = useState(false);
 
     const[student,setStudent] = useState('');
     var[page,setPage] = useState(1);
     const[totalPage,setTotalPage] = useState('');
-    const[count,setCount] = useState('');
+    // const[countAll,setCountAll] = useState('');
+    const {countAll,setCountAll} = useContext(MyContext);
     const limit = 7;
     //console.log(page);
 
     const fetchAllAdmission = async(searchQuery) => {
         //await userRequest.get('/api/school/getAllAdmission')
+        setLoading(true);
        await userRequest.get(`/api/school/getAllAdmission/searchFilterN?search=${searchQuery ?? ''}&limit=${limit}&page=${page}`)
          .then((response) => {
            //console.log(response)
@@ -23,13 +30,14 @@ const AllStandardStu = () => {
            const result2 = response.data.count;
            setStudent(result);
            setTotalPage(result1);
-           setCount(result2);
-
+           setCountAll(result2);
+           setLoading(false);
           //message.success("data fetched successfully");
          })
          .catch((err) => {
            const errorMessage = err.response?.data?.message || "An error occurred";
            message.error(errorMessage);
+           setLoading(true)
          });
      };
      
@@ -62,12 +70,14 @@ const AllStandardStu = () => {
         <div className='flex justify-evenly   mt-4 py-2 bg-green-400'>
         <p className='invisible'>All Students</p>  
         <p className='text-xl'>All Registered Students</p>
-        <p className='ml-60 '>Total Students : {count}</p>
+        <p className='ml-60 '>Total Students : {countAll}</p>
         </div>    
         
         {/* <img src={erpImg} ></img> */}
         <div className=' h-[70vh] '>
+          { loading ? <div className='relative top-[40%] left-[40%] '><BallTriangle className=''  /></div>  :
         <UserTest  student={student} fetchAllAdmission={fetchAllAdmission} />
+          }
         </div> 
         
 

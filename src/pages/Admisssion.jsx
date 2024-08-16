@@ -4,6 +4,9 @@ import { userRequest } from '../components/RequestMethod';
 import { message } from 'antd';
 import UploadImgFile from '../components/UploadImgFile';
 import { Select } from 'antd'; 
+import BluDotImage from '../assets/Images/Group 195.png';
+import OrangeDotImage from '../assets/Images/Group 196.png';
+import Tot1 from '../assets/Images/stu1.jpg';
 
 
 const { Option } = Select;
@@ -75,14 +78,14 @@ const Admisssion = () => {
     <>
     <div className='w-[82%] '>
         
-        <p className='flex justify-center text-xl mt-4 py-2 bg-green-400'>Take Admission</p>
+        <p className='flex justify-center font-Grey_Qo text-5xl mt-0 py-2 bg-gradient-to-r from-red-200 to-green-200'>Take Admission (2024-25)</p>
         {/* <img src={studentImg} alt="missing" className='w-[10%]'></img> */}
         
         
         
         
-        <div className='flex w-[100%] '>
-        <div className='flex flex-col gap-4 w-[50%]  mt-10 ml-2 '>
+        <div className='flex w-[100%] bg-gradient-to-r  from-[#f0e1b6] to-[#d7ebc7] via-[#e5f0d1] py-4 px-4'>
+        <div className='flex flex-col gap-4 w-[50%]  mt-0 ml-0 '>
         <UploadImgFile imgURL={imgURL} setImgURL={setImgURL} />
         <input type='text' value={name} onChange={(e)=>setName(e.target.value)} className='w-[70%] py-1 pl-2  rounded-md  border-2' placeholder='Enter Name*'></input>
         <input type='text' value={fatherName} onChange={(e)=>setFatherName(e.target.value)} className='w-[70%] py-1 pl-2  rounded-md border-2' placeholder='Father Name*'></input>
@@ -101,14 +104,16 @@ const Admisssion = () => {
         <input type='text' value={rollNo} onChange={(e)=>setRollNo(e.target.value)} className='w-[70%] py-1 pl-2  rounded-md border-2' placeholder='Roll No*'></input>
         <input type='text' value={address} onChange={(e)=>setAddress(e.target.value)} className='w-[70%] py-1 pl-2  rounded-md border-2' placeholder='Address*'></input>
         </div>
-
-        <div className='flex flex-col gap-4 w-[50%]  mt-10 ml-2 '>
-        <input type='text' value={admissionDate} onChange={(e)=>setAdmissionDate(e.target.value)} className='w-[70%] py-1 pl-2 rounded-md  border-2' placeholder='Date of Admission*'></input>
+        
+        
+        <div className='flex flex-col gap-4 w-[50%]  mt-4 ml-2 '>
+        <img src={Tot1} className=' ml-10 w-[35%] rounded-md' />
+        <input type='text' value={admissionDate} onChange={(e)=>setAdmissionDate(e.target.value)} className='w-[70%] mt-6 py-1 pl-2 rounded-md  border-2' placeholder='Date of Admission*'></input>
         <input type='text' value={section} onChange={(e)=>setSection(e.target.value)} className='w-[70%] py-1 pl-2  rounded-md border-2' placeholder='Section*'></input>
         <input type='text' value={classTeacher} onChange={(e)=>setClassTeacher(e.target.value)} className='w-[70%] py-1 pl-2 rounded-md border-2' placeholder='Class Teacher*'></input>
         <input type='text' value={gender} onChange={(e)=>setGender(e.target.value)} className='w-[70%] py-1 pl-2  rounded-md border-2' placeholder='Boy/Girl*'></input>
         <input type='text' value={contact} onChange={(e)=>setContact(e.target.value)} className='w-[70%] py-1 pl-2 rounded-md border-2' placeholder='Contact*'></input>
-        <button className=' w-[30%] py-1 bg-blue-600 rounded-md' onClick={()=>handleSubmit()}>Submit</button>
+        <button className=' w-[25%] py-2 bg-blue-600 text-white rounded-md' onClick={()=>handleSubmit()}>Submit</button>
         </div>
         </div>
 

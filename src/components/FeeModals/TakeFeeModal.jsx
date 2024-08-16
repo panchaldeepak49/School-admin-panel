@@ -1,6 +1,8 @@
 import React,{useState,useEffect} from 'react'
 import { userRequest } from '../RequestMethod';
 import { message } from 'antd';
+import BluButton from '../Global/BluButton';
+import RedButton from '../Global/RedButton';
 
 const TakeFeeModal = ({displayingData ,setShowTakeFeeModal,fetchXFee}) => {
 
@@ -92,9 +94,9 @@ const TakeFeeModal = ({displayingData ,setShowTakeFeeModal,fetchXFee}) => {
 
   return (
     <>
-    <div className='fixed top-12 left-42 bg-gray-400 w-[90%]'>
-        <p className='text-2xl text-center'>Accept Fee </p>
-        <div className='flex w-[100%] bg-red-400 mt-5'>
+    <div className='fixed top-12 left-42 bg-gray-200 w-[90%]'>
+        <p className='text-2xl mt-2 text-center font-Rubik'>Accept Fee </p>
+        <div className='flex w-[100%] bg-gradient-to-r from-blue-200 to-green-200 via-[#edb35c] mt-5'>
         <div className='flex flex-col gap-5 ml-2 w-[50%]'>
           <img src={displayingData.imageUrl} className='w-32' alt="missing"></img>
         <input type='text' value={stuId}  className='w-[70%] py-1 pl-2  rounded-md  border-2' placeholder='Enter Id*'></input>
@@ -124,8 +126,11 @@ const TakeFeeModal = ({displayingData ,setShowTakeFeeModal,fetchXFee}) => {
         </div>
         
         <div className='flex justify-evenly'>
-        <button onClick={()=>handleUpdate()} className='px-2 py-2 bg-green-400 rounded-md'>Update</button>
-        <button onClick={()=>setShowTakeFeeModal(false)}className='px-2 py-2 bg-green-400 rounded-md'>Cancel</button>
+        {/* <button onClick={()=>handleUpdate()} className='px-2 py-2 bg-green-400 rounded-md'>Update</button> */}
+        <BluButton buttonName='Update' />
+        <RedButton buttonName='Cancel' onClick={()=>setShowTakeFeeModal(false)} />
+        {/* <button onClick={()=>setShowTakeFeeModal(false)}className='px-2 py-2 bg-green-400 rounded-md'>Cancel</button> */}
+        
         
         </div>
     </div>
