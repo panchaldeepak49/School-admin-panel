@@ -3,10 +3,11 @@ import { userRequest } from '../RequestMethod';
 import { message } from 'antd';
 
 const CreateFeeModal = ({displayingData,setShowFeeModal,fetchXFee}) => {
-   // console.log(displayingData);
+    console.log(displayingData);
 
   const[stuId,setstuId] = useState(displayingData._id);
   const[name,setName] = useState(displayingData.name);
+  const[gclass,setGclass] = useState(displayingData.class)
   const[image,setImage] = useState(displayingData.imageUrl);
 
   var [april, setApril] = useState('');
@@ -45,6 +46,7 @@ const CreateFeeModal = ({displayingData,setShowFeeModal,fetchXFee}) => {
     let studentFeeDetails = JSON.stringify({
         "stuId" : stuId,
         "name" : name,
+        "class" : gclass,
         "imageUrl" :image,
         "april" : april,
         "may" : may,

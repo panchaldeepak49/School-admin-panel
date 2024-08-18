@@ -5,6 +5,8 @@ import Search from '../components/Search'
 import debounce from 'lodash.debounce';
 import { MyContext } from '../myContext';
 import { BallTriangle, TailSpin, ThreeCircles } from 'react-loader-spinner';
+import { IoMailOutline } from "react-icons/io5";
+import Aero from '../assets/Images/aero3.png'
 
 
 const AllStandardStu = () => {
@@ -16,7 +18,7 @@ const AllStandardStu = () => {
     const[totalPage,setTotalPage] = useState('');
     // const[countAll,setCountAll] = useState('');
     const {countAll,setCountAll} = useContext(MyContext);
-    const limit = 7;
+    const limit = 9;
     //console.log(page);
 
     const fetchAllAdmission = async(searchQuery) => {
@@ -67,10 +69,14 @@ const AllStandardStu = () => {
     <Search searchText={searchText} handleSearch={handleSearch} />
         
         {/* <p className='flex justify-center text-xl mt-4 py-2 bg-green-400'>All Registered Students</p> */}
-        <div className='flex justify-evenly   mt-4 py-2 bg-green-400'>
+        <div className='flex justify-between items-center mt-4 py-2 bg-blue-400'>
         <p className='invisible'>All Students</p>  
-        <p className='text-xl'>All Registered Students</p>
-        <p className='ml-60 '>Total Students : {countAll}</p>
+        {/* <img src={Aero} alt="Convent School" className='ml-4  w-10 ' /> */}
+        <p className='text-xl font-Rubik'>All Registered Students</p>
+        <div className='mr-5 flex items-center gap-2'>
+        <p className='mr-5 font-Rubik '>Total Students : {countAll}</p>
+        <IoMailOutline className='text-xl'/>
+        </div>
         </div>    
         
         {/* <img src={erpImg} ></img> */}
@@ -85,10 +91,10 @@ const AllStandardStu = () => {
     {totalPage > 1 ? ( 
     <div className='flex justify-evenly mt-4'>
       
-      <button className={`bg-blue-400 px-4 py-2  rounded-xl text-white`} onClick={prePage}>Previous</button>
+      <button className={`bg-blue-500 px-4 py-2  rounded-xl text-white`} onClick={prePage}>Previous</button>
           
-      <button className={`bg-blue-400 px-6 py-2 rounded-xl text-white`} onClick={nextPage} >Next</button>
-      <div className=' fixed right-7 bottom-7'>Page {page} of {totalPage}</div>
+      <button className={`bg-blue-500 px-6 py-2 rounded-xl text-white`} onClick={nextPage} >Next</button>
+      <div className=' fixed right-7 bottom-7 bg-red-200 px-6 rounded-lg'>Page {page} of {totalPage}</div>
     </div>
      ) : null
    } 

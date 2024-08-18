@@ -6,30 +6,29 @@ const ViewFeeDetailModal = ({feeData,setShowFeeDetailModal}) => {
     console.log(feeData);
   return (
     <>
-    <div className='fixed top-10 left-[40%] px-2 py-4 bg-blue-200 rounded-xl'>
+    <div className='fixed top-10 left-[40%] w-[25%] px-4 py-4 bg-blue-200 rounded-xl border border-green-500'>
       <img src={feeData.imageUrl} className='w-32' alt='missing'></img>
-      <div className='flex gap-10 mt-4'>
-      <div>
-      <p>Name : {feeData.name}</p>
-      <p>April  : {feeData.april}</p>
-      <p>May : {feeData.may}</p>
-      <p>June : {feeData.june}</p>
-      <p>July : {feeData.july}</p>
-      <p>August : {feeData.august}</p>
-      <p>Sept : {feeData.september}</p>
-      <p>October : {feeData.october}</p>
+      <p className='mt-2 font-medium'>Name : <span className='font-Playwrite'>{feeData.name}</span></p>
+      <div className='grid grid-cols-2 gap-1 mt-4'>
+      
+      <p className='font-medium'>April  :<span>{feeData.april}</span> </p>
+      <p className='font-medium'>May : <span className='font-normal'>{feeData.may}</span></p>
+      <p className='font-medium'>June : <span className='font-normal'>{feeData.june}</span></p>
+      <p className='font-medium'>July : <span className='font-normal'>{feeData.july}</span></p>
+      <p className='font-medium'>August : <span className='font-normal'>{feeData.august}</span></p>
+      <p className='font-medium'>Sept : <span className='font-normal'>{feeData.september}</span></p>
+      <p className='font-medium'>October : <span className='font-normal'>{feeData.october}</span></p>
+      <p className='font-medium'>November : <span className='font-normal'>{feeData.november}</span></p>
+      <p className='font-medium'>December : <span className='font-normal'>{feeData.december}</span></p>
+      <p className='font-medium'>January : <span className='font-normal'>{feeData.january}</span></p>
+      <p className='font-medium'>Feb : <span className='font-normal'>{feeData.feb}</span></p>
+      <p className='font-medium'>March : <span className='font-normal'>{feeData.march}</span></p>
       </div>
-      <div>
-      <p>November : {feeData.november}</p>
-      <p>December : {feeData.december}</p>
-      <p>January : {feeData.january}</p>
-      <p>Feb : {feeData.feb}</p>
-      <p>March : {feeData.march}</p>
-      <p>Amount Accepted : {feeData.totalAmountAccepted}</p>
-      <p>Amount Due : {feeData.totalAmountDue}</p>
+      <p className='mt-4 font-medium'>Amount Accepted : {feeData.totalAmountAccepted}</p>
+      <p className='font-medium'>Amount Due : {feeData.totalAmountDue}</p>
       {/* <p> : {feeData.}</p> */}
-      </div>
-      </div>
+     
+      
        <button className='bg-green-500 flex justify-center w-[100%] rounded-md mt-5' onClick={()=>setShowFeeDetailModal(false)}>Close</button>
     </div>
     </>

@@ -149,7 +149,7 @@ const StaffManagement = () => {
           <p className='text-red-600 border-b border-red-600 cursor-pointer' onClick={()=>handleDelete(value)}
             >Delete</p>
         <p className='text-red-600 border-b border-red-600 cursor-pointer' onClick={()=>handleMail(value)}
-            >send mail</p>    
+            >Mail</p>    
         </td>
         
       </tr>

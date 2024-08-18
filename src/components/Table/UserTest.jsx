@@ -22,48 +22,51 @@ const UserTest = ({student,fetchAllAdmission}) => {
       setDeletingData(userData);
     }
 
-    const columns = [
-        
-        { title: <div className=''>Name</div>, dataIndex: 'column1', key: 'column1',width:'15%' },
-        { title: 'Class', dataIndex: 'column2', key: 'column2',width:'12%' },
-        { title: 'Roll No', dataIndex: 'column3', key: 'column3',width:'12%' },
-        { title: 'Contact', dataIndex: 'column4', key: 'column4',width:'12%' },
-        { title: <div className=''>ClassTeacher</div>, dataIndex: 'column5', key: 'column5',width:'12%' },
-        { title: <div className=''>Action</div>, dataIndex: 'column6', key: 'column6',width: '20%' },
-        
-      ];
-
-      const data = student.length > 0 ? (
-          student.map((userData) => {
-          
-           return {
-            key: userData._id,
-            column1: <div className=''>{userData?.name}</div>,
-            column2: <div className=''>{userData?.class}</div>,
-            column3: <div className=''>{userData?.rollNo}</div>, 
-             column4: (<div className='w-[10rem]  overflow-hidden whitespace-nowrap text-ellipsis '>{userData?.contact}</div>), 
-            column5: (<div className='w-[10rem]  overflow-hidden whitespace-nowrap text-ellipsis '>{userData?.classTeacher}</div>), 
-            column6:   (<div style={{display:"flex",alignItems:"center",gap:"0.5rem",lineHeight:"0.8rem",
-            fontSize:"0.75rem",width:""}}>
-            <Link to='' style={{color:"blue",borderBottom:"1px solid blue"}} onClick={()=>viewUser(userData)}>View Detail</Link>
-            <Link to='' style={{color:"#038225",borderBottom:"1px solid #038225"}}
-            onClick={()=>editUser(userData)}>Edit data</Link>
-            <p style={{color:"#D20815",borderBottom:"1px solid #D20815",cursor:"pointer" }}
-            onClick={()=>deleteStudent(userData)}>Delete</p>
-          </div>
-          )
-           } 
-          
-            
-          })
-        ) : (           // If 'user' is empty, return an empty array to avoid errors
-          []
-        );  
 
   return (
     <>
-    <div className='w-[100%] overflow-hidden '>
-    <Table columns={columns} dataSource={data} pagination={false} />
+    
+     <div className="mt-3 overflow-x-auto max-w-screen-xl mx-auto bg-blue-50 ">
+     <div class="inline-block whitespace-nowrap animation-slide">
+        <table>
+      <tr className='gap-4 bg-blue-200'>
+        <th className='px-4 py-2 min-w-14  border border-gray-400'>Sr</th>
+        <th className='min-w-48 text-sm py-2 border border-gray-400  '>Name</th> 
+        <th className='px-4 py-2 border border-gray-400 min-w-36 text-sm '>Class</th>
+        <th className='px-4 py-2 border border-gray-400 min-w-36 text-sm'>Roll No.</th>
+        <th className='px-4 py-2 border border-gray-400 min-w-36 text-sm'>Contact</th>
+        <th className='px-4 py-2 border border-gray-400 min-w-44 text-sm'>Class Teacher</th>
+        <th className='px-4 py-2 border border-gray-400 min-w-28 text-sm'>Image</th>
+        <th className='px-4 py-2 border border-gray-400 min-w-44 text-sm'>Actions</th> 
+      </tr>
+     
+      { student.length > 0 ? (
+      student.map((stuData,index) =>(
+        
+      <tr className=' mt-10' key={index}>
+        <td className='py-2 border border-gray-400 text-sm text-center'>{index+1}</td>
+        <td className='py-2 border border-gray-400 text-sm text-center'>{stuData.name}</td>
+        <td className='py-2 border border-gray-400 text-sm text-center'>{stuData.class}</td>
+        <td className='py-2 border border-gray-400 text-sm text-center'>{stuData.rollNo}</td>
+        <td className='py-2 border border-gray-400 text-sm text-center'>{stuData.contact}</td>
+        <td className='py-2 border border-gray-400 text-sm text-center'>{stuData.classTeacher}</td>
+        <td className='py-2 border border-gray-400 text-sm text-center'>
+        <img src={stuData.imageUrl} className='ml-10 w-5 h-5 bg-green-600 rounded-full'></img>
+        </td>
+        <td className='py-2 px-4 border border-gray-400 text-sm text-center flex gap-4'>
+        <p className='ml-0 text-green-600 border-b border-green-600 cursor-pointer' onClick={()=>viewUser(stuData)} >View Detail</p>
+          <p className='text-red-600 border-b border-red-600 cursor-pointer'  onClick={()=>editUser(stuData)}
+            >Edit Data</p>
+        <p className='text-red-600 border-b border-red-600 cursor-pointer' onClick={()=>deleteStudent(stuData)}
+            >Delete</p>    
+        </td>
+        
+      </tr>
+       ))
+       ) : " " } 
+
+      </table>
+      </div>
     </div>
 
     { showViewModal && <ViewDetailModal displayingData={ displayingData } setShowViewModal={setShowViewModal} />}

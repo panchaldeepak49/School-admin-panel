@@ -10,11 +10,15 @@ import ViewFeeDetailModal from '../../components/FeeModals/ViewFeeDetailModal';
 import DeleteFeeModal from '../../components/FeeModals/DeleteFeeModal';
 import { BallTriangle, Bars, TailSpin, ThreeCircles } from 'react-loader-spinner';
 import BluButton from '../../components/Global/BluButton';
+import { BsCollectionFill } from "react-icons/bs";
+import { BsCollection } from "react-icons/bs";
+import FeeCollection from './FeeCollection';
 
 const FeeClassX = () => {
     
     const[loading,setLoading] = useState(false);
     const[studentX,setStudentX] = useState('');
+    const[showCollectionModal,setShowCollectionModal] = useState(false);
     //console.log(studentX);
     var[page,setPage] = useState(1);
     const[totalPage,setTotalPage] = useState('');
@@ -26,7 +30,7 @@ const FeeClassX = () => {
         setLoading(true);
        await userRequest.get(`api/school/getAllStudentFee?search=${searchQuery ?? ''}&limit=${limit}&page=${page}`)
          .then((response) => {
-           //console.log(response)
+           console.log(response)
            const result = response.data.allStudentFee;
            const result1 = response.data.totalPages;
            const result2 = response.data.count;
@@ -87,23 +91,31 @@ const FeeClassX = () => {
      }
     };
     const debouncedFetchData = debounce(fetchXFee, 2000);
-
+    
+    ////////////////////////////////////////////////////////////////collection 
+    const handleFeeCollection = ()=>{
+      setShowCollectionModal(!showCollectionModal)
+    }
         
-
   return (
     <>
     <div className='w-[82%] '>
         <Search searchText={searchText} handleSearch={handleSearch} />
         
         
-        <div className='flex justify-evenly gap-10  mt-4 py-2 bg-blue-400'>
+        <div className='flex justify-between gap-10  mt-4 py-2 bg-blue-400'>
+          <p className='invisible'>Dummy</p>
         <p className='text-xl font-Rubik'>Class X Students Fee Info (2023-24)</p>
-        <p className='font-Rubik'>Total Students : {studentX.length}</p>
+        <div className='mr-4 flex items-center gap-4'>
+        <p className='font-Rubik'>Total Students : {count}</p>
+        <p className='font-Rubik cursor-pointer' onClick={handleFeeCollection}>Collection </p>
+        <BsCollection />
+        </div>
         </div> 
 
         { loading ? <div className='relative top-[30%] left-[40%] '><Bars className=''  /></div>  :  
         
-      <div className="mt-3  overflow-x-auto max-w-screen-xl mx-auto ">
+      <div className="mt-3 ml-4 overflow-x-auto max-w-screen-xl mx-auto ">
      <div class="inline-block whitespace-nowrap animation-slide bg-blue-50">
         <table>
       <tr className='gap-4 bg-green-300'>
@@ -147,7 +159,7 @@ const FeeClassX = () => {
       {/* <BluButton buttonName='Previous'  onClick={prePage} /> */}
       {/* <BluButton buttonName='Next' onClick={nextPage} />     */}
       <button className={`bg-blue-500 px-6 py-2 rounded-xl text-white`} onClick={nextPage} >Next</button>
-      <div className='mt-2'>Page {page} of {totalPage}</div>
+      <div className='mt-2 bg-red-200 py-1 px-6 rounded-lg'>Page {page} of {totalPage}</div>
     </div>
      ) : null
    } 
@@ -159,6 +171,8 @@ const FeeClassX = () => {
     
     { showDeleteFeeModal && <DeleteFeeModal feeData={ feeData } setShowDeleteFeeModal={setShowDeleteFeeModal} 
     fetchXFee={fetchXFee} />}
+
+    { showCollectionModal && <FeeCollection setShowCollectionModal={setShowCollectionModal} />}
     </div>
     </>
   )

@@ -78,7 +78,7 @@ const Admisssion = () => {
     <>
     <div className='w-[82%] '>
         
-        <p className='flex justify-center font-Grey_Qo text-5xl mt-0 py-2 bg-gradient-to-r from-red-200 to-green-200'>Take Admission (2024-25)</p>
+        <p className='flex justify-center font-Grey_Qo text-5xl mt-0 py-2 bg-gradient-to-r from-red-300 to-green-300'>Take Admission (2024-25)</p>
         {/* <img src={studentImg} alt="missing" className='w-[10%]'></img> */}
         
         

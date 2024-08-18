@@ -94,7 +94,7 @@ const TakeFeeModal = ({displayingData ,setShowTakeFeeModal,fetchXFee}) => {
 
   return (
     <>
-    <div className='fixed top-12 left-42 bg-gray-200 w-[90%]'>
+    <div className='fixed top-12 left-42 bg-[#ed6d64] w-[90%]'>
         <p className='text-2xl mt-2 text-center font-Rubik'>Accept Fee </p>
         <div className='flex w-[100%] bg-gradient-to-r from-blue-200 to-green-200 via-[#edb35c] mt-5'>
         <div className='flex flex-col gap-5 ml-2 w-[50%]'>
@@ -127,7 +127,7 @@ const TakeFeeModal = ({displayingData ,setShowTakeFeeModal,fetchXFee}) => {
         
         <div className='flex justify-evenly'>
         {/* <button onClick={()=>handleUpdate()} className='px-2 py-2 bg-green-400 rounded-md'>Update</button> */}
-        <BluButton buttonName='Update' />
+        <BluButton buttonName='Update' onClick={()=>handleUpdate()} />
         <RedButton buttonName='Cancel' onClick={()=>setShowTakeFeeModal(false)} />
         {/* <button onClick={()=>setShowTakeFeeModal(false)}className='px-2 py-2 bg-green-400 rounded-md'>Cancel</button> */}
         
