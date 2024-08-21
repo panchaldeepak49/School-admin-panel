@@ -46,17 +46,17 @@ const Home = () => {
     
     hover:bg-[#e67e22] hover:-translate-y-5 scale-100 shadow-lg ease-in-out duration-300 delay-150 '
     onClick={()=>navigate('/XStudents')} >
-        <p className='font-sans text-xl ' >BOM X</p> 
+        <p className='font-sans text-xl ' >BOM Class</p> 
         <p className=' ' >{studentX.length}</p> 
     </div>
-    <div className='mt-4 h-40 w-40 flex justify-center items-center bg-green-400 rounded-full
-    hover:bg-[#2ed573] hover:-translate-y-5 scale-100 shadow-lg ease-in-out duration-300 delay-150' >
-        <p className='font-sans text-xl '> BOM VII </p> 
+    <div className='mt-4 h-40 w-40 flex justify-center items-center bg-green-400 rounded-full cursor-pointer
+    hover:bg-[#2ed573] hover:-translate-y-5 scale-100 shadow-lg ease-in-out duration-300 delay-150'>
+        <p className='font-sans text-xl '> BOM </p> 
     </div>
 
     <div className='mt-4 h-40 w-40 flex justify-center items-center bg-blue-400 rounded-full
     hover:bg-[#1e90ff] hover:-translate-y-5 scale-100 shadow-lg ease-in-out duration-300 delay-150' >
-        <p className='font-sans text-xl ' > BOM VIII </p> 
+        <p className='font-sans text-xl ' > BOM </p> 
     </div>
     </div> 
 

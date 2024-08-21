@@ -26,6 +26,10 @@ const Admisssion = () => {
   const[imgURL,setImgURL] = useState('');
   // console.log(selectClass);
 
+
+  const phoneRegex = /^\d{10}$/; // Assuming you expect a 10-digit phone number
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
   const emptyForm =()=>{
     setName(' ');
     setFatherName('');
@@ -55,6 +59,33 @@ const Admisssion = () => {
   });
 
   const handleSubmit = async(e)=>{
+    if(!name.trim()){
+      message.error('Please enter the Student name');
+    }else if(!fatherName.trim()){
+      message.error('Please enter the Father name');
+    }else if(!fatherName.trim()){
+      message.error('Please enter the Father name');
+    }else if(!selectClass.trim()){
+      message.error('Please select the Standard of student');
+    }else if(!rollNo.trim()){
+      message.error('Please enter the Roll No');
+    }else if(!address.trim()){
+      message.error('Please enter the Address');
+    }else if(!admissionDate.trim()){
+      message.error('Please enter the Admission Date');
+    }else if(!section.trim()){
+      message.error('Please enter the Section');
+    }else if(!classTeacher.trim()){
+      message.error('Please enter the Class Teacher name');
+    }else if(!gender.trim()){
+      message.error('Please specify the gender');
+    }else if(!contact.trim()){
+      message.error('Please enter the Mobile number');
+    }else if(!phoneRegex.test(contact)){
+      message.error('Please enter a valid mobile number');
+    }
+
+    else{
     await userRequest.post('/api/school/postAdmission',student)
     .then((res)=>{
       //console.log(res);
@@ -66,7 +97,7 @@ const Admisssion = () => {
       const errorMessage = err.response?.data?.message || "an error occurred";
       message.error(errorMessage)
     })
-  }
+  }}
 
   const handleOptionChange = (value) => {
     setSelectClass(value);
@@ -99,20 +130,21 @@ const Admisssion = () => {
                 <Option value={'VI'}>VI</Option>
                 <Option value={'VII'}>VII</Option>
                  <Option value={'VIII'}>VIII</Option>
+                 <Option value={'IX'}>IX</Option>
                  <Option value={'X'}>X</Option>
                  </Select>
-        <input type='text' value={rollNo} onChange={(e)=>setRollNo(e.target.value)} className='w-[70%] py-1 pl-2  rounded-md border-2' placeholder='Roll No*'></input>
+        <input type='number' value={rollNo} onChange={(e)=>setRollNo(e.target.value)} className='w-[70%] py-1 pl-2  rounded-md border-2' placeholder='Roll No*'></input>
         <input type='text' value={address} onChange={(e)=>setAddress(e.target.value)} className='w-[70%] py-1 pl-2  rounded-md border-2' placeholder='Address*'></input>
         </div>
         
         
         <div className='flex flex-col gap-4 w-[50%]  mt-4 ml-2 '>
         <img src={Tot1} className=' ml-10 w-[35%] rounded-md' />
-        <input type='text' value={admissionDate} onChange={(e)=>setAdmissionDate(e.target.value)} className='w-[70%] mt-6 py-1 pl-2 rounded-md  border-2' placeholder='Date of Admission*'></input>
+        <input type='date' value={admissionDate} onChange={(e)=>setAdmissionDate(e.target.value)} className='w-[70%] mt-6 py-1 pl-2 rounded-md border-2 cursor-pointer' placeholder='Date of Admission*'></input>
         <input type='text' value={section} onChange={(e)=>setSection(e.target.value)} className='w-[70%] py-1 pl-2  rounded-md border-2' placeholder='Section*'></input>
         <input type='text' value={classTeacher} onChange={(e)=>setClassTeacher(e.target.value)} className='w-[70%] py-1 pl-2 rounded-md border-2' placeholder='Class Teacher*'></input>
         <input type='text' value={gender} onChange={(e)=>setGender(e.target.value)} className='w-[70%] py-1 pl-2  rounded-md border-2' placeholder='Boy/Girl*'></input>
-        <input type='text' value={contact} onChange={(e)=>setContact(e.target.value)} className='w-[70%] py-1 pl-2 rounded-md border-2' placeholder='Contact*'></input>
+        <input type='number' value={contact} onChange={(e)=>setContact(e.target.value)} className='w-[70%] py-1 pl-2 rounded-md border-2' placeholder='Contact*'></input>
         <button className=' w-[25%] py-2 bg-blue-600 text-white rounded-md' onClick={()=>handleSubmit()}>Submit</button>
         </div>
         </div>

@@ -65,7 +65,7 @@ const AllStandardStu = () => {
 
   return (
     <>
-    <div className='w-[82%] flex flex-col '>
+    <div className='w-[82%] overflow-hidden '>
     <Search searchText={searchText} handleSearch={handleSearch} />
         
         {/* <p className='flex justify-center text-xl mt-4 py-2 bg-green-400'>All Registered Students</p> */}
@@ -73,28 +73,28 @@ const AllStandardStu = () => {
         <p className='invisible'>All Students</p>  
         {/* <img src={Aero} alt="Convent School" className='ml-4  w-10 ' /> */}
         <p className='text-xl font-Rubik'>All Registered Students</p>
-        <div className='mr-5 flex items-center gap-2'>
-        <p className='mr-5 font-Rubik '>Total Students : {countAll}</p>
+        <div className='pr-4 flex items-center gap-2'>
+        <p className=' font-Rubik '>Total Students : {countAll}</p>
         <IoMailOutline className='text-xl'/>
         </div>
         </div>    
         
         {/* <img src={erpImg} ></img> */}
-        <div className=' h-[70vh] '>
+        {/* <div className=' h-[70vh] '> */}        
           { loading ? <div className='relative top-[40%] left-[40%] '><BallTriangle className=''  /></div>  :
         <UserTest  student={student} fetchAllAdmission={fetchAllAdmission} />
           }
-        </div> 
+        {/* </div>  */}
         
 
 
     {totalPage > 1 ? ( 
-    <div className='flex justify-evenly mt-4'>
+    <div className='fixed bottom-8 w-full flex justify-evenly mt-4'>
       
       <button className={`bg-blue-500 px-4 py-2  rounded-xl text-white`} onClick={prePage}>Previous</button>
           
       <button className={`bg-blue-500 px-6 py-2 rounded-xl text-white`} onClick={nextPage} >Next</button>
-      <div className=' fixed right-7 bottom-7 bg-red-200 px-6 rounded-lg'>Page {page} of {totalPage}</div>
+      <div className=' bg-red-200 px-6 py-2 rounded-lg'>Page {page} of {totalPage}</div>
     </div>
      ) : null
    } 

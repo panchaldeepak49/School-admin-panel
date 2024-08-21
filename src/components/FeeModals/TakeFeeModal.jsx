@@ -9,6 +9,7 @@ const TakeFeeModal = ({displayingData ,setShowTakeFeeModal,fetchXFee}) => {
   //console.log(displayingData);
   const[stuId,setstuId] = useState(displayingData.stuId);
   const[name,setName] = useState(displayingData.name);
+  const[fee,setFee] = useState(displayingData.baseFee);
 
   var [april, setApril] = useState(displayingData.april);
   var[may,setMay] = useState(displayingData.may);
@@ -33,16 +34,16 @@ const TakeFeeModal = ({displayingData ,setShowTakeFeeModal,fetchXFee}) => {
      "November", "December",];
   const currentMonthIndex = currentDate.getMonth();
   const currentMonthName = monthNames[currentMonthIndex];
-  //console.log(currentMonthName); 
+  //console.log(currentMonthIndex); 
 
   
-  const totalAmountDue = 500 * (currentMonthIndex + 10);
+  const totalAmountDue = fee * (currentMonthIndex-2 );
 
   useEffect(() => {
     // Recalculate totalAmountRcvd and amountPending whenever any of the input values change
     
     const totalAmountRcvdNew = +april + +may + +june + +july + +august + +september + +october + +november + +december + +january + +feb + +march ;
-    const totalAmountDue = 500 * (new Date().getMonth() + 10);
+    const totalAmountDue = fee * (new Date().getMonth() );
     setTotalAmountRcvd(totalAmountRcvdNew);
    
 }, [april, may, june, july, august, september, october, november, december, january, feb, march]);
@@ -104,6 +105,7 @@ const TakeFeeModal = ({displayingData ,setShowTakeFeeModal,fetchXFee}) => {
         {/* <input type='text' value={''} onChange={(e)=>setName(e.target.value)} className='w-[70%] py-1 pl-2  rounded-md  border-2' placeholder='Amount accepted*'></input>
         <input type='text' value={''} onChange={(e)=>setName(e.target.value)} className='w-[70%] py-1 pl-2  rounded-md  border-2' placeholder='Amount remaining*'></input>
         <input type='text' value={''} onChange={(e)=>setName(e.target.value)} className='w-[70%] py-1 pl-2  rounded-md  border-2' placeholder='Month*'></input> */}
+        <p><span className='font-semibold'>Base Fee:</span> {fee}</p>
         <p><span className='font-semibold'>Total Amount Due:</span> {totalAmountDue}</p>
         <p><span className='font-semibold'>Amount Accepted:</span> {totalAmountRcvd}</p>
         <p><span className='font-semibold'>Total Pending:</span> {amountPending}</p>

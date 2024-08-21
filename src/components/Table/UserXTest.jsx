@@ -25,7 +25,7 @@ const UserXTest = ({studentX,fetchXAdmission}) => {
   return (
     <>
     
-    <div className="mt-3 ml-2 overflow-x-auto max-w-screen-xl mx-auto ">
+    <div className="mt-3 ml-2 overflow-x-auto max-w-screen-xl mx-auto">
      <div class="inline-block whitespace-nowrap animation-slide">
         <table>
       <tr className='gap-4 bg-green-300'>
@@ -41,7 +41,7 @@ const UserXTest = ({studentX,fetchXAdmission}) => {
       { studentX.length > 0 ? (
       studentX.map((userData,index) =>(
         
-      <tr className=' mt-10' key={index} >
+      <tr className=' mt-10 bg-blue-50' key={index} >
         <td className='py-2 border border-gray-400 text-sm text-center w-10'>{index+1}</td>
         <td className='py-2 border border-gray-400 text-sm text-center'>{userData.name}</td>
         <td className='py-2 border border-gray-400 text-sm text-center'>{userData.class}</td>
@@ -63,7 +63,8 @@ const UserXTest = ({studentX,fetchXAdmission}) => {
       </div>
     </div>
 
-    { showFeeModal && <CreateFeeModal displayingData={ displayingData } setShowFeeModal={setShowFeeModal} />}
+    { showFeeModal && <CreateFeeModal displayingData={ displayingData } setShowFeeModal={setShowFeeModal} 
+     fetchXAdmission={fetchXAdmission} />}
     
     { showViewModal && <ViewDetailModal displayingData={ displayingData } setShowViewModal={setShowViewModal} />}
     </>

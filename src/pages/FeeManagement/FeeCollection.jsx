@@ -1,15 +1,19 @@
-import React,{ useState,useEffect } from 'react';
+import React,{ useState,useEffect,useContext } from 'react';
+import { MyContext } from '../../myContext';
 import RedButton from '../../components/Global/RedButton';
 import { userRequest } from '../../components/RequestMethod';
 import { message } from 'antd';
 
+
 const FeeCollection = ({setShowCollectionModal}) => {
 
     const [allFeeData,setAllFeeData] = useState('');
+    const {selectedStandard,setSelectedStandard} = useContext(MyContext);
     //console.log(allFeeData)
+   
 
     const fetchFeeCollection =async()=>{
-       await userRequest.get('/api/school/getAllStudentFee/X')
+       await userRequest.get(`/api/school/getAllStudentFee/${selectedStandard}`)
        .then((res)=>{
         const result = res.data;
         setAllFeeData(result)
@@ -29,20 +33,20 @@ const FeeCollection = ({setShowCollectionModal}) => {
   return (
     <>
       <div className='fixed top-16 left-[20%] bg-gray-200 w-[60%]'>
-      <p className='text-2xl py-2 text-center font-Rubik bg-[#ed6d64]'>Class X Fee Collection Details </p>
+      <p className='text-2xl py-2 text-center font-Rubik bg-[#ed6d64]'>Class {selectedStandard} Fee Collection Details </p>
        <div className='mt-4 grid grid-cols-2 px-6'>
         <p>April : {allFeeData.aprilFeeCollection} </p>
-        <p>May</p>
-        <p>June</p>
-        <p>July</p>
-        <p>Aug</p>
-        <p>Sept</p>
-        <p>Oct</p>
-        <p>Nov</p>
-        <p>Dec</p>
+        <p>May : {allFeeData.mayFeeCollection} </p>
+        <p>June : {allFeeData.juneFeeCollection} </p>
+        <p>July : {allFeeData.julyFeeCollection} </p>
+        <p>Aug : {allFeeData.augustFeeCollection} </p>
+        <p>Sept : {allFeeData.septemberFeeCollection} </p>
+        <p>Oct : {allFeeData.octoberFeeCollection} </p>
+        <p>Nov : {allFeeData.novemberFeeCollection} </p>
+        <p>Dec : {allFeeData.decemberFeeCollection} </p>
         <p>Jan : {allFeeData.janFeeCollection}</p>
-        <p>Feb</p>
-        <p>March : {allFeeData.aprilFeeCollection}</p>
+        <p>Feb : {allFeeData.febFeeCollection} </p>
+        <p>March : {allFeeData.marchFeeCollection}</p>
        </div>
 
       <div className=' p-4 flex justify-end'>

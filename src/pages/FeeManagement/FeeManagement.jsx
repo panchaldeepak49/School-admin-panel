@@ -17,23 +17,23 @@ const FeeManagement = () => {
     <div className='my-10 h-44 w-44 flex justify-center items-center bg-blue-400 rounded-full cursor-pointer
     hover:bg-blue-600 hover:-translate-y-5 scale-100 shadow-lg ease-in-out duration-300 delay-150 '
     onClick={()=>navigate('/allStudents')} >
-        <p className='' >All BOM</p> 
+        <p className=' text-xl' >All BOM</p> 
     </div>
 
     <div className='mt-10 h-44 w-44 flex justify-center items-center bg-orange-400 rounded-full cursor-pointer
     hover:bg-[#e67e22] hover:-translate-y-5 scale-100 shadow-lg ease-in-out duration-300 delay-150 '
     onClick={()=>navigate('/feeClassX')} >
-        <p className=' ' >BOM X</p> 
+        <p className=' text-xl' >BOM </p> 
     </div>
 
     <div className='mt-10 h-44 w-44 flex justify-center items-center bg-green-400 rounded-full
     hover:bg-[#2ed573] hover:-translate-y-5 scale-100 shadow-lg ease-in-out duration-200 delay-150' >
-        <p > BOM VII </p> 
+        <p className=' text-xl'> BOM </p> 
     </div>
 
     <div className='mt-10 h-44 w-44 flex justify-center items-center bg-blue-400 rounded-full
     hover:bg-[#1e90ff] hover:-translate-y-5 scale-100 shadow-lg ease-in-out duration-200 delay-150' >
-        <p > BOM VIII </p> 
+        <p className=' text-xl'> BOM </p> 
     </div>
     
     </div> 

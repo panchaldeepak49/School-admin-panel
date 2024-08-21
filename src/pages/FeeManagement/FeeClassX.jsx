@@ -1,4 +1,5 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect,useContext} from 'react';
+import { MyContext } from '../../myContext';
 import Search from '../../components/Search'
 import { Table, Checkbox } from 'antd';
 import { message } from 'antd';
@@ -19,6 +20,8 @@ const FeeClassX = () => {
     const[loading,setLoading] = useState(false);
     const[studentX,setStudentX] = useState('');
     const[showCollectionModal,setShowCollectionModal] = useState(false);
+    // const [selectedStandard,setSelectedStandard] = useState('X');
+    const {selectedStandard,setSelectedStandard} = useContext(MyContext);
     //console.log(studentX);
     var[page,setPage] = useState(1);
     const[totalPage,setTotalPage] = useState('');
@@ -28,7 +31,8 @@ const FeeClassX = () => {
     const fetchXFee = async (searchQuery) => {
         //await userRequest.get('/api/school/getAllStudentFee')
         setLoading(true);
-       await userRequest.get(`api/school/getAllStudentFee?search=${searchQuery ?? ''}&limit=${limit}&page=${page}`)
+      //  await userRequest.get(`api/school/getAllStudentFee?search=${searchQuery ?? ''}&limit=${limit}&page=${page}`)
+      await userRequest.get(`api/school/getAllStudentFee?search=${searchQuery ?? ''}&limit=${limit}&page=${page}&class=${selectedStandard}`)
          .then((response) => {
            console.log(response)
            const result = response.data.allStudentFee;
@@ -49,7 +53,7 @@ const FeeClassX = () => {
      
      useEffect(()=>{
        fetchXFee();
-     },[page]);
+     },[page,selectedStandard]);
 
     ////////////////////////////////////////////////////////////////////////////////////Table  
 
@@ -96,18 +100,34 @@ const FeeClassX = () => {
     const handleFeeCollection = ()=>{
       setShowCollectionModal(!showCollectionModal)
     }
+
+    ////////////////////////////////////////////////////////////applying pagination in frontend only
+  const [currentPage,setCurrentPage] = useState(1);
+
+  const recordsPerPage = 8;
+  const lastIndex = currentPage * recordsPerPage ;
+  const firstIndex = lastIndex - recordsPerPage;
+  const studentX1 = studentX.slice(firstIndex,lastIndex);
+  const nPage = studentX ? Math.ceil(studentX.length/recordsPerPage) : 0 ;
         
   return (
     <>
-    <div className='w-[82%] '>
+    <div className='w-[82%] overflow-hidden'>
         <Search searchText={searchText} handleSearch={handleSearch} />
         
         
         <div className='flex justify-between gap-10  mt-4 py-2 bg-blue-400'>
           <p className='invisible'>Dummy</p>
-        <p className='text-xl font-Rubik'>Class X Students Fee Info (2023-24)</p>
+        <p className='text-xl font-Rubik'>Class {selectedStandard} Students Fee Info (2023-24)</p>
+        <select className='outline-none rounded-xl px-1 bg-blue-200 w-14' value={selectedStandard} onChange={(e)=>setSelectedStandard(e.target.value)}>
+         <option value='VI'>VI</option>
+          <option value='VII'>VII</option>
+          <option value='VIII'>VIII</option>
+          <option value='IX'>IX</option>
+          <option value='X'>X</option>
+        </select>
         <div className='mr-4 flex items-center gap-4'>
-        <p className='font-Rubik'>Total Students : {count}</p>
+        <p className='font-Rubik'>Total Students : {studentX.length}</p>
         <p className='font-Rubik cursor-pointer' onClick={handleFeeCollection}>Collection </p>
         <BsCollection />
         </div>
@@ -121,18 +141,20 @@ const FeeClassX = () => {
       <tr className='gap-4 bg-green-300'>
         <th className='px-4 py-2 min-w-20  border border-gray-400 font-medium'>Sr</th>
         <th className='min-w-44 text-sm py-2 border border-gray-400 font-medium  '>Name</th> 
+        <th className='min-w-44 text-sm py-2 border border-gray-400 font-medium  '>Class</th> 
         <th className='px-4 py-2 border border-gray-400 min-w-44 text-sm font-medium '>Total Amount Due</th>
         <th className='px-4 py-2 border border-gray-400 min-w-44 text-sm font-medium'>Amount Rcvd</th>
         <th className='px-4 py-2 border border-gray-400 min-w-44 text-sm font-medium'>Amount Pending</th>
         <th className='px-4 py-2 border border-gray-400 min-w-44 text-sm font-medium'>Actions</th> 
       </tr>
      
-      { studentX.length > 0 ? (
-      studentX.map((userData,index) =>(
+      { studentX1.length > 0 ? (
+      studentX1.map((userData,index) =>(
         
       <tr className=' mt-10' key={index} >
         <td className='py-2 border border-gray-400 text-sm text-center w-10'>{index+1}</td>
         <td className='py-2 border border-gray-400 text-sm text-center'>{userData.name}</td>
+        <td className='py-2 border border-gray-400 text-sm text-center'>{userData.class}</td>
         <td className='py-2 border border-gray-400 text-sm text-center'>{userData.totalAmountDue}</td>
         <td className='py-2 border border-gray-400 text-sm text-center'>{userData.totalAmountAccepted}</td>
         <td className='py-2 border border-gray-400 text-sm text-center'>{userData.amountPending}</td>
@@ -152,14 +174,14 @@ const FeeClassX = () => {
     </div>
      }
 
-    {totalPage > 1 ? ( 
+    {nPage > 1 ? ( 
     <div className='fixed bottom-7 w-full flex justify-evenly '>
       
       <button className={`bg-blue-500 px-4 py-2  rounded-xl text-white`} onClick={prePage}>Previous</button>
       {/* <BluButton buttonName='Previous'  onClick={prePage} /> */}
       {/* <BluButton buttonName='Next' onClick={nextPage} />     */}
       <button className={`bg-blue-500 px-6 py-2 rounded-xl text-white`} onClick={nextPage} >Next</button>
-      <div className='mt-2 bg-red-200 py-1 px-6 rounded-lg'>Page {page} of {totalPage}</div>
+      <div className='mt-2 bg-red-200 py-1 px-6 rounded-lg'>Page {currentPage} of {nPage}</div>
     </div>
      ) : null
    } 

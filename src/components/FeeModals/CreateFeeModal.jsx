@@ -1,13 +1,16 @@
 import React,{ useState,useEffect } from 'react'
 import { userRequest } from '../RequestMethod';
 import { message } from 'antd';
+import BluButton from '../Global/BluButton';
+import RedButton from '../Global/RedButton';
 
-const CreateFeeModal = ({displayingData,setShowFeeModal,fetchXFee}) => {
-    console.log(displayingData);
+const CreateFeeModal = ({displayingData,setShowFeeModal,fetchXAdmission}) => {
+   // console.log(displayingData);
 
   const[stuId,setstuId] = useState(displayingData._id);
   const[name,setName] = useState(displayingData.name);
-  const[gclass,setGclass] = useState(displayingData.class)
+  const[gclass,setGclass] = useState(displayingData.class);
+  const[baseFee,setBaseFee] = useState('')
   const[image,setImage] = useState(displayingData.imageUrl);
 
   var [april, setApril] = useState('');
@@ -48,6 +51,7 @@ const CreateFeeModal = ({displayingData,setShowFeeModal,fetchXFee}) => {
         "name" : name,
         "class" : gclass,
         "imageUrl" :image,
+        "baseFee" : baseFee,
         "april" : april,
         "may" : may,
         "june" : june,
@@ -66,31 +70,38 @@ const CreateFeeModal = ({displayingData,setShowFeeModal,fetchXFee}) => {
       });
 
     const handleSave = async(e)=>{
+      if(!baseFee.trim()){
+        message.error('Please set BaseFee first')
+      }else{
         //await userRequest.put(`/api/school/updateStudentFee/${displayingData._id}`,studentFeeDetails)
         await userRequest.post('/api/school/postAllStudentFee',studentFeeDetails)
         .then((res)=>{
           //console.log(res);
           message.success(res.data.message);
           setShowFeeModal(false);
-          fetchXFee();
+          fetchXAdmission();
         })
         .catch((err)=>{
-          //console.log(err)
+          console.log(err)
           const errorMessage = err.response?.data?.message || "an error occurred";
           message.error(errorMessage);
           //setShowFeeModal(false);
         })
-      }
+      }}
 
   return (
     <>
-     <div className='fixed top-12 left-42 bg-gray-400 w-[90%]'>
-        <p className='text-2xl text-center'>Create Fee Modal </p>
+     <div className='fixed top-12 left-42 bg-gray-200 w-[90%] z-50'>
+        <p className='mt-2 text-2xl text-center font-Rubik'>Create Fee Modal </p>
         <div className='flex w-[100%] bg-red-400 mt-5'>
         <div className='flex flex-col gap-5 ml-2 w-[50%]'>
-            <img src={image} className='w-32' alt="missing" ></img>
+            <img src={image} className='w-32 rounded-md' alt="missing" ></img>
         <input type='text' value={stuId}  className='w-[70%] py-1 pl-2  rounded-md  border-2' placeholder='Enter Id*'></input>
         <input type='text' value={name}  className='w-[70%] py-1 pl-2  rounded-md  border-2' placeholder='Enter Name*'></input>
+        
+        <p><span className='font-semibold'>Standard:</span> {gclass}</p>
+        <p className='flex gap-2'><span className='font-semibold '>Base Fee:</span><input type='number' className='rounded-md outline-none px-2' 
+        value={baseFee} onChange={(e)=>setBaseFee(e.target.value)} /></p>
         <p><span className='font-semibold'>Total Amount Due:</span> {totalAmountDue}</p>
         <p><span className='font-semibold'>Amount Accepted:</span> {totalAmountRcvd}</p>
         <p><span className='font-semibold'>Total Pending:</span> {amountPending}</p>
@@ -113,8 +124,11 @@ const CreateFeeModal = ({displayingData,setShowFeeModal,fetchXFee}) => {
         </div>
         
         <div className='flex justify-evenly'>
-        <button onClick={()=>handleSave()} className='px-2 py-2 bg-green-400 rounded-md'>Save</button>
-        <button onClick={()=>setShowFeeModal(false)}className='px-2 py-2 bg-green-400 rounded-md'>Cancel</button>
+        {/* <button onClick={()=>handleSave()} className='px-2 py-2 bg-green-400 rounded-md'>Save</button>
+        <button onClick={()=>setShowFeeModal(false)}className='px-2 py-2 bg-green-400 rounded-md'>Cancel</button> */}
+
+        <BluButton buttonName='Create' onClick={()=>handleSave()} />
+        <RedButton buttonName='Cancel' onClick={()=>setShowFeeModal(false)} />
         
         </div>
     </div>

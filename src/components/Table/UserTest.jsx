@@ -26,7 +26,7 @@ const UserTest = ({student,fetchAllAdmission}) => {
   return (
     <>
     
-     <div className="mt-3 overflow-x-auto max-w-screen-xl mx-auto bg-blue-50 ">
+     <div className="mt-3 overflow-x-auto max-w-screen-xl mx-auto ">
      <div class="inline-block whitespace-nowrap animation-slide">
         <table>
       <tr className='gap-4 bg-blue-200'>
@@ -43,7 +43,7 @@ const UserTest = ({student,fetchAllAdmission}) => {
       { student.length > 0 ? (
       student.map((stuData,index) =>(
         
-      <tr className=' mt-10' key={index}>
+      <tr className=' mt-10 bg-green-50' key={index}>
         <td className='py-2 border border-gray-400 text-sm text-center'>{index+1}</td>
         <td className='py-2 border border-gray-400 text-sm text-center'>{stuData.name}</td>
         <td className='py-2 border border-gray-400 text-sm text-center'>{stuData.class}</td>

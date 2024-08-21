@@ -167,7 +167,7 @@ const StaffManagement = () => {
       <button className={`bg-blue-400 px-4 py-2  rounded-xl text-white`} onClick={prePage}>Previous</button>
           
       <button className={`bg-blue-400 px-6 py-2 rounded-xl text-white`} onClick={nextPage} >Next</button>
-      <div className='mt-2 '>Page {currentPage} of {nPage}</div>
+      <div className=' bg-red-200 px-6 py-2 rounded-lg '>Page {currentPage} of {nPage}</div>
     </div>
      ) : null
    } 
