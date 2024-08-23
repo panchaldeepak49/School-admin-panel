@@ -7,6 +7,7 @@ import { Select } from 'antd';
 import BluDotImage from '../assets/Images/Group 195.png';
 import OrangeDotImage from '../assets/Images/Group 196.png';
 import Tot1 from '../assets/Images/stu1.jpg';
+import UploadImgFile1 from '../components/UploadImgFile1';
 
 
 const { Option } = Select;
@@ -118,6 +119,7 @@ const Admisssion = () => {
         <div className='flex w-[100%] bg-gradient-to-r  from-[#f0e1b6] to-[#d7ebc7] via-[#e5f0d1] py-4 px-4'>
         <div className='flex flex-col gap-4 w-[50%]  mt-0 ml-0 '>
         <UploadImgFile imgURL={imgURL} setImgURL={setImgURL} />
+        {/* <UploadImgFile1 imgURL={imgURL} setImgURL={setImgURL} /> */}
         <input type='text' value={name} onChange={(e)=>setName(e.target.value)} className='w-[70%] py-1 pl-2  rounded-md  border-2' placeholder='Enter Name*'></input>
         <input type='text' value={fatherName} onChange={(e)=>setFatherName(e.target.value)} className='w-[70%] py-1 pl-2  rounded-md border-2' placeholder='Father Name*'></input>
         {/* <input type='text' value={myClass} onChange={(e)=>setMyClass(e.target.value)} className='w-[70%] py-1 pl-2  rounded-md border-2' placeholder='Class*'></input> */}

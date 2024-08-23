@@ -24,3 +24,11 @@ export const publicRequest = axios.create({
       Authorization: "Bearer " + JSON.parse(localStorage.getItem("token")),
     },
   });
+
+  export const userRequest1 = axios.create({
+    baseURL: BASE_URL,
+    headers: {
+      "Content-Type": "multipart/form-data",
+      //Authorization: "Bearer " + JSON.parse(localStorage.getItem("token")),
+    },
+  });

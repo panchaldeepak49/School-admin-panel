@@ -7,6 +7,7 @@ const UploadImgFile = ({ imgURL, setImgURL}) => {
 
     // resumeURL = imgURL;
     // setResumeURL = setImgURL;
+    //console.log(imgURL)
 
   const [isImageUploaded, setIsImageUploaded] = useState(false);
   const [fileList, setFileList] = useState([]);
@@ -14,10 +15,10 @@ const UploadImgFile = ({ imgURL, setImgURL}) => {
   const props = {
     name: 'file',
     multiple: false,
-    action: 'http://localhost:5000/api/upload', // It needs to be changed with a valid backend API
-    // headers: {
-    //   Authorization: 'YourAuthorizationHeader', // Update this with your authorization header
-    // },
+    action: 'https://school-admin-backend.onrender.com/api/upload/cloud',
+    //action: 'http://localhost:5000/api/upload', // It needs to be changed with a valid backend API
+    //action: 'http://localhost:5000/api/upload/cloud',
+  
     fileList: fileList,
     accept: '.pdf,.doc,.docx,.png,.jpeg,.jpg', // Specify accepted file types (PDF and Word documents)
 
@@ -33,6 +34,7 @@ const UploadImgFile = ({ imgURL, setImgURL}) => {
       }
     },
     onChange(info) {
+      console.log(info)
       const { status } = info.file;
       if (status === 'uploading') {
         setFileList([info.file]);
@@ -44,6 +46,7 @@ const UploadImgFile = ({ imgURL, setImgURL}) => {
         message.success(`${info.file.name} file uploaded successfully.`);
         setFileList([]);
       } else if (status === 'error') {
+        console.error('Upload error:', info.file.error);
         message.error(`${info.file.name} file upload failed.`);
         setFileList([]);
       }
