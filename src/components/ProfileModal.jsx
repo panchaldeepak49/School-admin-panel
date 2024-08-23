@@ -1,14 +1,15 @@
-import React from 'react'
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const ProfileModal = () => {
+const ProfileModal = ({setShowProfile}) => {
 
     const navigate = useNavigate();
 
-    const handleLogout = async ({setShowProfile}) => {
+    const handleLogout = async () => {
         try {
           //const userToken = JSON.parse(localStorage.getItem("token"));
           localStorage.removeItem("token");
+          localStorage.removeItem("user");
           setShowProfile(false);
           //localStorage.clear();
           navigate('/');

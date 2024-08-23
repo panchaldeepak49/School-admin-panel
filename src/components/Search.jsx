@@ -1,4 +1,4 @@
-import React,{ useState } from 'react'
+import React,{ useState,useEffect } from 'react'
 import searchImg from '/Images/search.png'
 import sortImg from '/Images/sort.png'
 import questionImg from '/Images/question.svg'
@@ -13,11 +13,21 @@ import { FaChevronDown } from "react-icons/fa";
 const Search = ({searchText,handleSearch}) => {
 
   const [showProfile,setShowProfile] = useState(false);
+  const [user,setUser] = useState('');
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+  }, []);
+  //console.log(user)
 
   const droppDown = ()=>{  
      //setShowProfile(true);
     setShowProfile((prevShowProfile) => !prevShowProfile);
   }
+
   return (
     <>
     <div className='flex justify-evenly items-center mt-4'>
@@ -36,7 +46,7 @@ const Search = ({searchText,handleSearch}) => {
 
     <div className=' ml-10 flex gap-5 items-center'>
       <img src={profileImg1} className='w-6' alt='missing'></img>
-      <p className='text-sm'>John Doe</p>
+      <p className='text-sm'>{user}</p>
       {/* <img src={dropDownImg} className='w-3 h-2 cursor-pointer' alt='missing' onClick={()=>droppDown()}></img> */}
       <FaChevronDown className='cursor-pointer' onClick={()=>droppDown()} />
     </div>

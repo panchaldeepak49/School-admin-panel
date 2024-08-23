@@ -34,12 +34,12 @@ const UploadImgFile = ({ imgURL, setImgURL}) => {
       }
     },
     onChange(info) {
-      console.log(info)
+      //console.log(info)
       const { status } = info.file;
       if (status === 'uploading') {
         setFileList([info.file]);
       }
-      console.log(info.file);
+      //console.log(info.file);
       if (status === 'done') {
         setImgURL(info.file.response.url);
         setIsImageUploaded(true);

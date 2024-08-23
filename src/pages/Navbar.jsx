@@ -1,4 +1,4 @@
-import React,{ useState } from 'react'
+import React,{ useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 import { CiLogout } from "react-icons/ci";
 import Aero from '../assets/Images/aero3.png'
@@ -13,9 +13,10 @@ const Navbar = () => {
       try {
         //const userToken = JSON.parse(localStorage.getItem("token"));
         localStorage.removeItem("token");
+        localStorage.removeItem("user");
         //localStorage.clear();
         navigate('/');
-        window.location.reload()
+        window.location.reload();
       } catch (err) {
         console.error('Logout failed:', err);
       }

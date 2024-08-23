@@ -8,7 +8,7 @@ const Login = () => {
     const navigate = useNavigate();
     const[email, setEmail] = useState('');
     const [password,setPassword] =  useState('');
-
+    
     
     let user = JSON.stringify({
         "email": email,
@@ -18,9 +18,10 @@ const Login = () => {
       const handleLogin = async (e) => {
         await userRequest.post("/api/school/login", user)
           .then((res) => {
-            //console.log(res)
+            
             message.success("Login success");
             localStorage.setItem("token",JSON.stringify(res.data.token));
+            localStorage.setItem("user",JSON.stringify(res.data?.details?.name))
             navigate('/home');
             window.location.reload();
           })
