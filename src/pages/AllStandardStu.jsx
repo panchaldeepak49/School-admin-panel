@@ -81,7 +81,7 @@ const AllStandardStu = () => {
         
         {/* <img src={erpImg} ></img> */}
         {/* <div className=' h-[70vh] '> */}        
-          { loading ? <div className='relative top-[40%] left-[40%] '><BallTriangle className=''  /></div>  :
+          { loading ? <div className='relative top-[25%] left-[45%] '><BallTriangle className=''  /></div>  :
         <UserTest  student={student} fetchAllAdmission={fetchAllAdmission} />
           }
         {/* </div>  */}

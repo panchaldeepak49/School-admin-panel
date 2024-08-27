@@ -32,35 +32,35 @@ const Navbar = () => {
     <div className='  border-2  bg-black  w-[18%] min-h-[100vh] cursor-pointer' >
         <div className='relative flex flex-col items-center text-center gap-5 mt-6'>
             
-            <p className='text-blue-400  font-semibold font-serif text- text-4xl'>Convent</p>
-            <p className='text-blue-400 font-semibold font-serif text- text-3xl'>International</p>
+            <p className='text-blue-400  font-semibold font-serif sm:text-2xl lg:text-4xl'>Convent</p>
+            <p className='text-blue-400 font-semibold font-serif sm:text-2xl lg-text-3xl'>International</p>
             <img src={Aero} alt="Convent School" className='w-10 ' />
-            <img src={AeroTail} alt="Convent School" className='absolute top-36 left-14  w-14 ' />
+            <img src={AeroTail} alt="Convent School" className='absolute top-24 sm:top-28 md:top-32 lg:top-36 left-6 sm:left-8 md:left-10 lg:left-14  w-14 ' />
         </div>
 
-      <div className={`w-[90%] h-10 mt-10 ml-2 ${selectedButton === '/home' ? 'bg-[#77e38d] font-medium' : 'bg-orange-200'}  flex justify-center items-center rounded-lg`}
+      <div className={`w-[90%] h-8 sm:h-10 text-xs sm:text-base mt-10 ml-2 ${selectedButton === '/home' ? 'bg-[#77e38d] font-medium' : 'bg-orange-200'}  flex justify-center items-center rounded-lg`}
       onClick={()=>handleButtonClick('/home')}>
         Dashboard
       </div>
 
-      <div className={`w-[90%] h-10 mt-5 ml-2 ${selectedButton === '/admission' ? 'bg-[#77e38d] font-medium' : 'bg-orange-200'} flex justify-center items-center rounded-lg`}
+      <div className={`w-[90%] h-8 sm:h-10 text-xs sm:text-base mt-5 ml-2 ${selectedButton === '/admission' ? 'bg-[#77e38d] font-medium' : 'bg-orange-200'} flex justify-center items-center rounded-lg`}
       onClick={()=>handleButtonClick('/admission')}>
         Admission
       </div>
 
-      <div className={`w-[90%] h-10 mt-5 ml-2 ${selectedButton === '/feeManagement' ? 'bg-orange-400 font-medium' : 'bg-orange-200 '} flex justify-center items-center rounded-lg`}
+      <div className={`w-[90%] h-8 sm:h-10 text-xs sm:text-base mt-5 ml-2 ${selectedButton === '/feeManagement' ? 'bg-orange-400 font-medium' : 'bg-orange-200 '} flex justify-center items-center rounded-lg`}
       onClick={()=>handleButtonClick('/feeManagement')}>
         Fee Management
       </div>
 
-      <div className={`w-[90%] h-10 mt-5 ml-2 ${selectedButton === '/staffManagement' ? 'bg-[#77e38d] font-medium' : 'bg-orange-200 '} flex justify-center items-center rounded-lg`}
+      <div className={`w-[90%] h-8 sm:h-10 text-xs sm:text-base mt-5 ml-2 ${selectedButton === '/staffManagement' ? 'bg-[#77e38d] font-medium' : 'bg-orange-200 '} flex justify-center items-center rounded-lg`}
       onClick={()=>handleButtonClick('/staffManagement')}>
         Staff Management
       </div>
 
-      <div className='w-[90%] h-10 mt-16 ml-2 bg-red-300 hover:bg-red-400 hover:font-medium font-Rubik flex justify-center items-center gap-2 rounded-lg 
-      transition-colors duration-300 delay-150' onClick={handleLogout}>
-       <CiLogout className='text-xl'/> Logout
+      <div className='w-[90%] h-8 sm:h-10 text-sm sm:text-base mt-16 ml-2 bg-red-300 hover:bg-red-400 hover:font-medium font-Rubik flex justify-center items-center gap-2 rounded-lg 
+      transition-colors duration-300 delay-150 ' onClick={handleLogout}>
+       <CiLogout className=' sm:text-xl'/> Logout
       </div>
 
      

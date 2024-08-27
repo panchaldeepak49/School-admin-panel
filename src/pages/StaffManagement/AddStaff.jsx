@@ -65,7 +65,18 @@ const AddStaff = ({setIsAddStaff,fetchStaffData}) => {
         <InputField type='text' placeholder='Contact Info' value={contact}  onChange={(e)=>setContact(e.target.value)} />
         <InputField type='text' placeholder='Address' value={address}  onChange={(e)=>setAddress(e.target.value)}/>
         <InputField type='text' placeholder='Designation' value={designation}  onChange={(e)=>setDesignation(e.target.value)}/>
-        <InputField type='text' placeholder='Class Assigned' value={classAssigned}  onChange={(e)=>setClassAssigned(e.target.value)}/>
+        {/* <InputField type='text' placeholder='Class Allot' value={classAssigned}  onChange={(e)=>setClassAssigned(e.target.value)}/> */}
+        <select className='outline-none border border-gray-300 rounded-md px-1 w-[100%] cursor-pointer' value={classAssigned} onChange={(e)=>setClassAssigned(e.target.value)}>
+         <option value=''>No Class</option>
+         <option value='V'>V</option>
+         <option value='VI-A'>VI-A</option>
+         <option value='VI-B'>VI-B</option>
+          <option value='VII'>VII</option>
+          <option value='VIII-A'>VIII-A</option>
+          <option value='VIII-B'>VIII-B</option>
+          <option value='IX'>IX</option>
+          <option value='X'>X</option>
+        </select>
         <InputField type='text' placeholder='Salary' value={salary}  onChange={(e)=>setSalary(e.target.value)}/>
         <InputField type='text' placeholder='Bank Name' value={bankName}  onChange={(e)=>setBankName(e.target.value)}/>
         </div>

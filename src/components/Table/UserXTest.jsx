@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import CreateFeeModal from '../FeeModals/CreateFeeModal';
 import ViewDetailModal from '../ViewDetailModal';
 
-const UserXTest = ({studentX,fetchXAdmission}) => {
+const UserXTest = ({studentX,fetchXAdmission,classTeacherName}) => {
     //console.log(studentX)
     const [showFeeModal,setShowFeeModal] = useState(false);
     const [displayingData,setDisplayingData] = useState('');
@@ -47,7 +47,7 @@ const UserXTest = ({studentX,fetchXAdmission}) => {
         <td className='py-2 border border-gray-400 text-sm text-center'>{userData.class}</td>
         <td className='py-2 border border-gray-400 text-sm text-center'>{userData.rollNo}</td>
         <td className='py-2 border border-gray-400 text-sm text-center'>{userData.contact}</td>
-        <td className='py-2 border border-gray-400 text-sm text-center'>{userData.classTeacher}</td>
+        <td className='py-2 border border-gray-400 text-sm text-center'>{classTeacherName ? classTeacherName : "" }</td>
         <td className='py-2 border border-gray-400 text-sm text-center min-w-64 flex gap-4'>
         <p className='ml-4 text-blue-800 text-sm border-b border-blue-800 cursor-pointer' onClick={()=>viewUser(userData)}>View Detail</p>
           <p className='text-green-800 border-b border-green-800 cursor-pointer' 
@@ -66,7 +66,7 @@ const UserXTest = ({studentX,fetchXAdmission}) => {
     { showFeeModal && <CreateFeeModal displayingData={ displayingData } setShowFeeModal={setShowFeeModal} 
      fetchXAdmission={fetchXAdmission} />}
     
-    { showViewModal && <ViewDetailModal displayingData={ displayingData } setShowViewModal={setShowViewModal} />}
+    { showViewModal && <ViewDetailModal displayingData={ displayingData } setShowViewModal={setShowViewModal} classTeacherName={classTeacherName} />}
     </>
   )
 }

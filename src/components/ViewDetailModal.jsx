@@ -1,7 +1,7 @@
 import React,{ useState,useEffect } from 'react';
 import { BallTriangle, TailSpin, ThreeCircles,Grid,DNA,FallingLines } from 'react-loader-spinner';
 
-const ViewDetailModal = ({displayingData,setShowViewModal}) => {
+const ViewDetailModal = ({displayingData,setShowViewModal,classTeacherName}) => {
     //console.log(displayingData)
     const [colorClass,setColorClass] = useState('bg-gray-200');
     
@@ -41,7 +41,7 @@ const ViewDetailModal = ({displayingData,setShowViewModal}) => {
         <p className='font-Rubik'><span className='font-semibold'>Address : </span> {displayingData.address}</p>
         <p className='font-Rubik'><span className='font-semibold'>DOA : </span> {displayingData.admissionDate}</p>
         <p className='font-Rubik'><span className='font-semibold'>Section : </span> {displayingData.section}</p>
-        <p className='font-Rubik'><span className='font-semibold'>Class Teacher : </span> {displayingData.classTeacher}</p>
+        <p className='font-Rubik'><span className='font-semibold'>Class Teacher : </span> {classTeacherName}</p>
         <p className='font-Rubik'><span className='font-semibold'>Gender : </span> {displayingData.gender}</p>
         <p className='font-Rubik'><span className='font-semibold'>Contact : </span> {displayingData.contact}</p>
         </div>

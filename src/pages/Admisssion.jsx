@@ -8,6 +8,7 @@ import BluDotImage from '../assets/Images/Group 195.png';
 import OrangeDotImage from '../assets/Images/Group 196.png';
 import Tot1 from '../assets/Images/stu1.jpg';
 import UploadImgFile1 from '../components/UploadImgFile1';
+import InputField from '../components/Global/InputField';
 
 
 const { Option } = Select;
@@ -52,8 +53,8 @@ const Admisssion = () => {
     "rollNo" : rollNo,
     "address" : address,
     "admissionDate" : admissionDate,
-    "section" : section,
-    "classTeacher" : classTeacher,
+    // "section" : section,
+    // "classTeacher" : classTeacher,
     "gender" : gender,
     "contact" : contact,
     "imageUrl" : imgURL,
@@ -74,10 +75,6 @@ const Admisssion = () => {
       message.error('Please enter the Address');
     }else if(!admissionDate.trim()){
       message.error('Please enter the Admission Date');
-    }else if(!section.trim()){
-      message.error('Please enter the Section');
-    }else if(!classTeacher.trim()){
-      message.error('Please enter the Class Teacher name');
     }else if(!gender.trim()){
       message.error('Please specify the gender');
     }else if(!contact.trim()){
@@ -122,18 +119,20 @@ const Admisssion = () => {
         {/* <UploadImgFile1 imgURL={imgURL} setImgURL={setImgURL} /> */}
         <input type='text' value={name} onChange={(e)=>setName(e.target.value)} className='w-[70%] py-1 pl-2  rounded-md  border-2' placeholder='Enter Name*'></input>
         <input type='text' value={fatherName} onChange={(e)=>setFatherName(e.target.value)} className='w-[70%] py-1 pl-2  rounded-md border-2' placeholder='Father Name*'></input>
-        {/* <input type='text' value={myClass} onChange={(e)=>setMyClass(e.target.value)} className='w-[70%] py-1 pl-2  rounded-md border-2' placeholder='Class*'></input> */}
+       
         <Select
                 value={selectClass}
                 onChange={handleOptionChange}
                 className='w-[70%] h-10 py-0 pl-0  rounded-md border-2 text-4xl'
                 placeholder={'class'}>
-                <Option value={null} className='text-black' disabled>Choose a class</Option>
-                <Option value={'VI'}>VI</Option>
-                <Option value={'VII'}>VII</Option>
-                 <Option value={'VIII'}>VIII</Option>
-                 <Option value={'IX'}>IX</Option>
-                 <Option value={'X'}>X</Option>
+                <option value={null} className='text-black' disabled>Choose a class</option>
+                <option value={'VI-A'}>VI-A</option>
+                <option value={'VI-B'}>VI-B</option>
+                <option value={'VII'}>VII</option>
+                 <option value={'VIII-A'}>VIII-A</option>
+                 <option value={'VIII-B'}>VIII-B</option>
+                 <option value={'IX'}>IX</option>
+                 <option value={'X'}>X</option>
                  </Select>
         <input type='number' value={rollNo} onChange={(e)=>setRollNo(e.target.value)} className='w-[70%] py-1 pl-2  rounded-md border-2' placeholder='Roll No*'></input>
         <input type='text' value={address} onChange={(e)=>setAddress(e.target.value)} className='w-[70%] py-1 pl-2  rounded-md border-2' placeholder='Address*'></input>
@@ -143,9 +142,14 @@ const Admisssion = () => {
         <div className='flex flex-col gap-4 w-[50%]  mt-4 ml-2 '>
         <img src={Tot1} className=' ml-10 w-[35%] rounded-md' />
         <input type='date' value={admissionDate} onChange={(e)=>setAdmissionDate(e.target.value)} className='w-[70%] mt-6 py-1 pl-2 rounded-md border-2 cursor-pointer' placeholder='Date of Admission*'></input>
-        <input type='text' value={section} onChange={(e)=>setSection(e.target.value)} className='w-[70%] py-1 pl-2  rounded-md border-2' placeholder='Section*'></input>
-        <input type='text' value={classTeacher} onChange={(e)=>setClassTeacher(e.target.value)} className='w-[70%] py-1 pl-2 rounded-md border-2' placeholder='Class Teacher*'></input>
-        <input type='text' value={gender} onChange={(e)=>setGender(e.target.value)} className='w-[70%] py-1 pl-2  rounded-md border-2' placeholder='Boy/Girl*'></input>
+        {/* <input type='text' value={section} onChange={(e)=>setSection(e.target.value)} className='w-[70%] py-1 pl-2  rounded-md border-2' placeholder='Section*'></input> */}
+        {/* <input type='text' value={classTeacher} onChange={(e)=>setClassTeacher(e.target.value)} className='w-[70%] py-1 pl-2 rounded-md border-2' placeholder='Class Teacher*'></input> */}
+        {/* <input type='text' value={gender} onChange={(e)=>setGender(e.target.value)} className='w-[70%] py-1 pl-2  rounded-md border-2' placeholder='Boy/Girl*'></input> */}
+        <select className='outline-none rounded-md px-1 py-1 w-[70%] cursor-pointer' value={gender} onChange={(e)=>setGender(e.target.value)}>
+        <option value='' disabled >Select Gender</option>
+         <option value='boy'>Boy</option>
+         <option value='girl'>Girl</option>
+        </select>
         <input type='number' value={contact} onChange={(e)=>setContact(e.target.value)} className='w-[70%] py-1 pl-2 rounded-md border-2' placeholder='Contact*'></input>
         <button className=' w-[25%] py-2 bg-blue-600 text-white rounded-md' onClick={()=>handleSubmit()}>Submit</button>
         </div>

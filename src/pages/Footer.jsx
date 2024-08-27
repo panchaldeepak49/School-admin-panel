@@ -4,6 +4,7 @@ import Stu2 from '../assets/Images/s1.jpg';
 import Stu3 from '../assets/Images/avatar-6.png';
 import Stu4 from '../assets/Images/avatar-1.jpg';
 import Stu5 from '../assets/Images/pim1.jpg';
+import Stu6 from '../assets/Images/schg.jpg';
 
 const Footer = () => {
 
@@ -11,7 +12,7 @@ const Footer = () => {
   return (
     <>
     <div className='mt-5 flex justify-center'>
-        <p className='sm:text-[2.5rem] text-[2rem] text-[#525FE1] font-Playwrite'>Our Stars</p>
+        <p className='text-[2rem] sm:text-[2.5rem]  text-[#525FE1] font-Playwrite'>Our Stars</p>
     </div>
 
     <div className='flex justify-center overflow-x-hidden'>
@@ -62,7 +63,7 @@ const Footer = () => {
     <div className='flex  items-center justify-center h-10 w-44 sm:h-28 sm:w-28 md:h-40 md:w-60
     hover:-translate-y-2 hover:scale-110 bg-white rounded-full transition-transform delay-50'>
     <p className=' sm:text-[2rem] text-[0.4rem]  text-red-600 font-semibold font-PlayFair shadow-lg'></p>
-    
+    <img src={Stu6} alt="missing" className='mt-2'/>
     </div>
 
     </div>

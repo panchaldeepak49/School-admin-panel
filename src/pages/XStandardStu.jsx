@@ -5,6 +5,7 @@ import Search from '../components/Search';
 import debounce from 'lodash.debounce';
 import { MyContext } from '../myContext';
 import { BallTriangle, Bars, TailSpin, ThreeCircles } from 'react-loader-spinner';
+import { message } from 'antd';
 
 const XStandardStu = () => {
 
@@ -12,7 +13,8 @@ const XStandardStu = () => {
     // const[studentX,setStudentX] = useState('');
     const {studentX,setStudentX} = useContext(MyContext);
     const [selectedStandard,setSelectedStandard] = useState('X');
-    //console.log(selectedStandard);
+    const [classTeacherName,setClassTeacherName] = useState('')
+    //console.log(classTeacherName);
 
     const fetchXAdmission = async (searchQuery) => {
         //await userRequest.get('/api/school/getAdmissionX')
@@ -36,6 +38,28 @@ const XStandardStu = () => {
      useEffect(()=>{
        fetchXAdmission();
      },[selectedStandard]);
+
+     /////////////////////////////////////////////////////////////////////
+     
+
+     const getParticularStaff = async()=>{
+        await userRequest.get(`/api/school/getParticularStaff/${selectedStandard}`)
+        .then((res)=>{
+          //console.log(res)
+          const result = res.data?.particularStaff.name;
+          setClassTeacherName(result)
+        })
+        .catch((err) => {
+          const errorMessage = err.response?.data?.message || "An error occurred";
+          message.error(errorMessage);
+          setLoading(true);
+        });
+     }
+
+      useEffect(()=>{
+       getParticularStaff();
+     },[selectedStandard])
+
 
      ////////////////////////////////////////////////////////////////search filter and debounce 
      const [searchText, setSearchText] = useState('');
@@ -69,11 +93,14 @@ const XStandardStu = () => {
         <div className='flex justify-between gap-10  mt-4 py-2 bg-green-400'>
          <p className='invisible'>Dummy</p> 
         <p className='text-xl'>Class {selectedStandard} Students </p>
+        <p>{classTeacherName}</p>
         <div className='pr-5 flex gap-4'>
-        <select className='outline-none rounded-xl px-1 bg-blue-200 w-12 cursor-pointer' value={selectedStandard} onChange={(e)=>setSelectedStandard(e.target.value)}>
-         <option value='VI'>VI</option>
+        <select className='outline-none rounded-xl px-1 bg-blue-200 w-16 cursor-pointer' value={selectedStandard} onChange={(e)=>setSelectedStandard(e.target.value)}>
+         <option value='VI-A'>VI-A</option>
+         <option value='VI-B'>VI-B</option>
           <option value='VII'>VII</option>
-          <option value='VIII'>VIII</option>
+          <option value='VIII-A'>VIII-A</option>
+          <option value='VIII-B'>VIII-B</option>
           <option value='IX'>IX</option>
           <option value='X'>X</option>
         </select>
@@ -82,8 +109,8 @@ const XStandardStu = () => {
         </div>    
         
         {/* <img src={erpImg} ></img> */}
-        { loading ? <div className='relative top-[40%] left-[40%] '><Bars className=''  /></div>  :
-        <UserXTest  studentX = {studentX1} fetchXAdmission = {fetchXAdmission} />
+        { loading ? <div className='relative top-[25%] left-[40%] '><Bars className=''  /></div>  :
+        <UserXTest  studentX = {studentX1} fetchXAdmission = {fetchXAdmission} classTeacherName={classTeacherName} />
         }
          
         {nPage > 1 ? ( 

@@ -119,6 +119,7 @@ const StaffManagement = () => {
       <tr className='gap-4 bg-green-300'>
         <th className='px-4 py-2 min-w-14  border border-gray-400'>Sr</th>
         <th className='min-w-48 text-sm py-2 border border-gray-400  '>Name</th> 
+        <th className='px-4 py-2 border border-gray-400 min-w-36 text-sm '>Class Allot.</th>
         <th className='px-4 py-2 border border-gray-400 min-w-36 text-sm '>DOJ</th>
         <th className='px-4 py-2 border border-gray-400 min-w-52 text-sm'>E-mail</th>
         <th className='px-4 py-2 border border-gray-400 min-w-36 text-sm'>Designation</th>
@@ -135,6 +136,7 @@ const StaffManagement = () => {
       <tr className=' mt-10' key={index}>
         <td className='py-2 border border-gray-400 text-sm text-center'>{index+1}</td>
         <td className='py-2 border border-gray-400 text-sm text-center'>{value.name}</td>
+        <td className='py-2 border border-gray-400 text-sm text-center'>{value.classAssigned}</td>
         <td className='py-2 border border-gray-400 text-sm text-center'>{value.doj}</td>
         <td className='py-2 border border-gray-400 text-sm text-center'>{value.email}</td>
         <td className='py-2 border border-gray-400 text-sm text-center'>{value.designation}</td>
