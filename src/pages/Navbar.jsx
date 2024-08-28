@@ -33,7 +33,7 @@ const Navbar = () => {
         <div className='relative flex flex-col items-center text-center gap-5 mt-6'>
             
             <p className='text-blue-400  font-semibold font-serif sm:text-2xl lg:text-4xl'>Convent</p>
-            <p className='text-blue-400 font-semibold font-serif sm:text-2xl lg-text-3xl'>International</p>
+            <p className='text-blue-400 font-semibold font-serif text-xs sm:text-2xl lg-text-3xl'>International</p>
             <img src={Aero} alt="Convent School" className='w-10 ' />
             <img src={AeroTail} alt="Convent School" className='absolute top-24 sm:top-28 md:top-32 lg:top-36 left-6 sm:left-8 md:left-10 lg:left-14  w-14 ' />
         </div>

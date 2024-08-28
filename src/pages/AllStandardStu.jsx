@@ -91,10 +91,10 @@ const AllStandardStu = () => {
     {totalPage > 1 ? ( 
     <div className='fixed bottom-8 w-full flex justify-evenly mt-4'>
       
-      <button className={`bg-blue-500 px-4 py-2  rounded-xl text-white`} onClick={prePage}>Previous</button>
+      <button className={`bg-blue-500 px-2 sm:px-4 py-1 sm:py-2  rounded-xl text-white`} onClick={prePage}>Previous</button>
           
-      <button className={`bg-blue-500 px-6 py-2 rounded-xl text-white`} onClick={nextPage} >Next</button>
-      <div className=' bg-red-200 px-6 py-2 rounded-lg'>Page {page} of {totalPage}</div>
+      <button className={`bg-blue-500 px-3 sm:px-6 py-1 sm:py-2 rounded-xl text-white`} onClick={nextPage} >Next</button>
+      <div className=' bg-red-200 px-2 sm:px-6 py-1 sm:py-2 rounded-lg'>Page {page} of {totalPage}</div>
     </div>
      ) : null
    } 

@@ -98,16 +98,16 @@ const StaffManagement = () => {
     <div className='w-[82%] '>
      <Search  value={searchText} handleSearch={handleSearch} />
 
-     <div className='flex justify-between gap-14  mt-4 py-2 bg-blue-400'>
+     <div className='flex justify-between sm:gap-14  mt-4 py-2 bg-blue-400'>
         <p className='invisible'>pop</p>
-        <p className='text-xl font-Rubik '>Our School Staff Info (2023-24)</p>
+        <p className='sm:text-xl font-Rubik '>Our School Staff Info (2023-24)</p>
         <div className='mr-8 flex items-center gap-5'>
-        <p className='font-Rubik'>Total Staff : {user.length} </p>
+        <p className='font-xs sm:font-base font-Rubik'>Total Staff : {user.length} </p>
         
         <p className='flex gap-2 font-rubik cursor-pointer' onClick={()=>setIsAddStaff(!isAddStaff)}>
-        <img src={userImg} className='w-6 rounded-full' alt='missing'></img>
+        <img src={userImg} className='w-4 sm:w-6 rounded-full' alt='missing'></img>
           +</p>
-        <p className='font-semibold cursor-pointer flex items-center text-2xl' onClick={handleMailBox}><IoMailOutline /></p>  
+        <p className='font-semibold cursor-pointer flex items-center sm:text-2xl' onClick={handleMailBox}><IoMailOutline /></p>  
         </div>
     </div> 
 
@@ -117,17 +117,17 @@ const StaffManagement = () => {
      <div class="inline-block whitespace-nowrap animation-slide">
         <table>
       <tr className='gap-4 bg-green-300'>
-        <th className='px-4 py-2 min-w-14  border border-gray-400'>Sr</th>
-        <th className='min-w-48 text-sm py-2 border border-gray-400  '>Name</th> 
-        <th className='px-4 py-2 border border-gray-400 min-w-36 text-sm '>Class Allot.</th>
-        <th className='px-4 py-2 border border-gray-400 min-w-36 text-sm '>DOJ</th>
-        <th className='px-4 py-2 border border-gray-400 min-w-52 text-sm'>E-mail</th>
-        <th className='px-4 py-2 border border-gray-400 min-w-36 text-sm'>Designation</th>
-        <th className='px-4 py-2 border border-gray-400 min-w-44 text-sm'>Mobile No.</th>
-        <th className='px-4 py-2 border border-gray-400 min-w-44 text-sm '>Salary</th>
-        <th className='px-4 py-2 border border-gray-400 min-w-44 text-sm'>Bank</th>
-        <th className='px-4 py-2 border border-gray-400 min-w-28 text-sm'>Image</th>
-        <th className='px-4 py-2 border border-gray-400 min-w-44 text-sm'>Actions</th> 
+        <th className='px-2 py-2 sm:min-w-14  border border-gray-400'>Sr</th>
+        <th className='sm:min-w-48 text-sm py-2 border border-gray-400  '>Name</th> 
+        <th className='px-2 py-2 border border-gray-400 sm:min-w-36 text-sm '>Class Allot.</th>
+        <th className='px-2 py-2 border border-gray-400 sm:min-w-36 text-sm '>DOJ</th>
+        <th className='px-2 py-2 border border-gray-400 sm:min-w-52 text-sm'>E-mail</th>
+        <th className='px-2 py-2 border border-gray-400 sm:min-w-36 text-sm'>Designation</th>
+        <th className='px-2 py-2 border border-gray-400 sm:min-w-44 text-sm'>Mobile No.</th>
+        <th className='px-2 py-2 border border-gray-400 sm:min-w-44 text-sm '>Salary</th>
+        <th className='px-2 py-2 border border-gray-400 sm:min-w-44 text-sm'>Bank</th>
+        <th className='px-2 py-2 border border-gray-400 sm:min-w-28 text-sm'>Image</th>
+        <th className='px-2 py-2 border border-gray-400 sm:min-w-44 text-sm'>Actions</th> 
       </tr>
      
       { user1.length > 0 ? (
@@ -144,7 +144,7 @@ const StaffManagement = () => {
         <td className='py-2 border border-gray-400 text-sm text-center'>{value.salary}</td>
         <td className='py-2 border border-gray-400 text-sm text-center'>{value.bankName}</td>
         <td className='py-2 border border-gray-400 text-sm text-center'>
-        <img src={value.imageUrl} className='ml-10 w-5 h-5 bg-green-600 rounded-full'></img>
+        <img src={value.imageUrl} className='ml-5 sm:ml-10 w-5 h-5 bg-green-600 rounded-full'></img>
         </td>
         <td className='py-2 px-4 border border-gray-400 text-sm text-center flex gap-4'>
         <p className='ml-0 text-green-600 border-b border-green-600 cursor-pointer' onClick={()=>handleEdit(value)} >Edit</p>
@@ -166,10 +166,10 @@ const StaffManagement = () => {
     {nPage > 1 ? ( 
     <div className='fixed bottom-8 w-full flex justify-evenly mt-4'>
       
-      <button className={`bg-blue-400 px-4 py-2  rounded-xl text-white`} onClick={prePage}>Previous</button>
+      <button className={`bg-blue-400 px-2 sm:px-4 py-1 sm:py-2  rounded-xl text-white`} onClick={prePage}>Previous</button>
           
-      <button className={`bg-blue-400 px-6 py-2 rounded-xl text-white`} onClick={nextPage} >Next</button>
-      <div className=' bg-red-200 px-6 py-2 rounded-lg '>Page {currentPage} of {nPage}</div>
+      <button className={`bg-blue-400 px-3 sm:px-6 py-1 sm:py-2 rounded-xl text-white`} onClick={nextPage} >Next</button>
+      <div className=' bg-red-200 px-3 sm:px-6 py-1 sm:py-2 rounded-lg '>Page {currentPage} of {nPage}</div>
     </div>
      ) : null
    } 

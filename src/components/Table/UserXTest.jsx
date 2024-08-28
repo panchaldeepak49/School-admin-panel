@@ -30,12 +30,12 @@ const UserXTest = ({studentX,fetchXAdmission,classTeacherName}) => {
         <table>
       <tr className='gap-4 bg-green-300'>
         <th className='px-4 py-2 min-w-14 border border-gray-400'>Sr</th>
-        <th className='min-w-44 text-sm py-2 border border-gray-400  '>Name</th> 
-        <th className='px-4 py-2 border border-gray-400 min-w-24 text-sm '>Class</th>
-        <th className='px-4 py-2 border border-gray-400 min-w-44 text-sm'>Roll No</th>
-        <th className='px-4 py-2 border border-gray-400 min-w-44 text-sm'>Contact</th>
-        <th className='px-4 py-2 border border-gray-400 min-w-36 text-sm'>Class Teacher</th>
-        <th className='px-4 py-2 border border-gray-400 min-w-44 text-sm'>Actions</th> 
+        <th className='sm:min-w-44 text-sm py-2 border border-gray-400  '>Name</th> 
+        <th className='px-4 py-2 border border-gray-400 sm:min-w-24 text-sm '>Class</th>
+        <th className='px-4 py-2 border border-gray-400 sm:min-w-44 text-sm'>Roll No</th>
+        <th className='px-4 py-2 border border-gray-400 sm:min-w-44 text-sm'>Contact</th>
+        <th className='px-4 py-2 border border-gray-400 sm:min-w-36 text-sm'>Class Teacher</th>
+        <th className='px-4 py-2 border border-gray-400 sm:min-w-44 text-sm'>Actions</th> 
       </tr>
      
       { studentX.length > 0 ? (

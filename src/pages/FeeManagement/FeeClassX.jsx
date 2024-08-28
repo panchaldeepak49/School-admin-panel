@@ -34,7 +34,7 @@ const FeeClassX = () => {
       //  await userRequest.get(`api/school/getAllStudentFee?search=${searchQuery ?? ''}&limit=${limit}&page=${page}`)
       await userRequest.get(`api/school/getAllStudentFee?search=${searchQuery ?? ''}&limit=${limit}&page=${page}&class=${selectedStandard}`)
          .then((response) => {
-           console.log(response)
+           //console.log(response)
            const result = response.data.allStudentFee;
            const result1 = response.data.totalPages;
            const result2 = response.data.count;
@@ -116,19 +116,21 @@ const FeeClassX = () => {
         <Search searchText={searchText} handleSearch={handleSearch} />
         
         
-        <div className='flex justify-between gap-10  mt-4 py-2 bg-blue-400'>
+        <div className='flex justify-between sm:gap-10  mt-4 py-2 bg-blue-400'>
           <p className='invisible'>Dummy</p>
-        <p className='text-xl font-Rubik'>Class {selectedStandard} Students Fee Info (2023-24)</p>
-        <select className='outline-none rounded-xl px-1 bg-blue-200 w-14' value={selectedStandard} onChange={(e)=>setSelectedStandard(e.target.value)}>
-         <option value='VI'>VI</option>
+        <p className='text-sm sm:text-xl font-Rubik'>Class {selectedStandard} Students Fee Info (2023-24)</p>
+        <select className='outline-none rounded-xl px-1 bg-blue-200 w-10 sm:w-14' value={selectedStandard} onChange={(e)=>setSelectedStandard(e.target.value)}>
+         <option value='VI-A'>VI-A</option>
+         <option value='VI-B'>VI-B</option>
           <option value='VII'>VII</option>
-          <option value='VIII'>VIII</option>
+          <option value='VIII-A'>VIII-A</option>
+          <option value='VIII-B'>VIII-B</option>
           <option value='IX'>IX</option>
           <option value='X'>X</option>
         </select>
-        <div className='mr-4 flex items-center gap-4'>
-        <p className='font-Rubik'>Total Students : {studentX.length}</p>
-        <p className='font-Rubik cursor-pointer' onClick={handleFeeCollection}>Collection </p>
+        <div className='sm:mr-4 flex items-center sm:gap-4'>
+        <p className='text-xs sm:text-base font-Rubik'>Total Students : {studentX.length}</p>
+        <p className='text-xs sm:text-base font-Rubik cursor-pointer' onClick={handleFeeCollection}>Collection </p>
         <BsCollection />
         </div>
         </div> 
@@ -139,13 +141,13 @@ const FeeClassX = () => {
      <div class="inline-block whitespace-nowrap animation-slide bg-blue-50">
         <table>
       <tr className='gap-4 bg-green-300'>
-        <th className='px-4 py-2 min-w-20  border border-gray-400 font-medium'>Sr</th>
-        <th className='min-w-44 text-sm py-2 border border-gray-400 font-medium  '>Name</th> 
-        <th className='min-w-44 text-sm py-2 border border-gray-400 font-medium  '>Class</th> 
-        <th className='px-4 py-2 border border-gray-400 min-w-44 text-sm font-medium '>Total Amount Due</th>
-        <th className='px-4 py-2 border border-gray-400 min-w-44 text-sm font-medium'>Amount Rcvd</th>
-        <th className='px-4 py-2 border border-gray-400 min-w-44 text-sm font-medium'>Amount Pending</th>
-        <th className='px-4 py-2 border border-gray-400 min-w-44 text-sm font-medium'>Actions</th> 
+        <th className='px-2 py-2 sm:min-w-20  border border-gray-400 font-medium'>Sr</th>
+        <th className='sm:min-w-44 text-sm px-2 py-2  border border-gray-400 font-medium  '>Name</th> 
+        <th className='sm:min-w-44 text-sm px-2 py-2 border border-gray-400 font-medium  '>Class</th> 
+        <th className='px-2 py-2 border border-gray-400 sm:min-w-44 text-sm font-medium '>Total Amount Due</th>
+        <th className='px-2 py-2 border border-gray-400 sm:min-w-44 text-sm font-medium'>Amount Rcvd</th>
+        <th className='px-2 py-2 border border-gray-400 sm:min-w-44 text-sm font-medium'>Amount Pending</th>
+        <th className='px-2 py-2 border border-gray-400 sm:min-w-44 text-sm font-medium'>Actions</th> 
       </tr>
      
       { studentX1.length > 0 ? (

@@ -33,8 +33,8 @@ const FeeCollection = ({setShowCollectionModal}) => {
   return (
     <>
       <div className='fixed top-16 left-[20%] bg-gray-200 w-[60%]'>
-      <p className='text-2xl py-2 text-center font-Rubik bg-[#ed6d64]'>Class {selectedStandard} Fee Collection Details </p>
-       <div className='mt-4 grid grid-cols-2 px-6'>
+      <p className='sm:text-2xl py-2 text-center font-Rubik bg-[#ed6d64]'>Class {selectedStandard} Fee Collection Details </p>
+       <div className='mt-4 grid grid-cols-2 px-6 text-sm sm:text-base'>
         <p>April : {allFeeData.aprilFeeCollection} </p>
         <p>May : {allFeeData.mayFeeCollection} </p>
         <p>June : {allFeeData.juneFeeCollection} </p>
