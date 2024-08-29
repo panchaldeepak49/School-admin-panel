@@ -22,7 +22,8 @@ const FeeClassX = () => {
     const[showCollectionModal,setShowCollectionModal] = useState(false);
     // const [selectedStandard,setSelectedStandard] = useState('X');
     const {selectedStandard,setSelectedStandard} = useContext(MyContext);
-    //console.log(studentX);
+    const [apiClass,setApiClass] = useState('');
+    //console.log(apiClass);
     var[page,setPage] = useState(1);
     const[totalPage,setTotalPage] = useState('');
     const[count,setCount] = useState('');
@@ -109,6 +110,25 @@ const FeeClassX = () => {
   const firstIndex = lastIndex - recordsPerPage;
   const studentX1 = studentX.slice(firstIndex,lastIndex);
   const nPage = studentX ? Math.ceil(studentX.length/recordsPerPage) : 0 ;
+
+  ////////////////////////////////////////////////////////////////////////////////////////${selectedStandard}
+  const fetchAllClass = async()=>{
+    await userRequest.get(`/api/school/getClass`)
+    .then((res)=>{
+        const result = res.data.allClass;
+        const apiMessage = res.data?.message;
+        setApiClass(result);
+        //message.success(apiMessage)
+    })
+    .catch((err)=>{
+        const errorMessage = err.response || "An error occurred"
+        message.error(errorMessage)
+    })
+    }
+
+    useEffect(()=>{
+      fetchAllClass();
+    },[]);
         
   return (
     <>
@@ -119,7 +139,7 @@ const FeeClassX = () => {
         <div className='flex justify-between sm:gap-10  mt-4 py-2 bg-blue-400'>
           <p className='invisible'>Dummy</p>
         <p className='text-sm sm:text-xl font-Rubik'>Class {selectedStandard} Students Fee Info (2023-24)</p>
-        <select className='outline-none rounded-xl px-1 bg-blue-200 w-10 sm:w-14' value={selectedStandard} onChange={(e)=>setSelectedStandard(e.target.value)}>
+        {/* <select className='outline-none rounded-xl px-1 bg-blue-200 w-10 sm:w-14' value={selectedStandard} onChange={(e)=>setSelectedStandard(e.target.value)}>
          <option value='VI-A'>VI-A</option>
          <option value='VI-B'>VI-B</option>
           <option value='VII'>VII</option>
@@ -127,7 +147,17 @@ const FeeClassX = () => {
           <option value='VIII-B'>VIII-B</option>
           <option value='IX'>IX</option>
           <option value='X'>X</option>
-        </select>
+        </select> */}
+        { apiClass.length > 0 ?
+           <select className='w-10 sm:w-16 rounded-md bg-orange-300 outline-none text-xs sm:text-base cursor-pointer'
+            value={selectedStandard} onChange={(e)=>setSelectedStandard(e.target.value)}>
+            <option value='' disabled>Choose Class</option>
+            {apiClass.map((data,index)=>(
+            <option key={index} value={data.class}>{data.class}</option>
+            ))}
+           </select> 
+            : " "
+          }   
         <div className='sm:mr-4 flex items-center sm:gap-4'>
         <p className='text-xs sm:text-base font-Rubik'>Total Students : {studentX.length}</p>
         <p className='text-xs sm:text-base font-Rubik cursor-pointer' onClick={handleFeeCollection}>Collection </p>
@@ -137,7 +167,7 @@ const FeeClassX = () => {
 
         { loading ? <div className='relative top-[30%] left-[40%] '><Bars className=''  /></div>  :  
         
-      <div className="mt-3 ml-4 overflow-x-auto max-w-screen-xl mx-auto ">
+      <div className="mt-3 ml-1 overflow-x-auto max-w-screen-xl mx-auto ">
      <div class="inline-block whitespace-nowrap animation-slide bg-blue-50">
         <table>
       <tr className='gap-4 bg-green-300'>
@@ -189,7 +219,7 @@ const FeeClassX = () => {
    } 
 
     { showTakeFeeModal && <TakeFeeModal displayingData={ displayingData } setShowTakeFeeModal={setShowTakeFeeModal} 
-    fetchXFee={fetchXFee} />}
+    fetchXFee={fetchXFee} selectedStandard={selectedStandard} />}
 
     { showFeeDetailModal && <ViewFeeDetailModal feeData={ feeData } setShowFeeDetailModal={setShowFeeDetailModal} />}
     

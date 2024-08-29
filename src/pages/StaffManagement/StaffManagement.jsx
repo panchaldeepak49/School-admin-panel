@@ -122,10 +122,10 @@ const StaffManagement = () => {
         <th className='px-2 py-2 border border-gray-400 sm:min-w-36 text-sm '>Class Allot.</th>
         <th className='px-2 py-2 border border-gray-400 sm:min-w-36 text-sm '>DOJ</th>
         <th className='px-2 py-2 border border-gray-400 sm:min-w-52 text-sm'>E-mail</th>
-        <th className='px-2 py-2 border border-gray-400 sm:min-w-36 text-sm'>Designation</th>
-        <th className='px-2 py-2 border border-gray-400 sm:min-w-44 text-sm'>Mobile No.</th>
-        <th className='px-2 py-2 border border-gray-400 sm:min-w-44 text-sm '>Salary</th>
-        <th className='px-2 py-2 border border-gray-400 sm:min-w-44 text-sm'>Bank</th>
+        <th className='px-2 py-2 border border-gray-400 sm:min-w-28 text-sm'>Designation</th>
+        <th className='px-2 py-2 border border-gray-400 sm:min-w-28 text-sm'>Mobile No.</th>
+        <th className='px-2 py-2 border border-gray-400 sm:min-w-28 text-sm '>Salary</th>
+        <th className='px-2 py-2 border border-gray-400 sm:min-w-28 text-sm'>Bank</th>
         <th className='px-2 py-2 border border-gray-400 sm:min-w-28 text-sm'>Image</th>
         <th className='px-2 py-2 border border-gray-400 sm:min-w-44 text-sm'>Actions</th> 
       </tr>

@@ -15,6 +15,7 @@ const XStandardStu = () => {
     const [selectedStandard,setSelectedStandard] = useState('X');
     const [classTeacherName,setClassTeacherName] = useState('')
     //console.log(classTeacherName);
+    const [apiClass,setApiClass] = useState('');
 
     const fetchXAdmission = async (searchQuery) => {
         //await userRequest.get('/api/school/getAdmissionX')
@@ -59,6 +60,25 @@ const XStandardStu = () => {
       useEffect(()=>{
        getParticularStaff();
      },[selectedStandard])
+     ////////////////////////////////////////////////////////////////////////
+
+     const fetchAllClass = async()=>{
+      await userRequest.get('/api/school/getClass')
+      .then((res)=>{
+          const result = res.data.allClass;
+          const apiMessage = res.data?.message;
+          setApiClass(result);
+          //message.success(apiMessage)
+      })
+      .catch((err)=>{
+          const errorMessage = err.response || "An error occurred"
+          message.error(errorMessage)
+      })
+      }
+  
+      useEffect(()=>{
+        fetchAllClass();
+      },[]);
 
 
      ////////////////////////////////////////////////////////////////search filter and debounce 
@@ -95,7 +115,7 @@ const XStandardStu = () => {
         <p className='sm:text-xl'>Class {selectedStandard} Students </p>
         <p className='text-xs sm:text-xl'>{classTeacherName}</p>
         <div className='sm:pr-5 flex gap-4'>
-        <select className='outline-none rounded-xl px-1 text-xs sm:text-base bg-blue-200 w-10 sm:w-16 cursor-pointer' value={selectedStandard} onChange={(e)=>setSelectedStandard(e.target.value)}>
+        {/* <select className='outline-none rounded-xl px-1 text-xs sm:text-base bg-blue-200 w-10 sm:w-16 cursor-pointer' value={selectedStandard} onChange={(e)=>setSelectedStandard(e.target.value)}>
          <option value='VI-A'>VI-A</option>
          <option value='VI-B'>VI-B</option>
           <option value='VII'>VII</option>
@@ -103,7 +123,16 @@ const XStandardStu = () => {
           <option value='VIII-B'>VIII-B</option>
           <option value='IX'>IX</option>
           <option value='X'>X</option>
-        </select>
+        </select> */}
+        { apiClass.length > 0 ?
+           <select className='w-10 sm:w-16 rounded-md bg-orange-300 outline-none text-xs sm:text-base cursor-pointer' value={selectedStandard} onChange={(e)=>setSelectedStandard(e.target.value)}>
+            <option value='' disabled>Choose Class</option>
+            {apiClass.map((data,index)=>(
+            <option key={index} value={data.class}>{data.class}</option>
+            ))}
+           </select> 
+            : " "
+          }   
         <p className='text-xs sm:text-base'>Total Students : {studentX.length > 0 ? studentX.length : '' }</p>
         </div>
         </div>    

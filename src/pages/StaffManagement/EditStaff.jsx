@@ -1,4 +1,4 @@
-import React,{ useState } from 'react';
+import React,{ useState,useEffect } from 'react';
 import InputField from '../../components/Global/InputField';
 import MyButton from '../../components/Global/MyButton';
 import { userRequest } from '../../components/RequestMethod';
@@ -17,6 +17,7 @@ const EditStaff = ({setIsEditStaff,fetchStaffData,staffData}) => {
     const [salary,setSalary] = useState(staffData.salary);
     const [bankName,setBankName] = useState(staffData.bankName);
     //console.log(staffData)
+    const [apiClass,setApiClass] = useState('');
 
     const updatedStaffData = JSON.stringify({
         "name" : name,
@@ -46,6 +47,24 @@ const EditStaff = ({setIsEditStaff,fetchStaffData,staffData}) => {
             message.error(apiMessage)
         })
     }
+    ///////////////////////////////////////////////////////////////////////////
+    const fetchAllClass = async()=>{
+        await userRequest.get('/api/school/getClass')
+        .then((res)=>{
+            const result = res.data.allClass;
+            const apiMessage = res.data?.message;
+            setApiClass(result);
+            //message.success(apiMessage)
+        })
+        .catch((err)=>{
+            const errorMessage = err.response || "An error occurred"
+            message.error(errorMessage)
+        })
+    }
+    
+    useEffect(()=>{
+        fetchAllClass();
+    },[]);
 
   return (
     <>
@@ -64,7 +83,7 @@ const EditStaff = ({setIsEditStaff,fetchStaffData,staffData}) => {
         <InputField type='text' placeholder='Contact Info' value={contact}  onChange={(e)=>setContact(e.target.value)} />
         <InputField type='text' placeholder='Address' value={address}  onChange={(e)=>setAddress(e.target.value)}/>
         <InputField type='text' placeholder='Designation' value={designation}  onChange={(e)=>setDesignation(e.target.value)}/>
-        <select className='outline-none border border-gray-300 rounded-md px-1 w-[100%] cursor-pointer' value={classAssigned} onChange={(e)=>setClassAssigned(e.target.value)}>
+        {/* <select className='outline-none border border-gray-300 rounded-md px-1 w-[100%] cursor-pointer' value={classAssigned} onChange={(e)=>setClassAssigned(e.target.value)}>
           <option value=''>No Class</option>
           <option value='V'>V</option>
           <option value='VI-A'>VI-A</option>
@@ -74,8 +93,18 @@ const EditStaff = ({setIsEditStaff,fetchStaffData,staffData}) => {
           <option value='VIII-B'>VIII-B</option>
           <option value='IX'>IX</option>
           <option value='X'>X</option>
-        </select>
-        {/* <InputField type='text' placeholder='Class Assigned' value={classAssigned}  onChange={(e)=>setClassAssigned(e.target.value)}/> */}
+        </select> */}
+          { apiClass.length > 0 ?
+           <select className='w-[100%] h-10 outline-none border border-gray-300 rounded-md px-1' value={classAssigned} onChange={(e)=>setClassAssigned(e.target.value)}>
+            <option value='' disabled>Choose Class</option>
+            <option value=''>No Class</option>
+            {apiClass.map((data,index)=>(
+            <option key={index} value={data.class}>{data.class}</option>
+            ))}
+           </select> 
+            : " "
+          }   
+        
         <InputField type='text' placeholder='Salary' value={salary}  onChange={(e)=>setSalary(e.target.value)}/>
         <InputField type='text' placeholder='Bank Name' value={bankName}  onChange={(e)=>setBankName(e.target.value)}/>
         </div>

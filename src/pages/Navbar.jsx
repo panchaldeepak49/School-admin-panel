@@ -52,6 +52,11 @@ const Navbar = () => {
       onClick={()=>handleButtonClick('/feeManagement')}>
         Fee Management
       </div>
+      
+      <div className={`w-[90%] h-8 sm:h-10 text-xs sm:text-base mt-5 ml-2 ${selectedButton === '/classManagement' ? 'bg-[#77e38d] font-medium' : 'bg-orange-200 '} flex justify-center items-center rounded-lg`}
+      onClick={()=>handleButtonClick('/classManagement')}>
+        Class Management
+      </div>
 
       <div className={`w-[90%] h-8 sm:h-10 text-xs sm:text-base mt-5 ml-2 ${selectedButton === '/staffManagement' ? 'bg-[#77e38d] font-medium' : 'bg-orange-200 '} flex justify-center items-center rounded-lg`}
       onClick={()=>handleButtonClick('/staffManagement')}>

@@ -51,7 +51,7 @@ const CreateFeeModal = ({displayingData,setShowFeeModal,fetchXAdmission}) => {
         "name" : name,
         "class" : gclass,
         "imageUrl" :image,
-        "baseFee" : baseFee,
+        // "baseFee" : baseFee,
         "april" : april,
         "may" : may,
         "june" : june,
@@ -100,8 +100,7 @@ const CreateFeeModal = ({displayingData,setShowFeeModal,fetchXAdmission}) => {
         <input type='text' value={name}  className='w-[70%] py-1 pl-2  rounded-md  border-2' placeholder='Enter Name*'></input>
         
         <p><span className='font-semibold'>Standard:</span> {gclass}</p>
-        <p className='flex gap-2'><span className='font-semibold '>Base Fee:</span><input type='number' className='rounded-md outline-none px-2' 
-        value={baseFee} onChange={(e)=>setBaseFee(e.target.value)} /></p>
+        <p className='flex gap-2'><span className='font-semibold '>Base Fee:</span></p>
         <p><span className='font-semibold'>Total Amount Due:</span> {totalAmountDue}</p>
         <p><span className='font-semibold'>Amount Accepted:</span> {totalAmountRcvd}</p>
         <p><span className='font-semibold'>Total Pending:</span> {amountPending}</p>

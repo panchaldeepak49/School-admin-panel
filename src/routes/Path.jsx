@@ -11,7 +11,7 @@ import PublicRoute from '../components/PublicRoutes';
 import FeeManagement from '../pages/FeeManagement/FeeManagement';
 import FeeClassX from '../pages/FeeManagement/FeeClassX';
 import StaffManagement from '../pages/StaffManagement/StaffManagement';
-import VIIStandardStu from '../pages/StandardWise/VIIStandardStu';
+import ClassAndFee from '../pages/ClassManagement/ClassAndFee';
 
 
 const Path = () => {
@@ -39,9 +39,10 @@ const Path = () => {
         <Route path= '/admission' element={<PrivateRoute><Admisssion /></PrivateRoute>}></Route>
         <Route path= '/allStudents' element={<PrivateRoute><AllStandardStu /></PrivateRoute>}></Route>
         <Route path= '/XStudents' element={<PrivateRoute><XStandardStu /></PrivateRoute>}></Route>
-        <Route path= '/VIIStudents' element={<PrivateRoute><VIIStandardStu /></PrivateRoute>}></Route>
+        {/* <Route path= '/VIIStudents' element={<PrivateRoute><VIIStandardStu /></PrivateRoute>}></Route> */}
         <Route path= '/feeManagement' element={<PrivateRoute><FeeManagement /></PrivateRoute>}></Route>
         <Route path= '/feeClassX' element={<PrivateRoute><FeeClassX /></PrivateRoute>}></Route>
+        <Route path= '/classManagement' element={<PrivateRoute><ClassAndFee /></PrivateRoute>}></Route>
         <Route path= '/staffManagement' element={<PrivateRoute><StaffManagement /></PrivateRoute>}></Route>
      </Routes>
      </div>

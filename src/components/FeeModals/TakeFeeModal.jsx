@@ -4,12 +4,14 @@ import { message } from 'antd';
 import BluButton from '../Global/BluButton';
 import RedButton from '../Global/RedButton';
 
-const TakeFeeModal = ({displayingData ,setShowTakeFeeModal,fetchXFee}) => {
+const TakeFeeModal = ({displayingData ,setShowTakeFeeModal,fetchXFee,selectedStandard}) => {
 
-  //console.log(displayingData);
+  const[reqApiClass,setReqApiClass] = useState('');
+  // console.log(selectedStandard)
+  // console.log(reqApiClass)
   const[stuId,setstuId] = useState(displayingData.stuId);
   const[name,setName] = useState(displayingData.name);
-  const[fee,setFee] = useState(displayingData.baseFee);
+  const[fee,setFee] = useState('');
 
   var [april, setApril] = useState(displayingData.april);
   var[may,setMay] = useState(displayingData.may);
@@ -40,13 +42,14 @@ const TakeFeeModal = ({displayingData ,setShowTakeFeeModal,fetchXFee}) => {
   const totalAmountDue = fee * (currentMonthIndex-2 );
 
   useEffect(() => {
+    setFee(reqApiClass.fee)
     // Recalculate totalAmountRcvd and amountPending whenever any of the input values change
     
     const totalAmountRcvdNew = +april + +may + +june + +july + +august + +september + +october + +november + +december + +january + +feb + +march ;
     const totalAmountDue = fee * (new Date().getMonth() );
     setTotalAmountRcvd(totalAmountRcvdNew);
    
-}, [april, may, june, july, august, september, october, november, december, january, feb, march]);
+}, [april, may, june, july, august, september, october, november, december, january, feb, march,reqApiClass]);
 
   var amountPending = totalAmountDue - totalAmountRcvd;
   // var totalAmountRcvd = (parseInt(april)+parseInt(may)+parseInt(june)+parseInt(july)+parseInt(august)+parseInt(september)+parseInt(october)+parseInt(november)+parseInt(december)+parseInt(january)+parseInt(feb)+parseInt(march));
@@ -91,6 +94,24 @@ const TakeFeeModal = ({displayingData ,setShowTakeFeeModal,fetchXFee}) => {
       setShowTakeFeeModal(false);
     })
   }
+  ///////////////////////////////////////////////////////////////////////reqApiClass
+  const fetchMyClass = async()=>{
+    await userRequest.get(`/api/school/getClass/${selectedStandard}`)
+    .then((res)=>{
+        const result = res.data.myClass;
+        const apiMessage = res.data?.message;
+        setReqApiClass(result);
+        //message.success(apiMessage)
+    })
+    .catch((err)=>{
+        const errorMessage = err.response || "An error occurred"
+        message.error(errorMessage)
+    })
+    }
+
+    useEffect(()=>{
+      fetchMyClass();
+    },[]);
 
 
   return (

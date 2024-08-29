@@ -1,4 +1,5 @@
-import React,{useState} from 'react'
+import React,{ useState,useEffect,useContext } from 'react';
+import { MyContext } from '../myContext';
 import studentImg from '/Images/avatar-4.jpg'
 import { userRequest } from '../components/RequestMethod';
 import { message } from 'antd';
@@ -17,6 +18,7 @@ const Admisssion = () => {
   const[name,setName] = useState('');
   const[fatherName,setFatherName] = useState('');
   const [selectClass, setSelectClass] = useState('');
+  const {apiClass,setApiClass} = useContext(MyContext);
   const[rollNo,setRollNo] = useState('');
   const[address,setAddress] = useState('');
   const[admissionDate,setAdmissionDate] = useState('');
@@ -26,7 +28,8 @@ const Admisssion = () => {
   const[contact,setContact] = useState('');
   //console.log(contact);
   const[imgURL,setImgURL] = useState('');
-  // console.log(selectClass);
+  
+  //console.log(selectClass);
 
 
   const phoneRegex = /^\d{10}$/; // Assuming you expect a 10-digit phone number
@@ -96,12 +99,26 @@ const Admisssion = () => {
       message.error(errorMessage)
     })
   }}
+   /////////////////////////////////////////////////////////////////////
 
-  const handleOptionChange = (value) => {
-    setSelectClass(value);
-    //setCurrentPage(1);
-    // window.location.reload();
-  };
+   const fetchAllClass = async()=>{
+    await userRequest.get('/api/school/getClass')
+    .then((res)=>{
+        const result = res.data.allClass;
+        const apiMessage = res.data?.message;
+        setApiClass(result);
+        //message.success(apiMessage)
+    })
+    .catch((err)=>{
+        const errorMessage = err.response || "An error occurred"
+        message.error(errorMessage)
+    })
+}
+
+useEffect(()=>{
+    fetchAllClass();
+},[]);
+
 
   return (
     <>
@@ -120,7 +137,7 @@ const Admisssion = () => {
         <input type='text' value={name} onChange={(e)=>setName(e.target.value)} className='w-[70%] py-1 pl-2  rounded-md  border-2' placeholder='Enter Name*'></input>
         <input type='text' value={fatherName} onChange={(e)=>setFatherName(e.target.value)} className='w-[70%] py-1 pl-2  rounded-md border-2' placeholder='Father Name*'></input>
        
-        <Select
+        {/* <Select
                 value={selectClass}
                 onChange={handleOptionChange}
                 className='w-[70%] h-10 py-0 pl-0  rounded-md border-2 text-4xl'
@@ -133,7 +150,18 @@ const Admisssion = () => {
                  <option value={'VIII-B'}>VIII-B</option>
                  <option value={'IX'}>IX</option>
                  <option value={'X'}>X</option>
-                 </Select>
+                 </Select> */}
+
+          { apiClass.length > 0 ?
+           <select className='w-[70%] h-10 outline-none pl-2' value={selectClass} onChange={(e)=>setSelectClass(e.target.value)}>
+            <option value='' disabled>Choose Class</option>
+            {apiClass.map((data,index)=>(
+            <option key={index} value={data.class}>{data.class}</option>
+            ))}
+           </select> 
+            : " "
+          }   
+
         <input type='number' value={rollNo} onChange={(e)=>setRollNo(e.target.value)} className='w-[70%] py-1 pl-2  rounded-md border-2' placeholder='Roll No*'></input>
         <input type='text' value={address} onChange={(e)=>setAddress(e.target.value)} className='w-[70%] py-1 pl-2  rounded-md border-2' placeholder='Address*'></input>
         </div>
@@ -142,9 +170,7 @@ const Admisssion = () => {
         <div className='flex flex-col gap-4 w-[50%]  mt-4 ml-2 '>
         <img src={Tot1} className=' ml-10 w-[35%] rounded-md' />
         <input type='date' value={admissionDate} onChange={(e)=>setAdmissionDate(e.target.value)} className='w-[70%] mt-6 py-1 pl-2 rounded-md border-2 cursor-pointer' placeholder='Date of Admission*'></input>
-        {/* <input type='text' value={section} onChange={(e)=>setSection(e.target.value)} className='w-[70%] py-1 pl-2  rounded-md border-2' placeholder='Section*'></input> */}
-        {/* <input type='text' value={classTeacher} onChange={(e)=>setClassTeacher(e.target.value)} className='w-[70%] py-1 pl-2 rounded-md border-2' placeholder='Class Teacher*'></input> */}
-        {/* <input type='text' value={gender} onChange={(e)=>setGender(e.target.value)} className='w-[70%] py-1 pl-2  rounded-md border-2' placeholder='Boy/Girl*'></input> */}
+       
         <select className='outline-none rounded-md px-1 py-1 w-[70%] cursor-pointer' value={gender} onChange={(e)=>setGender(e.target.value)}>
         <option value='' disabled >Select Gender</option>
          <option value='boy'>Boy</option>
