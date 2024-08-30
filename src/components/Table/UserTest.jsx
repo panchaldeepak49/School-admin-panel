@@ -36,7 +36,6 @@ const UserTest = ({student,fetchAllAdmission}) => {
         <th className='px-4 py-2 border border-gray-400 sm:min-w-36 text-sm '>Class</th>
         <th className='px-4 py-2 border border-gray-400 sm:min-w-36 text-sm'>Roll No.</th>
         <th className='px-4 py-2 border border-gray-400 sm:min-w-36 text-sm'>Contact</th>
-        
         <th className='px-4 py-2 border border-gray-400 sm:min-w-28 text-sm'>Image</th>
         <th className='px-4 py-2 border border-gray-400 sm:min-w-44 text-sm'>Actions</th> 
       </tr>

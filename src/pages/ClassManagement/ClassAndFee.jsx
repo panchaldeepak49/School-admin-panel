@@ -106,7 +106,7 @@ const ClassAndFee = () => {
 
     { isAddClass && <AddClass setIsAddClass={setIsAddClass} fetchAllClass={fetchAllClass} /> }
     { isEditClass && <EditClass setIsEditClass={setIsEditClass} passData={passData} fetchAllClass={fetchAllClass} /> }
-    { isDeleteClass && <DeleteClass setIsDeleteClass={setIsDeleteClass} passData={passData} /> }
+    { isDeleteClass && <DeleteClass setIsDeleteClass={setIsDeleteClass} passData={passData} fetchAllClass={fetchAllClass}  /> }
     </>
   )
 }

@@ -10,7 +10,7 @@ const CreateFeeModal = ({displayingData,setShowFeeModal,fetchXAdmission}) => {
   const[stuId,setstuId] = useState(displayingData._id);
   const[name,setName] = useState(displayingData.name);
   const[gclass,setGclass] = useState(displayingData.class);
-  const[baseFee,setBaseFee] = useState('')
+  // const[baseFee,setBaseFee] = useState('')
   const[image,setImage] = useState(displayingData.imageUrl);
 
   var [april, setApril] = useState('');
@@ -70,9 +70,7 @@ const CreateFeeModal = ({displayingData,setShowFeeModal,fetchXAdmission}) => {
       });
 
     const handleSave = async(e)=>{
-      if(!baseFee.trim()){
-        message.error('Please set BaseFee first')
-      }else{
+      
         //await userRequest.put(`/api/school/updateStudentFee/${displayingData._id}`,studentFeeDetails)
         await userRequest.post('/api/school/postAllStudentFee',studentFeeDetails)
         .then((res)=>{
@@ -87,7 +85,7 @@ const CreateFeeModal = ({displayingData,setShowFeeModal,fetchXAdmission}) => {
           message.error(errorMessage);
           //setShowFeeModal(false);
         })
-      }}
+      }
 
   return (
     <>

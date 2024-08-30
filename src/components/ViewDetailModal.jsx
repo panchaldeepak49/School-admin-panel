@@ -29,7 +29,7 @@ const ViewDetailModal = ({displayingData,setShowViewModal,classTeacherName}) => 
     border border-blue-600`}>
         <p className='font-sans  font-semibold text-xl text-blue-600 '>Student Details</p>
         <div className='flex justify-evenly'>
-        <img src={displayingData.imageUrl} className='w-[20%]' alt='oops'></img>
+        <img src={displayingData.imageUrl} className='w-[30%]' alt='oops'></img>
         <FallingLines className='text-sm'  />
         </div>
         <div className='flex flex-col gap-2'>
@@ -40,7 +40,7 @@ const ViewDetailModal = ({displayingData,setShowViewModal,classTeacherName}) => 
         <p className='font-Rubik'><span className='font-semibold'>Roll No : </span> {displayingData.rollNo}</p>
         <p className='font-Rubik'><span className='font-semibold'>Address : </span> {displayingData.address}</p>
         <p className='font-Rubik'><span className='font-semibold'>DOA : </span> {displayingData.admissionDate}</p>
-        <p className='font-Rubik'><span className='font-semibold'>Section : </span> {displayingData.section}</p>
+        {/* <p className='font-Rubik'><span className='font-semibold'>Section : </span> {displayingData.section}</p> */}
         <p className='font-Rubik'><span className='font-semibold'>Class Teacher : </span> {classTeacherName}</p>
         <p className='font-Rubik'><span className='font-semibold'>Gender : </span> {displayingData.gender}</p>
         <p className='font-Rubik'><span className='font-semibold'>Contact : </span> {displayingData.contact}</p>

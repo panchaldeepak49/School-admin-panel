@@ -17,6 +17,7 @@ const DeleteStaff = ({setIsDeleteStaff,fetchStaffData,staffData}) => {
             message.error(apiMessage)
         })
     }
+    
   return (
     <>
      <div className='fixed top-10 left-[35%] w-[30%] border border-green-400 rounded-md bg-gray-100'>

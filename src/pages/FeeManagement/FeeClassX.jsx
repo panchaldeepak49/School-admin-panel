@@ -138,7 +138,7 @@ const FeeClassX = () => {
         
         <div className='flex justify-between sm:gap-10  mt-4 py-2 bg-blue-400'>
           <p className='invisible'>Dummy</p>
-        <p className='text-sm sm:text-xl font-Rubik'>Class {selectedStandard} Students Fee Info (2023-24)</p>
+        <p className='text-sm sm:text-xl font-Rubik'>Class {selectedStandard} Students Fee Info (2024-25)</p>
         {/* <select className='outline-none rounded-xl px-1 bg-blue-200 w-10 sm:w-14' value={selectedStandard} onChange={(e)=>setSelectedStandard(e.target.value)}>
          <option value='VI-A'>VI-A</option>
          <option value='VI-B'>VI-B</option>
