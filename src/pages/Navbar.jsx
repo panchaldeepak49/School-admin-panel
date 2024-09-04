@@ -38,32 +38,32 @@ const Navbar = () => {
             <img src={AeroTail} alt="Convent School" className='absolute top-24 sm:top-28 md:top-32 lg:top-36 left-6 sm:left-8 md:left-10 lg:left-14  w-14 ' />
         </div>
 
-      <div className={`w-[90%] h-8 sm:h-10 text-xs sm:text-base mt-10 ml-2 ${selectedButton === '/home' ? 'bg-[#77e38d] font-medium' : 'bg-orange-200'}  flex justify-center items-center rounded-lg`}
+      <div className={`w-[90%] h-8 sm:h-10 text-xs sm:text-base mt-10 ml-2 ${selectedButton === '/home' ? 'bg-violet-500 font-medium text-white' : 'bg-orange-200'} hover:bg-violet-500 hover:text-white transition-colors duration-400 delay-600  flex justify-center items-center rounded-lg`}
       onClick={()=>handleButtonClick('/home')}>
         Dashboard
       </div>
 
-      <div className={`w-[90%] h-8 sm:h-10 text-xs sm:text-base mt-5 ml-2 ${selectedButton === '/admission' ? 'bg-[#77e38d] font-medium' : 'bg-orange-200'} flex justify-center items-center rounded-lg`}
+      <div className={`w-[90%] h-8 sm:h-10 text-xs sm:text-base mt-5 ml-2 ${selectedButton === '/admission' ? 'bg-[#77e38d] font-medium' : 'bg-orange-200'} hover:bg-violet-500 hover:text-white transition-colors duration-400 delay-600 flex justify-center items-center rounded-lg`}
       onClick={()=>handleButtonClick('/admission')}>
         Admission
       </div>
 
-      <div className={`w-[90%] h-8 sm:h-10 text-xs sm:text-base mt-5 ml-2 ${selectedButton === '/feeManagement' ? 'bg-orange-400 font-medium' : 'bg-orange-200 '} flex justify-center items-center rounded-lg`}
+      <div className={`w-[90%] h-8 sm:h-10 text-xs sm:text-base mt-5 ml-2 ${selectedButton === '/feeManagement' ? 'bg-orange-400 font-medium' : 'bg-orange-200 '} hover:bg-violet-500 hover:text-white transition-colors duration-400 delay-600 flex justify-center items-center rounded-lg`}
       onClick={()=>handleButtonClick('/feeManagement')}>
         Fee Management
       </div>
       
-      <div className={`w-[90%] h-8 sm:h-10 text-xs sm:text-base mt-5 ml-2 ${selectedButton === '/classManagement' ? 'bg-[#77e38d] font-medium' : 'bg-orange-200 '} flex justify-center items-center rounded-lg`}
+      <div className={`w-[90%] h-8 sm:h-10 text-xs sm:text-base mt-5 ml-2 ${selectedButton === '/classManagement' ? 'bg-[#77e38d] font-medium' : 'bg-orange-200 '} hover:bg-violet-500 hover:text-white transition-colors duration-400 delay-600 flex justify-center items-center rounded-lg`}
       onClick={()=>handleButtonClick('/classManagement')}>
         Class Management
       </div>
 
-      <div className={`w-[90%] h-8 sm:h-10 text-xs sm:text-base mt-5 ml-2 ${selectedButton === '/staffManagement' ? 'bg-[#77e38d] font-medium' : 'bg-orange-200 '} flex justify-center items-center rounded-lg`}
+      <div className={`w-[90%] h-8 sm:h-10 text-xs sm:text-base mt-5 ml-2 ${selectedButton === '/staffManagement' ? 'bg-[#77e38d] font-medium' : 'bg-orange-200 '} hover:bg-violet-500 hover:text-white transition-colors duration-400 delay-600 flex justify-center items-center rounded-lg`}
       onClick={()=>handleButtonClick('/staffManagement')}>
         Staff Management
       </div>
 
-      <div className='w-[90%] h-8 sm:h-10 text-sm sm:text-base mt-16 ml-2 bg-red-300 hover:bg-red-400 hover:font-medium font-Rubik flex justify-center items-center gap-2 rounded-lg 
+      <div className='w-[90%] h-8 sm:h-10 text-sm sm:text-base mt-16 ml-2 bg-red-300 hover:bg-red-400 hover:font-medium hover:text-white font-Rubik flex justify-center items-center gap-2 rounded-lg 
       transition-colors duration-300 delay-150 ' onClick={handleLogout}>
        <CiLogout className=' sm:text-xl'/> Logout
       </div>

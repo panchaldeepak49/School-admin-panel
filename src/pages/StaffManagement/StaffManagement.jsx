@@ -98,11 +98,11 @@ const StaffManagement = () => {
     <div className='w-[82%] '>
      <Search  value={searchText} handleSearch={handleSearch} />
 
-     <div className='flex justify-between sm:gap-14  mt-4 py-2 bg-blue-400'>
+     <div className='flex justify-between sm:gap-14  mt-4 py-2 bg-[#1877f2]'>
         <p className='invisible'>pop</p>
-        <p className='sm:text-xl font-Rubik '>Our School Staff Info (2023-24)</p>
+        <p className='sm:text-xl font-Rubik text-white '>Our School Staff Info (2024-25)</p>
         <div className='mr-8 flex items-center gap-5'>
-        <p className='font-xs sm:font-base font-Rubik'>Total Staff : {user.length} </p>
+        <p className='font-xs sm:font-base font-Rubik text-gray-50'>Total Staff : {user.length} </p>
         
         <p className='flex gap-2 font-rubik cursor-pointer' onClick={()=>setIsAddStaff(!isAddStaff)}>
         <img src={userImg} className='w-4 sm:w-6 rounded-full' alt='missing'></img>
@@ -166,9 +166,9 @@ const StaffManagement = () => {
     {nPage > 1 ? ( 
     <div className='fixed bottom-8 w-full flex justify-evenly mt-4'>
       
-      <button className={`bg-blue-400 px-2 sm:px-4 py-1 sm:py-2  rounded-xl text-white`} onClick={prePage}>Previous</button>
+      <button className={`bg-[#1877f2] hover:bg-violet-600  transition-colors duration-400 delay-600 px-2 sm:px-4 py-1 sm:py-2  rounded-xl text-white`} onClick={prePage}>Previous</button>
           
-      <button className={`bg-blue-400 px-3 sm:px-6 py-1 sm:py-2 rounded-xl text-white`} onClick={nextPage} >Next</button>
+      <button className={`bg-[#1877f2] hover:bg-violet-600  transition-colors duration-400 delay-600  px-3 sm:px-6 py-1 sm:py-2 rounded-xl text-white`} onClick={nextPage} >Next</button>
       <div className=' bg-red-200 px-3 sm:px-6 py-1 sm:py-2 rounded-lg '>Page {currentPage} of {nPage}</div>
     </div>
      ) : null

@@ -69,12 +69,12 @@ const AllStandardStu = () => {
     <Search searchText={searchText} handleSearch={handleSearch} />
         
         {/* <p className='flex justify-center text-xl mt-4 py-2 bg-green-400'>All Registered Students</p> */}
-        <div className='flex justify-between items-center mt-4 py-2 bg-blue-400'>
+        <div className='flex justify-between items-center mt-4 py-2 bg-[#1877f2]'>
         <p className='invisible'>All Students</p>  
         {/* <img src={Aero} alt="Convent School" className='ml-4  w-10 ' /> */}
-        <p className='text-xl font-Rubik'>All Registered Students</p>
+        <p className='text-xl font-Rubik text-white'>All Registered Students</p>
         <div className='pr-4 flex items-center gap-2'>
-        <p className=' font-Rubik '>Total Students : {countAll}</p>
+        <p className=' font-Rubik text-gray-100'>Total Students : {countAll}</p>
         <IoMailOutline className='text-xl'/>
         </div>
         </div>    
@@ -91,9 +91,9 @@ const AllStandardStu = () => {
     {totalPage > 1 ? ( 
     <div className='fixed bottom-8 w-full flex justify-evenly mt-4'>
       
-      <button className={`bg-blue-500 px-2 sm:px-4 py-1 sm:py-2  rounded-xl text-white`} onClick={prePage}>Previous</button>
+      <button className={`bg-[#1877f2] hover:bg-violet-600  transition-colors duration-400 delay-600 px-2 sm:px-4 py-1 sm:py-2  rounded-xl text-white`} onClick={prePage}>Previous</button>
           
-      <button className={`bg-blue-500 px-3 sm:px-6 py-1 sm:py-2 rounded-xl text-white`} onClick={nextPage} >Next</button>
+      <button className={`bg-[#1877f2] hover:bg-violet-600  transition-colors duration-400 delay-600 px-3 sm:px-6 py-1 sm:py-2 rounded-xl text-white`} onClick={nextPage} >Next</button>
       <div className=' bg-red-200 px-2 sm:px-6 py-1 sm:py-2 rounded-lg'>Page {page} of {totalPage}</div>
     </div>
      ) : null

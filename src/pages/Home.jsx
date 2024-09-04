@@ -14,7 +14,7 @@ const Home = () => {
    const {countAll,setCountAll} = useContext(MyContext);
    const {studentX,setStudentX} = useContext(MyContext);
    //console.log(countAll)
-   const [colorClass, setColorClass] = useState('bg-gradient-to-r from-pink-300 to-purple-300');
+   const [colorClass, setColorClass] = useState('bg-gradient-to-r from-pink-400 to-purple-400 via-green-100');
   //  bg-gradient-to-r from-red-200 to-green-200
 
    useEffect(() => {
@@ -43,7 +43,7 @@ const Home = () => {
         <p className='' >{countAll}</p> 
     </div>
 
-    <div className='mt-4 h-24 sm:h-32 lg:h-40 w-24 sm:w-32 lg:w-40  flex flex-col justify-center items-center bg-orange-400 rounded-xl hover:rounded-full cursor-pointer
+    <div className='mt-4 h-24 sm:h-32 lg:h-40 w-24 sm:w-32 lg:w-40  flex flex-col justify-center items-center bg-gradient-to-r from-orange-400 to-orange-400 via-orange-300 rounded-xl hover:rounded-full cursor-pointer
     
     hover:bg-[#e67e22] hover:-translate-y-5 scale-100 shadow-lg ease-in-out duration-300 delay-150'
     onClick={()=>navigate('/XStudents')} >

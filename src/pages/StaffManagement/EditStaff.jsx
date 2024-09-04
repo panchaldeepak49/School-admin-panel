@@ -38,8 +38,9 @@ const EditStaff = ({setIsEditStaff,fetchStaffData,staffData}) => {
         .then((res)=>{
             const apiMessage = res.data.message
             message.success(apiMessage)
-            setIsEditStaff(false)
             fetchStaffData()
+            setIsEditStaff(false)
+            
         })
         .catch((err)=>{
             //console.log(err)

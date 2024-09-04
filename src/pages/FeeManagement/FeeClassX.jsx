@@ -136,9 +136,9 @@ const FeeClassX = () => {
         <Search searchText={searchText} handleSearch={handleSearch} />
         
         
-        <div className='flex justify-between sm:gap-10  mt-4 py-2 bg-blue-400'>
+        <div className='flex justify-between sm:gap-10  mt-4 py-2 bg-[#1877f2]'>
           <p className='invisible'>Dummy</p>
-        <p className='text-sm sm:text-xl font-Rubik'>Class {selectedStandard} Students Fee Info (2024-25)</p>
+        <p className='text-sm sm:text-xl font-Rubik text-white'>Class {selectedStandard} Students Fee Info (2024-25)</p>
         {/* <select className='outline-none rounded-xl px-1 bg-blue-200 w-10 sm:w-14' value={selectedStandard} onChange={(e)=>setSelectedStandard(e.target.value)}>
          <option value='VI-A'>VI-A</option>
          <option value='VI-B'>VI-B</option>
@@ -159,9 +159,9 @@ const FeeClassX = () => {
             : " "
           }   
         <div className='sm:mr-4 flex items-center sm:gap-4'>
-        <p className='text-xs sm:text-base font-Rubik'>Total Students : {studentX.length}</p>
-        <p className='text-xs sm:text-base font-Rubik cursor-pointer' onClick={handleFeeCollection}>Collection </p>
-        <BsCollection />
+        <p className='text-xs sm:text-base font-Rubik text-gray-100'>Total Students : {studentX.length}</p>
+        <p className='text-xs sm:text-base font-Rubik cursor-pointer text-gray-100' onClick={handleFeeCollection}>Collection </p>
+        <BsCollection className='text-white'/>
         </div>
         </div> 
 
@@ -209,10 +209,10 @@ const FeeClassX = () => {
     {nPage > 1 ? ( 
     <div className='fixed bottom-7 w-full flex justify-evenly '>
       
-      <button className={`bg-blue-500 px-4 py-2  rounded-xl text-white`} onClick={prePage}>Previous</button>
+      <button className={`bg-[#1877f2] hover:bg-violet-600 transition-colors duration-400 delay-600 px-4 py-2  rounded-xl text-white`} onClick={prePage}>Previous</button>
       {/* <BluButton buttonName='Previous'  onClick={prePage} /> */}
       {/* <BluButton buttonName='Next' onClick={nextPage} />     */}
-      <button className={`bg-blue-500 px-6 py-2 rounded-xl text-white`} onClick={nextPage} >Next</button>
+      <button className={`bg-[#1877f2] hover:bg-violet-600 transition-colors duration-400 delay-600 px-6 py-2 rounded-xl text-white`} onClick={nextPage} >Next</button>
       <div className='mt-2 bg-red-200 py-1 px-6 rounded-lg'>Page {currentPage} of {nPage}</div>
     </div>
      ) : null

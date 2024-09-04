@@ -53,11 +53,11 @@ const ClassAndFee = () => {
     <div className='w-[82%] '>
      <Search   />
      {/* value={searchText} handleSearch={handleSearch} */}
-     <div className='flex justify-between sm:gap-14  mt-4 py-2 bg-blue-400'>
+     <div className='flex justify-between sm:gap-14  mt-4 py-2 bg-[#1877f2]'>
         <p className='invisible'>pop</p>
-        <p className='sm:text-xl font-Rubik '>Our School Class Management (2024-25)</p>
+        <p className='sm:text-xl font-Rubik text-white'>Our School Class Management (2024-25)</p>
         <div className='mr-8 flex items-center gap-5'>
-        <p className='font-xs sm:font-base font-Rubik'>Total Class : {apiClass.length} </p>
+        <p className='font-xs sm:font-base font-Rubik text-gray-50'>Total Classes : {apiClass.length} </p>
         
         {/* <p className='flex gap-2 font-rubik cursor-pointer' > */}
         {/* <img src={userImg} className='w-4 sm:w-6 rounded-full' alt='missing'></img> */}

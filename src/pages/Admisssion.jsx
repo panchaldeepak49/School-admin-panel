@@ -119,18 +119,19 @@ useEffect(()=>{
     fetchAllClass();
 },[]);
 
-
+// from-red-300 to-green-300
   return (
     <>
     <div className='w-[82%] '>
         
-        <p className='flex justify-center font-Grey_Qo text-5xl mt-0 py-2 bg-gradient-to-r from-red-300 to-green-300'>Take Admission (2024-25)</p>
+        <p className='flex justify-center font-Grey_Qo text-5xl text-white mt-0 py-2 bg-gradient-to-r from-violet-600 to-violet-400 via-blue-500 '>Take Admission (2024-25)</p>
         {/* <img src={studentImg} alt="missing" className='w-[10%]'></img> */}
         
         
         
         
         <div className='flex w-[100%] bg-gradient-to-r  from-[#f0e1b6] to-[#d7ebc7] via-[#e5f0d1] py-4 px-4'>
+        {/* <div className='flex w-[100%] bg-gradient-to-r  from-violet-600 to-violet-400 via-blue-500 py-4 px-4'> */}
         <div className='flex flex-col gap-4 w-[50%]  mt-0 ml-0 '>
         <UploadImgFile imgURL={imgURL} setImgURL={setImgURL} />
         {/* <UploadImgFile1 imgURL={imgURL} setImgURL={setImgURL} /> */}
@@ -153,7 +154,7 @@ useEffect(()=>{
                  </Select> */}
 
           { apiClass.length > 0 ?
-           <select className='w-[70%] h-10 outline-none pl-2' value={selectClass} onChange={(e)=>setSelectClass(e.target.value)}>
+           <select className='w-[70%] h-10 outline-none pl-2 rounded-md' value={selectClass} onChange={(e)=>setSelectClass(e.target.value)}>
             <option value='' disabled>Choose Class</option>
             {apiClass.map((data,index)=>(
             <option key={index} value={data.class}>{data.class}</option>

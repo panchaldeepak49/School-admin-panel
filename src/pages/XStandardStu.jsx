@@ -110,10 +110,10 @@ const XStandardStu = () => {
     <div className='w-[82%] overflow-hidden'>
         <Search searchText={searchText} handleSearch={handleSearch} />
         
-        <div className='flex justify-between sm:gap-10  mt-4 py-2 bg-green-400'>
+        <div className='flex justify-between sm:gap-10  mt-4 py-2 bg-[#1877f2]'>
          <p className='invisible'>Dummy</p> 
-        <p className='sm:text-xl'>Class {selectedStandard} Students </p>
-        <p className='text-xs sm:text-xl'>{classTeacherName}</p>
+        <p className='sm:text-xl text-white'>Class {selectedStandard} Students </p>
+        {/* <p className='text-xs sm:text-xl'>{classTeacherName}</p> */}
         <div className='sm:pr-5 flex gap-4'>
         {/* <select className='outline-none rounded-xl px-1 text-xs sm:text-base bg-blue-200 w-10 sm:w-16 cursor-pointer' value={selectedStandard} onChange={(e)=>setSelectedStandard(e.target.value)}>
          <option value='VI-A'>VI-A</option>
@@ -133,7 +133,7 @@ const XStandardStu = () => {
            </select> 
             : " "
           }   
-        <p className='text-xs sm:text-base'>Total Students : {studentX.length > 0 ? studentX.length : '' }</p>
+        <p className='text-xs sm:text-base text-gray-100'>Total Students : {studentX.length > 0 ? studentX.length : '' }</p>
         </div>
         </div>    
         
