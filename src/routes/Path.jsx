@@ -12,6 +12,7 @@ import FeeManagement from '../pages/FeeManagement/FeeManagement';
 import FeeClassX from '../pages/FeeManagement/FeeClassX';
 import StaffManagement from '../pages/StaffManagement/StaffManagement';
 import ClassAndFee from '../pages/ClassManagement/ClassAndFee';
+import CarouselImages from '../pages/CarouselImages';
 
 
 const Path = () => {
