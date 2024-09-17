@@ -26,10 +26,10 @@ const ViewDetailModal = ({displayingData,setShowViewModal,classTeacherName}) => 
   return (
     <>
     <div className={`fixed top-1 md:top-[4%] left-[40%] flex flex-col gap-1 md:gap-4 py-1 md:py-4 px-4 items-center rounded-md md:w-[25%] ${colorClass} shadow-xl
-    border border-blue-600`}>
+    border border-blue-600 z-50`}>
         <p className='font-sans  font-semibold md:text-xl text-blue-600 '>Student Details</p>
-        <div className='flex justify-evenly'>
-        <img src={displayingData.imageUrl} className='w-12 md:w-[30%] rounded-md' alt='oops'></img>
+        <div className='w-[100%] flex justify-evenly'>
+        <img src={displayingData.imageUrl} className='w-12 h-20 md:h-auto md:w-[30%] rounded-md' alt='oops'></img>
         <FallingLines className='text-sm'  />
         </div>
         <div className='flex flex-col gap-0 md:gap-2'>

@@ -143,7 +143,7 @@ const XStandardStu = () => {
         }
          
         {nPage > 1 ? ( 
-        <div className='fixed bottom-8 w-full flex justify-evenly mt-4'>
+        <div className='fixed bottom-2 md:bottom-8 w-full flex justify-evenly mt-4'>
       
       <button className={`bg-blue-400 px-4 py-2  rounded-xl text-white`} onClick={prePage}>Previous</button>
           

@@ -89,7 +89,7 @@ const AllStandardStu = () => {
 
 
     {totalPage > 1 ? ( 
-    <div className='fixed bottom-8 w-full flex justify-evenly mt-4'>
+    <div className='fixed bottom-2 md:bottom-8 w-full flex justify-evenly mt-4'>
       
       <button className={`bg-[#1877f2] hover:bg-violet-600  transition-colors duration-400 delay-600 px-2 sm:px-4 py-1 sm:py-2  rounded-xl text-white`} onClick={prePage}>Previous</button>
           
