@@ -49,7 +49,7 @@ const Login = () => {
       </div> */}
     <CarouselImages />
       
-    <div className="fixed top-24 md:top-32 left-[16%] md:left-[24%]  flex flex-col items-center justify-center  md:w-[400px] md:h-[250px] bg-[#fff] border-2 border-[#1877f2] shadow-xl rounded-lg p-2">
+    <div className="fixed top-20 md:top-32 left-[16%] md:left-[24%]  flex flex-col items-center justify-center  md:w-[400px] md:h-[250px] bg-[#fff] border-2 border-[#1877f2] shadow-xl rounded-lg p-2">
           
             <h1 className=' text-xl md:text-2xl font-semibold'>Admin Login</h1>
             <input className='border-2 border-[#dddfe2] rounded-lg w-[92%] text-base text-[#1d2129] outline-none mt-4 py-1 md:py-2 pl-2' type= "text" name="email" value={email} onChange={(e)=>setEmail(e.target.value)} placeholder="Enter your e-mail"></input>
