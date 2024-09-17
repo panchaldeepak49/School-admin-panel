@@ -33,7 +33,10 @@ const Navbar = () => {
         <div className='relative flex flex-col items-center text-center gap-5 mt-6'>
             
             <p className='text-blue-400  font-semibold font-serif sm:text-2xl lg:text-4xl'>Convent</p>
-            <p className='text-blue-400 font-semibold font-serif text-xs sm:text-2xl lg-text-3xl'>International</p>
+            <p className='text-blue-400 font-semibold font-serif text-xs sm:text-2xl lg-text-3xl'>
+            <span className='hidden md:block'>International</span>
+            <span className='md:hidden'>Intern...</span>
+              </p>
             <img src={Aero} alt="Convent School" className='w-10 ' />
             <img src={AeroTail} alt="Convent School" className='absolute top-24 sm:top-28 md:top-32 lg:top-36 left-6 sm:left-8 md:left-10 lg:left-14  w-14 ' />
         </div>
@@ -50,17 +53,20 @@ const Navbar = () => {
 
       <div className={`w-[90%] h-8 sm:h-10 text-xs sm:text-base mt-5 ml-2 ${selectedButton === '/feeManagement' ? 'bg-orange-400 font-medium' : 'bg-orange-200 '} hover:bg-violet-500 hover:text-white transition-colors duration-400 delay-600 flex justify-center items-center rounded-lg`}
       onClick={()=>handleButtonClick('/feeManagement')}>
-        Fee Management
+        <span className='hidden md:block'>Fee Management</span>
+        <span className='md:hidden'>Fee Mgmt</span>
       </div>
       
       <div className={`w-[90%] h-8 sm:h-10 text-xs sm:text-base mt-5 ml-2 ${selectedButton === '/classManagement' ? 'bg-[#77e38d] font-medium' : 'bg-orange-200 '} hover:bg-violet-500 hover:text-white transition-colors duration-400 delay-600 flex justify-center items-center rounded-lg`}
       onClick={()=>handleButtonClick('/classManagement')}>
-        Class Management
+        <span className='hidden md:block'>Class Management</span>
+        <span className='md:hidden'>Class Mgmt</span>
       </div>
 
       <div className={`w-[90%] h-8 sm:h-10 text-xs sm:text-base mt-5 ml-2 ${selectedButton === '/staffManagement' ? 'bg-[#77e38d] font-medium' : 'bg-orange-200 '} hover:bg-violet-500 hover:text-white transition-colors duration-400 delay-600 flex justify-center items-center rounded-lg`}
       onClick={()=>handleButtonClick('/staffManagement')}>
-        Staff Management
+        <span className='hidden md:block'>Staff Management</span>
+        <span className='md:hidden'>Staff Mgmt</span>
       </div>
 
       <div className='w-[90%] h-8 sm:h-10 text-sm sm:text-base mt-16 ml-2 bg-red-300 hover:bg-red-400 hover:font-medium hover:text-white font-Rubik flex justify-center items-center gap-2 rounded-lg 

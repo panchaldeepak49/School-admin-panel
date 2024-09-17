@@ -136,9 +136,11 @@ const FeeClassX = () => {
         <Search searchText={searchText} handleSearch={handleSearch} />
         
         
-        <div className='flex justify-between sm:gap-10  mt-4 py-2 bg-[#1877f2]'>
+        <div className='flex justify-between md:gap-10  mt-4 py-2 bg-[#1877f2]'>
           <p className='invisible'>Dummy</p>
-        <p className='text-sm sm:text-xl font-Rubik text-white'>Class {selectedStandard} Students Fee Info (2024-25)</p>
+        <p className='flex items-center gap-2 text:sm md:text-xl font-Rubik text-white'>Class {selectedStandard} 
+          <span className='hidden md:block'>Students </span>
+          <span className='ml-1 md:ml-0'>Fee Info (2024-25)</span> </p>
         {/* <select className='outline-none rounded-xl px-1 bg-blue-200 w-10 sm:w-14' value={selectedStandard} onChange={(e)=>setSelectedStandard(e.target.value)}>
          <option value='VI-A'>VI-A</option>
          <option value='VI-B'>VI-B</option>
@@ -149,7 +151,7 @@ const FeeClassX = () => {
           <option value='X'>X</option>
         </select> */}
         { apiClass.length > 0 ?
-           <select className='w-10 sm:w-16 rounded-md bg-orange-300 outline-none text-xs sm:text-base cursor-pointer'
+           <select className='w-10 md:w-16 rounded-md bg-orange-300 outline-none text-xs sm:text-base cursor-pointer'
             value={selectedStandard} onChange={(e)=>setSelectedStandard(e.target.value)}>
             <option value='' disabled>Choose Class</option>
             {apiClass.map((data,index)=>(
@@ -159,7 +161,9 @@ const FeeClassX = () => {
             : " "
           }   
         <div className='sm:mr-4 flex items-center sm:gap-4'>
-        <p className='text-xs sm:text-base font-Rubik text-gray-100'>Total Students : {studentX.length}</p>
+        <p className='flex  text-xs sm:text-base font-Rubik text-gray-100'><span className='md:hidden'>T Stu : </span>
+        <span className='hidden md:block'>Total Students :</span>
+         {studentX.length}</p>
         <p className='text-xs sm:text-base font-Rubik cursor-pointer text-gray-100' onClick={handleFeeCollection}>Collection </p>
         <BsCollection className='text-white'/>
         </div>
