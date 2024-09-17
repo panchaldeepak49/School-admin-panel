@@ -8,7 +8,7 @@ const FeeManagement = () => {
 //    bg-orange-300
   return (
     <>
-    <div className='w-[82%] '>
+    <div className='w-[82%]  '>
         {/* <Search searchText={searchText} handleSearch={handleSearch} /> */}
         
         <p className='flex justify-center font-Playwrite text-lg sm:text-xl lg:text-2xl mt-4 py-4 bg-gradient-to-r from-purple-300 to-pink-300'>Take Dakshina (2024-25)</p>

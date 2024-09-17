@@ -6,12 +6,14 @@ import mainImg  from '../assets/Images/main.png';
 import mainImg1  from '../assets/Images/main1.jpg';
 import mainImg2  from '../assets/Images/main3.png';
 import CarouselImages from './CarouselImages';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const Login = () => {
 
     const navigate = useNavigate();
     const[email, setEmail] = useState('');
     const [password,setPassword] =  useState('');
+    const [showPassword,setShowPassword] = useState(false);
     
     
     let user = JSON.stringify({
@@ -47,11 +49,16 @@ const Login = () => {
       </div> */}
     <CarouselImages />
       
-    <div className="fixed top-32 left-[25%]  flex flex-col items-center justify-center  md:w-[400px] md:h-[250px] bg-[#fff] border-2 border-[#1877f2] shadow-xl rounded-lg p-2">
+    <div className="fixed top-32 left-[24%]  flex flex-col items-center justify-center  md:w-[400px] md:h-[250px] bg-[#fff] border-2 border-[#1877f2] shadow-xl rounded-lg p-2">
           
             <h1 className=' text-xl md:text-2xl font-semibold'>Admin Login</h1>
-            <input className='border-2 border-[#dddfe2] rounded-lg w-[92%] text-base text-[#1d2129] outline-none mt-4 py-1 md:py-2 pl-2' type="text" name="email" value={email} onChange={(e)=>setEmail(e.target.value)} placeholder="Enter your e-mail"></input>
-            <input className='border-2 border-[#dddfe2] rounded-lg w-[92%] text-base text-[#1d2129] outline-none mt-4 py-1 md:py-2 pl-2' type="password"name="password" value={password} onChange={(e)=>setPassword(e.target.value)} placeholder="Enter your password"></input>
+            <input className='border-2 border-[#dddfe2] rounded-lg w-[92%] text-base text-[#1d2129] outline-none mt-4 py-1 md:py-2 pl-2' type= "text" name="email" value={email} onChange={(e)=>setEmail(e.target.value)} placeholder="Enter your e-mail"></input>
+            <div className='flex items-center justify-between border-2 border-[#dddfe2] rounded-lg w-[92%] text-base text-[#1d2129] outline-none mt-4 py-1 md:py-2 px-2'>
+            <input className='outline-none' type={showPassword ? "text" : "password"} name="password" value={password} onChange={(e)=>setPassword(e.target.value)} placeholder="Enter your password"></input>
+            <div className='' onClick={()=>setShowPassword(!showPassword)}>
+                  {showPassword ? <FaEye /> : <FaEyeSlash /> }
+               </div>
+               </div>
             <div className=" flex justify-center bg-[#1877f2] border-2 border-[#1877f2] rounded-xl w-[92%] outline-none text-white md:text-xl font-semibold md:py-1 mt-6 mb-4 cursor-pointer" onClick={handleLogin}>Login</div>
         </div>
         {/* </div> */}
