@@ -235,14 +235,14 @@ const FeeClassX = () => {
     </>
   )
   function prePage(){
-    if(page !== 1){
-      setPage(page - 1);
+    if(currentPage !== 1){
+      setCurrentPage(currentPage - 1);
     }
   }
 
   function nextPage(){
-    if(page !== totalPage){
-      setPage(page + 1);
+    if(currentPage !== nPage){
+      setCurrentPage(currentPage + 1);
     }
   }
 }
