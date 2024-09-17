@@ -21,12 +21,12 @@ const DeleteFeeModal = ({feeData,setShowDeleteFeeModal,fetchXFee}) => {
   return (
     <>
     <div className='fixed top-[12%] left-[40%] flex flex-col gap-4 py-4 items-center rounded-md w-[25%] bg-gray-200 shadow-xl'>
-        <p>Are you sure want to delete this student ?</p>
+        <p className='text-sm md:text-base ml-2 md:ml-0'>Are you sure want to remove this student ?</p>
         
-        <p>Name : {feeData?.name}</p>
+        <p className='text-sm md:text-base'>Name : {feeData?.name}</p>
         <div className='flex gap-10'>
-            <button className='bg-red-600 text-white p-2 rounded-md ' onClick={()=>setShowDeleteFeeModal(false)}>Cancel</button>
-            <button className='bg-red-600 text-white p-2 rounded-md' onClick={()=>deleteUserFee()}>Delete</button>
+            <button className='bg-red-600 text-sm md:text-base text-white p-1 md:p-2 rounded-md ' onClick={()=>setShowDeleteFeeModal(false)}>Cancel</button>
+            <button className='bg-red-600 text-sm md:text-base text-white p-1 md:p-2 rounded-md' onClick={()=>deleteUserFee()}>Delete</button>
         </div>
     </div>
     </>

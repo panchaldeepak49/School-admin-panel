@@ -20,15 +20,15 @@ const DeleteStudentModal = ({deletingData,setShowDeleteModal,fetchAllAdmission})
   return (
     <>
     <div className='fixed top-[12%] left-[40%] flex flex-col gap-4 py-4 items-center rounded-md w-[25%] bg-gray-200 shadow-xl'>
-        <p>Are you sure want to delete this student ?</p>
+        <p className='text-sm md:text-base ml-2 md:ml-0'>Are you sure want to delete this student ?</p>
         
-        <p>Name : {deletingData?.name}</p>
+        <p className='text-sm md:text-base'>Name : {deletingData?.name}</p>
         
        
 
         <div className='flex gap-10'>
-            <button className='bg-red-600 text-white p-2 rounded-md ' onClick={()=>setShowDeleteModal(false)}>Cancel</button>
-            <button className='bg-red-600 text-white p-2 rounded-md' onClick={()=>deleteUser()}>Delete</button>
+            <button className='bg-red-600 text-sm md:text-base text-white p-1 md:p-2 rounded-md ' onClick={()=>setShowDeleteModal(false)}>Cancel</button>
+            <button className='bg-red-600 text-sm md:text-base text-white p-1 md:p-2 rounded-md' onClick={()=>deleteUser()}>Delete</button>
         </div>
     </div>
     </>

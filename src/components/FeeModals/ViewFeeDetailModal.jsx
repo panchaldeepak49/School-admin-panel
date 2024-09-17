@@ -6,9 +6,9 @@ const ViewFeeDetailModal = ({feeData,setShowFeeDetailModal}) => {
     console.log(feeData);
   return (
     <>
-    <div className='fixed top-2 md:top-10 left-[40%] md:w-[25%] px-4 py-4 bg-blue-200 rounded-xl border border-green-500'>
+    <div className='fixed top-2 md:top-10 left-[40%] md:w-[25%] px-4 py-2 md:py-4 bg-blue-200 rounded-xl border border-green-500'>
       <img src={feeData.imageUrl} className='w-16 md:w-32 rounded-md' alt='missing'></img>
-      <p className='mt-2 text-sm md:text-base font-medium'>Name : <span className='font-Playwrite'>{feeData.name}</span></p>
+      <p className='mt-1 md:mt-2 text-sm md:text-base font-medium'>Name : <span className='font-Playwrite'>{feeData.name}</span></p>
       <div className='grid grid-cols-2 gap-1 md:mt-4'>
       
       <p className='text-sm md:text-base md:font-medium'>Apr  :<span>{feeData.april}</span> </p>

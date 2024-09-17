@@ -25,29 +25,29 @@ const ViewDetailModal = ({displayingData,setShowViewModal,classTeacherName}) => 
 
   return (
     <>
-    <div className={`fixed top-[4%] left-[40%] flex flex-col gap-4 py-4 px-4 items-center rounded-md w-[25%] ${colorClass} shadow-xl
+    <div className={`fixed top-1 md:top-[4%] left-[40%] flex flex-col gap-1 md:gap-4 py-1 md:py-4 px-4 items-center rounded-md md:w-[25%] ${colorClass} shadow-xl
     border border-blue-600`}>
-        <p className='font-sans  font-semibold text-xl text-blue-600 '>Student Details</p>
+        <p className='font-sans  font-semibold md:text-xl text-blue-600 '>Student Details</p>
         <div className='flex justify-evenly'>
-        <img src={displayingData.imageUrl} className='w-[30%]' alt='oops'></img>
+        <img src={displayingData.imageUrl} className='w-12 md:w-[30%] rounded-md' alt='oops'></img>
         <FallingLines className='text-sm'  />
         </div>
-        <div className='flex flex-col gap-2'>
+        <div className='flex flex-col gap-0 md:gap-2'>
           
-        <p className='font-Rubik'><span className='font-semibold'>Name : </span>{displayingData.name} </p>
-        <p className='font-Rubik'><span className='font-semibold'>Father Name : </span> {displayingData.fatherName}</p>
-        <p className='font-Rubik'><span className='font-semibold'>Class : </span> {displayingData.class}</p>
-        <p className='font-Rubik'><span className='font-semibold'>Roll No : </span> {displayingData.rollNo}</p>
-        <p className='font-Rubik'><span className='font-semibold'>Address : </span> {displayingData.address}</p>
-        <p className='font-Rubik'><span className='font-semibold'>DOA : </span> {displayingData.admissionDate}</p>
+        <p className='text-sm md:text-base font-Rubik'><span className='font-medium md:font-semibold'>Name : </span>{displayingData.name} </p>
+        <p className='text-sm md:text-base font-Rubik'><span className='font-medium md:font-semibold'>Father Name : </span> {displayingData.fatherName}</p>
+        <p className='text-sm md:text-base font-Rubik'><span className='font-medium md:font-semibold'>Class : </span> {displayingData.class}</p>
+        <p className='text-sm md:text-base font-Rubik'><span className='font-medium md:font-semibold'>Roll No : </span> {displayingData.rollNo}</p>
+        <p className='text-sm md:text-base font-Rubik'><span className='font-medium md:font-semibold'>Address : </span> {displayingData.address}</p>
+        <p className='text-sm md:text-base font-Rubik'><span className='font-medium md:font-semibold'>DOA : </span> {displayingData.admissionDate}</p>
         {/* <p className='font-Rubik'><span className='font-semibold'>Section : </span> {displayingData.section}</p> */}
-        <p className='font-Rubik'><span className='font-semibold'>Class Teacher : </span> {classTeacherName}</p>
-        <p className='font-Rubik'><span className='font-semibold'>Gender : </span> {displayingData.gender}</p>
-        <p className='font-Rubik'><span className='font-semibold'>Contact : </span> {displayingData.contact}</p>
+        <p className='text-sm md:text-base font-Rubik'><span className='font-medium md:font-semibold'>Class Teacher : </span> {classTeacherName}</p>
+        <p className='text-sm md:text-base font-Rubik'><span className='font-medium md:font-semibold'>Gender : </span> {displayingData.gender}</p>
+        <p className='text-sm md:text-base font-Rubik'><span className='font-medium md:font-semibold'>Contact : </span> {displayingData.contact}</p>
         </div>
 
         <div className='flex gap-10'>
-            <button className='bg-blue-600 text-white px-4 py-1 rounded-md animate-pulse' onClick={()=>setShowViewModal(false)}>Close</button>
+            <button className='bg-blue-600 text-sm md:text-base text-white px-4 py-1 rounded-md animate-pulse' onClick={()=>setShowViewModal(false)}>Close</button>
             {/* <button className='bg-orange-400 p-2 rounded-md' onClick={()=>updateUser()}>Update</button> */}
         </div>
     </div>
