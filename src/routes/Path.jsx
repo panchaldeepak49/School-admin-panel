@@ -13,6 +13,7 @@ import FeeClassX from '../pages/FeeManagement/FeeClassX';
 import StaffManagement from '../pages/StaffManagement/StaffManagement';
 import ClassAndFee from '../pages/ClassManagement/ClassAndFee';
 import CarouselImages from '../pages/CarouselImages';
+import Login1 from '../components/Login1';
 
 
 const Path = () => {
@@ -35,7 +36,7 @@ const Path = () => {
     <div className='flex'>
     <NavbarWrapper />
      <Routes>
-        <Route path='/' element={<PublicRoute><Login /></PublicRoute>}></Route>
+        <Route path='/' element={<PublicRoute><Login1 /></PublicRoute>}></Route>
         <Route path='/home' element={<PrivateRoute><Home /></PrivateRoute>}></Route>
         <Route path= '/admission' element={<PrivateRoute><Admisssion /></PrivateRoute>}></Route>
         <Route path= '/allStudents' element={<PrivateRoute><AllStandardStu /></PrivateRoute>}></Route>

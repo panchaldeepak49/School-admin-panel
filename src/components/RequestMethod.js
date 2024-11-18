@@ -6,6 +6,7 @@ const url = "https://school-admin-backend.onrender.com/"
 const BASE_URL = url;
 
 
+
 export const publicRequest = axios.create({
     baseURL: BASE_URL,
     headers: {
@@ -20,9 +21,11 @@ export const publicRequest = axios.create({
     baseURL: BASE_URL,
     headers: {
       "Content-Type": "application/json",
-      Authorization: "Bearer " + JSON.parse(localStorage.getItem("token")),
+       Authorization: "Bearer " + JSON.parse(localStorage.getItem("token")),
     },
   });
+
+  
 
   export const userRequest1 = axios.create({
     baseURL: BASE_URL,

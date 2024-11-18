@@ -65,7 +65,7 @@ const CarouselImages = () => {
   return (
     <>
     {/* <img className='w-[100%] h-60 sm:h-96 sm:ml-0' src={schoolImg} alt='missing'/> */}
-     <div className='w-[100%] h-[100vh] bg-red-400'
+     <div className='w-[100%] h-[100vh] bg-red-400 overflow-y-hidden'
        onMouseEnter={handleMouseEnter}
        onMouseLeave={handleMouseLeave}>
 

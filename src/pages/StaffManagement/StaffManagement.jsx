@@ -80,7 +80,6 @@ const StaffManagement = () => {
 
   const handleMailBox=()=>{
     setIsSendMailBox(!isSendMailBox)
-
   } 
 
   ////////////////////////////////////////////////////////////applying pagination in frontend only

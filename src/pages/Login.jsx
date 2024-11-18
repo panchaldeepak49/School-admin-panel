@@ -2,6 +2,7 @@ import React,{ useState } from 'react'
 import { message } from 'antd'
 import { useNavigate } from 'react-router-dom';
 import { userRequest } from '../components/RequestMethod';
+import { publicRequest } from '../components/RequestMethod';
 import mainImg  from '../assets/Images/main.png';
 import mainImg1  from '../assets/Images/main1.jpg';
 import mainImg2  from '../assets/Images/main3.png';
@@ -22,7 +23,7 @@ const Login = () => {
       });
 
       const handleLogin = async (e) => {
-        await userRequest.post("/api/school/login", user)
+        await publicRequest.post("/api/school/login", user)
           .then((res) => {
             //console.log(res)
             message.success("Login success");
