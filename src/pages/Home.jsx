@@ -14,9 +14,10 @@ const Home = () => {
    const {countAll,setCountAll} = useContext(MyContext);
    const {studentX,setStudentX} = useContext(MyContext);
    //console.log(countAll)
-   const [colorClass, setColorClass] = useState('bg-gradient-to-r from-pink-400 to-purple-400 via-green-100');
+   const [colorClass, setColorClass] = useState('bg-gradient-to-r from-red-200 to-green-200');
   //  bg-gradient-to-r from-red-200 to-green-200
-
+  //bg-gradient-to-r from-pink-400 to-purple-400 via-green-100
+  
    useEffect(() => {
     const timer = setTimeout(() => {
       setColorClass('bg-gradient-to-r from-blue-200 to-purple-200');
